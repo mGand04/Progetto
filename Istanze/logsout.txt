@@ -1,0 +1,3 @@
+CLIENTI     DATASET     TEMPO(s)    COSTO   DATA
+-------------------------------------------------
+
