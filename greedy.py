@@ -45,6 +45,7 @@ try:
     #print(distances[:1])
 
     # Algoritmo 1:
+    print("Algoritmo 1")
 
     # Ciclo su ogni veicolo per assegnare il path
     for i in range(veichle_quantity): 
