@@ -10,7 +10,8 @@ fold = input("Inserisci il nome della cartella(n25/50/100): ")
 file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
 # Percorso del file 
-path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Istanze'
+#path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Istanze'
+path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
 path = os.path.join(path_base, fold, file_name)
 
@@ -37,6 +38,28 @@ try:
 
     #distances = np.zeros((data.shape[0], data.shape[0]))
 
+    # Funzione di controllo dell'ammisibilità della soluzione
+    def valida_rotta(percorso):
+        carico = 0
+        tempo = 0
+        costo = 0
+        for k in range(len(percorso) - 1):
+            u, v = percorso[k], percorso[k+1]
+            t_uv = dist_matrix[u, v] # Il tempo è uguale al costo [cite: 93]
+            
+            carico += data[v, 3] # Domanda del cliente [cite: 9, 28]
+            if carico > veichle_capacity: return False, 0
+            
+            # Calcolo tempo di arrivo e inizio servizio [cite: 17, 58, 76]
+            arrivo = tempo + data[u, 6] + t_uv # tempo + service + travel
+            inizio_servizio = max(arrivo, data[v, 4]) # max(arrivo, ready_time) [cite: 17, 61]
+            
+            if inizio_servizio > data[v, 5]: return False, 0 # [cite: 16, 61]
+            
+            tempo = inizio_servizio
+            costo += t_uv
+            return True, costo
+        
     # Calcolo dei costi
     def cost(pos_i, pos_j):
         # Distanza euclidea
@@ -71,6 +94,7 @@ try:
     """
     #print(distances[:1])
     dist_matrix = matrice_distanze(data)
+
     # Algoritmo 1:
     print("Algoritmo 1")
     def solve_vrptw(n_clienti, v_cap, dati_nodi, costi):
@@ -129,12 +153,89 @@ try:
             percorsi_totali.append(percorso_attuale)
             
         return percorsi_totali, costo_totale_global
+    
+    #1 Neighborhood: Insertion --> provo a togliere un cliente da un path e lo inserisco in un'altra con FIRST IMPROVMENT
+    def neigh_1(path, costo_tot):
+        print("\n Neighborhood 1: Insertion")
+        
+        costo_attuale = costo_tot
+        miglioramento = True
 
+        while miglioramento:
+            miglioramento = False
+
+            # Itero su tutte le rotte
+            for r1_idx in range(len(path)):
+                rotta_src = path[r1_idx]
+
+                # Itero sui clienti della rotta R1
+                for cliente in range(1, len(rotta_src)-1):
+
+                    # Seleziono una rotta di destinazione in cui inserire il cliente
+                    for r2_idx in range(len(path)):
+                        
+                        rotta_dest = path[r2_idx]
+                        
+                        # Definisco le posizioni in cui può essere inserito il cliente
+                        for pos in range(1, len(rotta_dest)):
+                            # Evito un reinserimento nella stessa posizione dello stesso path
+                            if r1_idx == r2_idx and (pos == cliente or pos == cliente+1):
+                                continue
+                            
+                            # Provo lo spostamento
+
+                            nuova_rotta_src = rotta_src[:]
+                            nuova_rotta_src.pop(cliente)
+
+                            nuova_rotta_dest = rotta_dest[:] if r1_idx != r2_idx else nuova_rotta_src[:]
+                            # Se src e dest sono la stessa, lavoriamo sulla stessa lista già modificata
+                            if r1_idx== r2_idx:
+                                # Se abbiamo rimosso un elemento prima della posizione di inserimento, l'indice scala
+                                adj_pos = pos - 1 if pos > cliente else pos
+                                nuova_rotta_dest.insert(adj_pos, cliente)
+                            else:
+                                nuova_rotta_dest.insert(pos, cliente)
+
+                            ok_dest, costo_dest = valida_rotta(nuova_rotta_dest) 
+                            if not ok_dest: continue
+
+                            ok_src, costo_src = valida_rotta(nuova_rotta_src)
+                            if not ok_src: continue
+
+                            # Calcolo del nuovo costo totale
+                            nuovo_costo_tot = costo_attuale
+                            # Sottraiamo i vecchi costi delle due rotte e aggiungiamo i nuovi
+                            # (Nota: serve salvare i costi vecchi delle rotte prima del ciclo o ricalcolarli)
+                            _, vecchio_costo_src = valida_rotta(rotta_src)
+                            _, vecchio_costo_dest = valida_rotta(rotta_dest)
+                            
+                            nuovo_costo_tot = costo_attuale - (vecchio_costo_src + vecchio_costo_dest) + (costo_src + costo_dest)
+                            
+                            if nuovo_costo_tot < costo_attuale - 0.01: # Tolleranza decimale
+                                path[r1_idx] = nuova_rotta_src
+                                path[r2_idx] = nuova_rotta_dest
+                                costo_attuale = nuovo_costo_tot
+                                miglioramento = True
+                                break # Esci dai cicli interni e ricomincia la ricerca
+                        if miglioramento: break
+                    if miglioramento: break
+                if miglioramento: break
+        return path, costo_attuale
+    
     # Esecuzione
     percorsi, costo_tot = solve_vrptw(n_clienti, veichle_capacity, data, dist_matrix)
     for idx, p in enumerate(percorsi):
         print(f"Veicolo {idx+1}: {p}")
     print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
+
+    percorsi, costo_tot = neigh_1(percorsi, costo_tot)
+
+    print("-- Dopo local search 1 --")
+    for idx, p in enumerate(percorsi):
+        print(f"Veicolo {idx+1}: {p}")
+    print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
+
+
 except FileNotFoundError:
     print(f"ERRORE: Il file '{file_name}' non esiste nella cartella '{fold}'.")
     print("Controlla di aver scritto correttamente i nomi.")
