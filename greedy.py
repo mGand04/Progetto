@@ -43,6 +43,8 @@ try:
         carico = 0
         tempo = 0
         costo = 0
+
+        # len -1 poichè torniamo sempre nel magazzino alla fine
         for k in range(len(percorso) - 1):
             u, v = percorso[k], percorso[k+1]
             t_uv = dist_matrix[u, v] # Il tempo è uguale al costo [cite: 93]
@@ -58,7 +60,7 @@ try:
             
             tempo = inizio_servizio
             costo += t_uv
-            return True, costo
+        return True, costo
         
     # Calcolo dei costi
     def cost(pos_i, pos_j):
@@ -168,28 +170,32 @@ try:
             for r1_idx in range(len(path)):
                 rotta_src = path[r1_idx]
 
-                # Itero sui clienti della rotta R1
-                for cliente in range(1, len(rotta_src)-1):
+                # Controllo sulla lunghezza della rotta
+                if len(rotta_src) <= 2:
+                    continue
 
+                # Itero sui clienti della rotta R1
+                for idx_pos in range(1, len(rotta_src)-1):
+                    cliente = rotta_src[idx_pos] # ID REALE DEL CLIENTE
                     # Seleziono una rotta di destinazione in cui inserire il cliente
                     for r2_idx in range(len(path)):
-                        
+
                         rotta_dest = path[r2_idx]
                         
                         # Definisco le posizioni in cui può essere inserito il cliente
                         for pos in range(1, len(rotta_dest)):
                             # Evito un reinserimento nella stessa posizione dello stesso path
-                            if r1_idx == r2_idx and (pos == cliente or pos == cliente+1):
+                            if r1_idx == r2_idx and (pos == idx_pos or pos == idx_pos +1):
                                 continue
                             
                             # Provo lo spostamento
 
                             nuova_rotta_src = rotta_src[:]
-                            nuova_rotta_src.pop(cliente)
+                            nuova_rotta_src.pop(idx_pos)
 
                             nuova_rotta_dest = rotta_dest[:] if r1_idx != r2_idx else nuova_rotta_src[:]
                             # Se src e dest sono la stessa, lavoriamo sulla stessa lista già modificata
-                            if r1_idx== r2_idx:
+                            if r1_idx == r2_idx:
                                 # Se abbiamo rimosso un elemento prima della posizione di inserimento, l'indice scala
                                 adj_pos = pos - 1 if pos > cliente else pos
                                 nuova_rotta_dest.insert(adj_pos, cliente)
@@ -220,6 +226,7 @@ try:
                         if miglioramento: break
                     if miglioramento: break
                 if miglioramento: break
+            if miglioramento: break # esce dal ciclo delle rotte sorgente
         return path, costo_attuale
     
     # Esecuzione
@@ -234,6 +241,24 @@ try:
     for idx, p in enumerate(percorsi):
         print(f"Veicolo {idx+1}: {p}")
     print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
+
+    def debug_soluzioni(percorsi, matrice_costi, data):
+        costo_totale = 0
+
+        for idx, p in enumerate(percorsi):
+            capacity = 200
+            costo_rotta = 0
+            time_route = 0
+
+            for i in range(p+1):
+                # Controllo capacità
+                capacity = capacity - data[p[i], 3]
+                if capacity < 0:
+                    return 
+                # Controllo time window
+
+                # Calcolo del costo
+
 
 
 except FileNotFoundError:
