@@ -10,8 +10,8 @@ fold = input("Inserisci il nome della cartella(n25/50/100): ")
 file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
 # Percorso del file 
-#path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Istanze'
-path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+#path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
 path = os.path.join(path_base, fold, file_name)
 
@@ -31,9 +31,7 @@ try:
     demand = data[:, 3]
     n_clienti = len(data)-1
     print(n_clienti)
-    
-    #print(data[:2])
-    
+        
     # Matrice delle distanze
 
     #distances = np.zeros((data.shape[0], data.shape[0]))
@@ -99,7 +97,7 @@ try:
 
     # Algoritmo 1:
     print("Algoritmo 1")
-    def solve_vrptw(n_clienti, v_cap, dati_nodi, costi):
+    def greedy_1(n_clienti, v_cap, dati_nodi, costi):
         visitati = np.zeros(n_clienti, dtype=bool)
         visitati[0] = True # Il deposito è il punto di partenza [cite: 27, 31]
         
@@ -155,7 +153,47 @@ try:
             percorsi_totali.append(percorso_attuale)
             
         return percorsi_totali, costo_totale_global
+    # Secondo algoritmo greedy
     
+    # Secondo algoritmo greedy: un veicolo dedicato per ogni nodo (se possibile)
+    def greedy_2(n_clienti, v_cap, dati_nodi, costi):
+        percorsi_totali = []
+        costo_totale_global = 0.0
+        
+        # Iteriamo su tutti i clienti (da 1 a n_clienti)
+        # dati_nodi[i, 0] è l'ID del cliente
+        for i in range(1, n_clienti + 1):
+            
+            # 1. Recupero dati del cliente dai metadati [cite: 94]
+            domanda_cliente = dati_nodi[i, 3]  # q_i [cite: 9, 28]
+            fine_finestra = dati_nodi[i, 5]    # b_i [cite: 14, 28]
+            
+            # 2. Calcolo costi di trasporto [cite: 20, 31, 87]
+            costo_andata = costi[0, i]  # c_0i
+            costo_ritorno = costi[i, 0] # c_i,n+1 (torna al deposito)
+            
+            # 3. Verifica ammissibilità temporale
+            # Il veicolo arriva e inizia il servizio non prima di a_i [cite: 17]
+            tempo_arrivo = max(costo_andata, dati_nodi[i, 4]) 
+            
+            # --- CONTROLLO VINCOLI (1f e 1h) ---
+            # Verifica capacità (1f)  e tempo massimo (1h) [cite: 61, 72]
+            if domanda_cliente <= v_cap and tempo_arrivo <= fine_finestra:
+                
+                # Creazione rotta elementare: Deposito -> Cliente -> Deposito [cite: 32]
+                percorso_attuale = [0, i, 0] 
+                percorsi_totali.append(percorso_attuale)
+                
+                # L'obiettivo è minimizzare il costo totale (1a) [cite: 44, 67]
+                costo_totale_global += (costo_andata + costo_ritorno)
+                
+            else:
+                # Segnalazione se il cliente viola i vincoli fondamentali [cite: 13, 16]
+                motivo = "Capacità" if domanda_cliente > v_cap else "Tempo"
+                print(f"Cliente {int(dati_nodi[i, 0])} scartato. Motivo: {motivo}")
+
+        return percorsi_totali, round(costo_totale_global, 1)
+
     #1 Neighborhood: Insertion --> provo a togliere un cliente da un path e lo inserisco in un'altra con FIRST IMPROVMENT
     def neigh_1(path, costo_tot):
         print("\n Neighborhood 1: Insertion")
@@ -230,34 +268,20 @@ try:
         return path, costo_attuale
     
     # Esecuzione
-    percorsi, costo_tot = solve_vrptw(n_clienti, veichle_capacity, data, dist_matrix)
+    percorsi, costo_tot = greedy_1(n_clienti, veichle_capacity, data, dist_matrix)
     for idx, p in enumerate(percorsi):
         print(f"Veicolo {idx+1}: {p}")
     print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
-
+    percorsi_2, costo_tot_2 = greedy_2(n_clienti,veichle_capacity,data, dist_matrix)
+    for idx, p in enumerate(percorsi_2):
+        print(f"Veicolo {idx+1}: {p}")
+    print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
     percorsi, costo_tot = neigh_1(percorsi, costo_tot)
 
     print("-- Dopo local search 1 --")
     for idx, p in enumerate(percorsi):
         print(f"Veicolo {idx+1}: {p}")
     print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
-
-    def debug_soluzioni(percorsi, matrice_costi, data):
-        costo_totale = 0
-
-        for idx, p in enumerate(percorsi):
-            capacity = 200
-            costo_rotta = 0
-            time_route = 0
-
-            for i in range(p+1):
-                # Controllo capacità
-                capacity = capacity - data[p[i], 3]
-                if capacity < 0:
-                    return 
-                # Controllo time window
-
-                # Calcolo del costo
 
 
 
