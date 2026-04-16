@@ -1,8 +1,9 @@
 import os
 import pandas as pd
 import numpy as np
-from numpy import random
+import random as rd
 import math
+import copy
 
 # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
 np.set_printoptions(suppress=True, precision=2)
@@ -60,7 +61,27 @@ try:
             tempo = inizio_servizio
             costo += t_uv
         return True, costo
-        
+    
+    def valida_rotta_senza_vincoli(percorso):
+        # Questa funzione calcola il costo di UN SINGOLO furgone
+        # Assume che 'dist_matrix' e 'data' siano variabili globali
+        costo = 0
+        tempo = 0
+
+        for k in range(len(percorso) - 1):
+            # Convertiamo in int per evitare problemi di indexing con NumPy
+            u, v = int(percorso[k]), int(percorso[k+1])
+            
+            t_uv = dist_matrix[u, v] 
+            
+            # Calcolo tempo: tempo precedente + service time di u + viaggio uv
+            arrivo = tempo + data[u, 6] + t_uv 
+            inizio_servizio = max(arrivo, data[v, 4]) 
+            
+            tempo = inizio_servizio
+            costo += t_uv
+            
+        return costo
     # Calcolo dei costi
     def cost(pos_i, pos_j):
         # Distanza euclidea
@@ -273,31 +294,125 @@ try:
         # Definizione dei parmetri
         T_init = 0.8 * costo_tot
         T_end = 0.1
-        alpha = random.uniform(0.8, 0.99)
-
+        #alpha = rd.uniform(0.8, 0.99)
+        alpha = 0.99
         # Passo la soluzione iniziale in s per non modificarla subito
-        s = path
+        s = copy.deepcopy(path)
+        costo_current = costo_tot
+        s_best = copy.deepcopy(path)
+        #costo_best = costo_tot
         while T_init > T_end:
+            s_new = copy.deepcopy(s)
             # Randomizzare la scelta del neighborhood
             # Scelgo la rotta da cui prendere solo tra quelle "attive"
             rotte_attive = [idx for idx, rotta in enumerate(s) if len(rotta) > 2]
-            idx_partenza = random.choice(rotte_attive)
-            rotta_sorgente = s[idx_partenza]
-            idx_cliente = random.randint(1, len(rotta_sorgente)-2)
+            if not rotte_attive:
+             # Se non c'è nulla da spostare, raffredda e ricomincia il ciclo
+                T_init *= alpha
+                continue
+            idx_partenza = rd.choice(rotte_attive)
+            rotta_sorgente = s_new[idx_partenza]
+            max_idx = len(rotta_sorgente)-2
+            if max_idx < 1:
+                continue
+            idx_cliente = rd.randint(1, max_idx)
             cliente = rotta_sorgente.pop(idx_cliente)
-
             # Scelgo la destinazione 
-            
+            if len(s_new) == 0:
+                s_new.append([0, 0])
+            idx_rotta_dest = rd.randint(0,len(s_new)-1)
+            rotta_dest = s_new[idx_rotta_dest]
+            #pos_ins = random.randint(1, len(rotta_dest)-1)
+            max_ins = len(rotta_dest) - 1
+            if max_ins < 1:
+                idx_inserimento = 1 # Forza l'inserimento se la lista è troppo corta
+            else:
+                idx_inserimento = rd.randint(1, max_ins)
+            # Inseriamo il cliente in una posizione a caso tra i depositi
+            rotta_dest.insert(idx_inserimento, cliente)
+            #Calcolo il costo della nuova rotta ma senza i vincoli
+            costo_nuovo = sum(valida_rotta_senza_vincoli(r) for r in s_new)
+            #Calcolo del delta
+            delta = costo_nuovo - costo_current
             # Scelta del parametro u
 
-            u = random.uniform()
+            u = rd.random()
 
             # Controllo se accetto la mossa
-
+            if delta<0 or math.exp(-delta/T_init)>u:
+                #Se viene rispettata questa condizione accetto la mossa
+                s = s_new
+                costo_current = costo_nuovo
+                s_best = copy.deepcopy(s_new)
+                
             # In caso sia feasible e migliori la aggiungo a quella iniziale
 
             T_init = alpha * T_init
-        return path
+        return s_best, costo_current 
+    """def Sim_Annealing(path, costo_tot):
+        # Parametri (alpha fisso è meglio per debuggare)
+        T_init = 0.8 * costo_tot
+        T_end = 0.1
+        alpha = 0.99 
+
+        s = copy.deepcopy(path)
+        costo_current = costo_tot
+        s_best = copy.deepcopy(path)
+        costo_best = costo_tot
+
+        while T_init > T_end:
+            s_new = copy.deepcopy(s)
+            
+            # --- 1. SELEZIONE SORGENTE (Chi spostiamo?) ---
+            # Prendiamo solo rotte che hanno almeno un cliente (lunghezza > 2)
+            rotte_attive = [idx for idx, rotta in enumerate(s_new) if len(rotta) > 2]
+            
+            if not rotte_attive:
+                T_init *= alpha
+                continue # Se non c'è nulla da spostare, salta al prossimo giro
+                
+            idx_partenza = rd.choice(rotte_attive)
+            rotta_sorgente = s_new[idx_partenza]
+            
+            # Calcolo indice cliente (range sicuro tra 1 e len-2)
+            max_idx = len(rotta_sorgente) - 2
+            idx_cliente = rd.randint(1, max_idx) 
+            cliente = rotta_sorgente.pop(idx_cliente)
+
+            # --- 2. PULIZIA ROTTA VUOTA ---
+            # Se la rotta è rimasta [0, 0], la eliminiamo MA solo se non è l'ultima rimasta!
+            if len(rotta_sorgente) <= 2 and len(s_new) > 1:
+                s_new.pop(idx_partenza)
+
+            # --- 3. SELEZIONE DESTINAZIONE (Dove lo mettiamo?) ---
+            # Ora s_new ha sicuramente almeno una rotta
+            idx_rotta_dest = rd.randint(0, len(s_new) - 1)
+            rotta_dest = s_new[idx_rotta_dest]
+            
+            # Scelta posizione inserimento (tra 1 e len-1)
+            # Se rotta_dest è [0, 0], len-1 è 1. randint(1, 1) -> OK
+            max_ins = len(rotta_dest) - 1
+            idx_inserimento = rd.randint(1, max_ins)
+            rotta_dest.insert(idx_inserimento, cliente)
+
+            # --- 4. CALCOLO COSTO E ACCETTAZIONE ---
+            # Usiamo sum() per sommare i costi di tutte le rotte di s_new
+            costo_nuovo = sum(valida_rotta_senza_vincoli(r) for r in s_new)
+            delta = costo_nuovo - costo_current
+
+            # Metropolis: ATTENZIONE al random.random() < exp
+            if delta < 0 or rd.random() < math.exp(-delta / T_init):
+                s = s_new
+                costo_current = costo_nuovo
+                
+                # Salviamo il record storico
+                if costo_nuovo < costo_best:
+                    s_best = copy.deepcopy(s_new)
+                    costo_best = costo_nuovo
+                    
+            T_init *= alpha
+            
+        return s_best, costo_best"""
     # Esecuzione
     percorsi, costo_tot = greedy_1(n_clienti, veichle_capacity, data, dist_matrix)
     for idx, p in enumerate(percorsi):
@@ -307,7 +422,7 @@ try:
     for idx, p in enumerate(percorsi_2):
         print(f"Veicolo {idx+1}: {p}")
     print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
-    percorsi, costo_tot = neigh_1(percorsi, costo_tot)
+    percorsi_local, costo_tot_local = neigh_1(percorsi, costo_tot)
 
     print("-- Dopo local search 1 --")
     for idx, p in enumerate(percorsi):
@@ -315,7 +430,13 @@ try:
     print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
 
     # Implementazione simulated annealing
+    percorsi_ann, costo_ann = Sim_Annealing(percorsi_local,costo_tot_local)
+    print("--Dopo Annealing--")
+    for idx, p in enumerate(percorsi_ann):
+        print(f"Veicolo {idx+1}: {p}")
+    print(f"Costo Totale della Soluzione: {costo_ann:.1f}")
 
+    
 
 
 except FileNotFoundError:
