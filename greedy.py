@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+from numpy import random
 import math
 
 # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
@@ -267,6 +268,36 @@ try:
             if miglioramento: break # esce dal ciclo delle rotte sorgente
         return path, costo_attuale
     
+    def Sim_Annealing(path, costo_tot):
+
+        # Definizione dei parmetri
+        T_init = 0.8 * costo_tot
+        T_end = 0.1
+        alpha = random.uniform(0.8, 0.99)
+
+        # Passo la soluzione iniziale in s per non modificarla subito
+        s = path
+        while T_init > T_end:
+            # Randomizzare la scelta del neighborhood
+            # Scelgo la rotta da cui prendere solo tra quelle "attive"
+            rotte_attive = [idx for idx, rotta in enumerate(s) if len(rotta) > 2]
+            idx_partenza = random.choice(rotte_attive)
+            rotta_sorgente = s[idx_partenza]
+            idx_cliente = random.randint(1, len(rotta_sorgente)-2)
+            cliente = rotta_sorgente.pop(idx_cliente)
+
+            # Scelgo la destinazione 
+            
+            # Scelta del parametro u
+
+            u = random.uniform()
+
+            # Controllo se accetto la mossa
+
+            # In caso sia feasible e migliori la aggiungo a quella iniziale
+
+            T_init = alpha * T_init
+        return path
     # Esecuzione
     percorsi, costo_tot = greedy_1(n_clienti, veichle_capacity, data, dist_matrix)
     for idx, p in enumerate(percorsi):
@@ -282,6 +313,8 @@ try:
     for idx, p in enumerate(percorsi):
         print(f"Veicolo {idx+1}: {p}")
     print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
+
+    # Implementazione simulated annealing
 
 
 
