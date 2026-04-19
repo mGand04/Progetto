@@ -47,6 +47,18 @@ def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
         costo += t_uv
     return True, costo
 
+# Funzione che permette di trovare i clienti vicini
+def calcola_vicini(dist_matrix, k=10):
+    n = dist_matrix.shape[0]
+    vicini = {}
+    for i in range(n):
+        # Ordina per distanza, escludi il nodo stesso
+        distanze = [(j, dist_matrix[i,j]) for j in range(n) if j != i]
+        distanze.sort(key=lambda x: x[1])
+        vicini[i] = [j for j, _ in distanze[:k]]
+    return vicini
+
+
 def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
     visitati = np.zeros(n_clienti+1, dtype=bool)
@@ -108,8 +120,9 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     if len(percorsi_totali) < veichle_quantity:
         while len(percorsi_totali) < veichle_quantity:
             percorsi_totali.append([0, 0])
-        
-    return percorsi_totali, costo_totale_global
+    costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] 
+                  for r in percorsi_totali)
+    return percorsi_totali, costo_reale
 
 # Secondo algoritmo greedy: un veicolo dedicato per ogni nodo (se possibile) + cheapest insertion
 def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
@@ -170,9 +183,116 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             costo_totale_global += miglior_costo_extra
         else:
             print(f"Cliente {int(dati_nodi[cliente, 0])} non inseribile in nessuna rotta esistente.")
+    costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] 
+                  for r in percorsi_totali)
+    return percorsi_totali, round(costo_reale, 1)
 
-    return percorsi_totali, round(costo_totale_global, 1)
+#1 Neighborhood: Insertion --> provo a togliere un cliente da un path e lo inserisco in un'altra con FIRST IMPROVMENT
+def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
+    print("\n Neighborhood 1: Insertion")
+    iterazione = 0
+    costo_attuale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
+    miglioramento = True
+    print(f"Costo ingresso: {costo_tot:.1f}, costo ricalcolato: {costo_attuale:.1f}")
+    # Per limitare i costi conmputazionali limito il neighborhood ai clienti vicini
+    vicini = calcola_vicini(dist_matrix, k=5)
 
+    client_to_route = {cliente: r_idx 
+                   for r_idx, rotta in enumerate(path) 
+                   for cliente in rotta}
+    
+    capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
+                  for idx, rotta in enumerate(path)}
+    
+    while miglioramento:
+        iterazione += 1
+        #print(f"Iterazione {iterazione}, costo: {costo_attuale:.1f}, rotte attive: {sum(1 for r in path if len(r) > 2)}")
+        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
+        assert abs(costo_attuale - costo_reale) < 0.1, \
+        f"DIVERGENZA: costo_attuale={costo_attuale:.1f}, costo_reale={costo_reale:.1f}"
+        miglioramento = False
+
+        # Precalcolo i costi di tutte le rotte prima di entrare nei cicli
+        costi_rotte = {}
+        for idx, rotta in enumerate(path):
+            _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
+            costi_rotte[idx] = c
+
+        # Itero su tutte le rotte
+        for r1_idx in range(len(path)):
+            rotta_src = path[r1_idx]
+
+            # Controllo sulla lunghezza della rotta
+            if len(rotta_src) <= 2:
+                continue
+
+            # Itero sui clienti della rotta R1
+            for idx_pos in range(1, len(rotta_src)-1):
+                cliente = rotta_src[idx_pos] # ID REALE DEL CLIENTE
+
+                nuova_rotta_src = rotta_src[:]
+                nuova_rotta_src.pop(idx_pos)
+                ok_src, costo_src = valida_rotta(nuova_rotta_src, veichle_capacity, data, dist_matrix)
+                if not ok_src: continue  # se src non è feasible senza questo cliente, salta subito
+                # Costruisci insieme delle rotte candidate
+                rotte_candidate = set()
+                for vicino in vicini[cliente]:
+                    if vicino in client_to_route:         
+                        rotte_candidate.add(client_to_route[vicino])
+                rotte_candidate.add(r1_idx)
+                # Seleziono una rotta di destinazione in cui inserire il cliente
+                for r2_idx in rotte_candidate:
+
+                    rotta_dest = path[r2_idx]
+                    domanda_cliente = data[cliente, 3]
+                    # Pre-check capacità: se fallisce salta TUTTA la rotta, non solo una posizione
+                    if r1_idx != r2_idx:
+                        if capacita_rotte[r2_idx] + domanda_cliente > veichle_capacity:
+                            continue  # salta direttamente al prossimo r2_idx
+                    # Definisco le posizioni in cui può essere inserito il cliente
+                    # Costruita una volta sola per tutti i pos di questa rotta
+                    for pos in range(1, len(rotta_dest)):
+                        # Evito un reinserimento nella stessa posizione dello stesso path
+                        if r1_idx == r2_idx and (pos == idx_pos or pos == idx_pos +1):
+                            continue
+
+                        # Se src e dest sono la stessa, lavoriamo sulla stessa lista già modificata
+                        if r1_idx == r2_idx:
+                            # Se abbiamo rimosso un elemento prima della posizione di inserimento, l'indice scala
+                            nuova_rotta_dest = nuova_rotta_src[:]
+                            adj_pos = pos - 1 if pos > idx_pos else pos
+                            nuova_rotta_dest.insert(adj_pos, cliente)
+                        else:
+                            nuova_rotta_dest = rotta_dest[:]
+                            nuova_rotta_dest.insert(pos, cliente)
+
+                        ok_dest, costo_dest = valida_rotta(nuova_rotta_dest, veichle_capacity, data, dist_matrix) 
+                        if not ok_dest: continue
+                        
+                        if r1_idx == r2_idx:
+                        # Una sola rotta coinvolta, costo_src è intermedio e non serve
+                            nuovo_costo_tot = costo_attuale - costi_rotte[r1_idx] + costo_dest
+                        # Calcolo del nuovo costo totale
+                        else:
+                            nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx] + costo_src + costo_dest)
+                        
+                        if nuovo_costo_tot < costo_attuale - 0.01: # Tolleranza decimale
+                            path[r1_idx] = nuova_rotta_src
+                            path[r2_idx] = nuova_rotta_dest
+                            costo_attuale = nuovo_costo_tot
+                             # Aggiorna solo quando la soluzione cambia
+                            client_to_route = {c: r_idx 
+                                                for r_idx, rotta in enumerate(path) 
+                                                for c in rotta}
+                            capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
+                                                for idx, rotta in enumerate(path)}
+                            miglioramento = True
+                            break # Esci dai cicli interni e ricomincia la ricerca
+                    if miglioramento: break
+                if miglioramento: break
+            if miglioramento: break
+        
+    return path, costo_attuale
 # MAIN PROGRAM
 def main():
     # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
@@ -219,11 +339,23 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
 
         # Approccio Greedy numero 2: "rivial solution o singleton solution"
+        print("\nAlgoritmo 2")        
         percorsi_2, costo_tot_2 = greedy_2(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
         for idx, p in enumerate(percorsi_2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
 
+        percorsi_local, costo_tot_local = neigh_1(percorsi, veichle_capacity, data, dist_matrix, costo_tot)
+        # Controllo costo totale nuove rotte
+        check_costo = 0
+        for idx, rotta in enumerate(percorsi_local):
+            _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
+            check_costo += c
+        print("\nLocal search 1: Eventuale cambio di rotta per singoli clienti")
+        for idx, p in enumerate(percorsi_local):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_tot_local:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
 
     except FileNotFoundError:
