@@ -58,6 +58,27 @@ def calcola_vicini(dist_matrix, k=10):
         vicini[i] = [j for j, _ in distanze[:k]]
     return vicini
 
+def valida_rotta_senza_vincoli(percorso, dist_matrix, data):
+    # Questa funzione calcola il costo di UN SINGOLO furgone
+    # Assume che 'dist_matrix' e 'data' siano variabili globali
+    costo = 0
+    tempo = 0
+
+    for k in range(len(percorso) - 1):
+        # Convertiamo in int per evitare problemi di indexing con NumPy
+        u, v = int(percorso[k]), int(percorso[k+1])
+        
+        t_uv = dist_matrix[u, v] 
+        
+        # Calcolo tempo: tempo precedente + service time di u + viaggio uv
+        arrivo = tempo + data[u, 6] + t_uv 
+        inizio_servizio = max(arrivo, data[v, 4]) 
+        
+        tempo = inizio_servizio
+        costo += t_uv
+            
+    return costo
+
 
 def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
@@ -293,6 +314,104 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
             if miglioramento: break
         
     return path, costo_attuale
+
+# Simulated annealing
+def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
+
+    # Definizione dei parmetri
+    T_init = 0.8 * costo_tot
+    T_end = 0.1
+    alpha = 0.99
+    #alpha = rd.uniform(0.8, 0.99)
+
+    # Passo la soluzione iniziale in s per non modificarla subito
+    s = copy.deepcopy(path)
+    costo_current = costo_tot
+
+    # Inizializzo la soluzione migliore
+    s_best = copy.deepcopy(path)
+    costo_best = costo_tot
+
+    # Controllo 
+    contatore = 0
+    mosse_accettate = 0
+    mosse_feasible = 0
+    miglioramenti = 0
+
+    # Inizio ciclo
+    while T_init > T_end:
+        contatore +=1
+        s_new = copy.deepcopy(s)
+    
+        # Scelgo la rotta da cui prendere solo tra quelle "attive" [solo veicoli utilizzati]
+        rotte_attive = [idx for idx, rotta in enumerate(s) if len(rotta) > 2]
+        if not rotte_attive:
+            # Se non c'è nulla da spostare, raffredda e ricomincia il ciclo
+            T_init *= alpha
+            continue
+
+        # Randomizzo la scelta del neighborhood [in questo caso solo insertion]
+        # Rotta da cui prendo il cliente
+        idx_partenza = rd.choice(rotte_attive)
+        rotta_sorgente = s_new[idx_partenza]
+        max_idx = len(rotta_sorgente)-2
+        if max_idx < 1:
+            T_init *= alpha
+            continue
+
+        # cliente da spostare
+        idx_cliente = rd.randint(1, max_idx)
+        cliente = rotta_sorgente.pop(idx_cliente)
+
+        # Scelgo la destinazione 
+        #if len(s_new) == 0:
+        #   s_new.append([0, 0])
+
+        idx_rotta_dest = rd.randint(0,len(s_new)-1)
+        rotta_dest = s_new[idx_rotta_dest]
+        #pos_ins = random.randint(1, len(rotta_dest)-1)
+        max_ins = len(rotta_dest) - 1
+        if max_ins < 1:
+            idx_inserimento = 1 # Forza l'inserimento se la lista è troppo corta
+        else:
+            idx_inserimento = rd.randint(1, max_ins)
+
+        # Inseriamo il cliente in una posizione a caso tra i depositi
+        rotta_dest.insert(idx_inserimento, cliente)
+        #Calcolo il costo della nuova rotta ma senza i vincoli
+        costo_nuovo = sum(valida_rotta_senza_vincoli(r, dist_matrix, data) for r in s_new)
+        #Calcolo del delta
+        delta = costo_nuovo - costo_current
+        # Scelta del parametro u
+
+        u = rd.random()
+
+        # Controllo se accetto la mossa
+        if delta<0 or math.exp(-delta/T_init)>u:
+            #Se viene rispettata questa condizione accetto la mossa
+            s = s_new
+            costo_current = costo_nuovo
+            mosse_accettate += 1
+            
+            # Se miglioro ed è feasible salvo la nuova rotta
+            if all(valida_rotta(r, veichle_capacity, data, dist_matrix)[0] for r in s_new):
+                costo_feasible = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in s_new)
+                if costo_feasible < costo_best:
+                    s_best = copy.deepcopy(s_new)
+                    costo_best = costo_feasible
+                    miglioramenti += 1
+            
+        
+        T_init = alpha * T_init
+
+    print(f"Iterazioni totali:     {contatore}")
+    print(f"Mosse accettate:       {mosse_accettate} ({100*mosse_accettate/contatore:.1f}%)")
+    print(f"Di cui feasible:       {mosse_feasible} ({100*mosse_feasible/max(1,mosse_accettate):.1f}%)")
+    print(f"Miglioramenti best:    {miglioramenti}")
+    print(f"Costo iniziale:        {costo_tot:.1f}")
+    print(f"Miglior costo feasible trovato: {costo_best:.1f}\n")
+    return s_best, costo_best
+
 # MAIN PROGRAM
 def main():
     # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
@@ -356,6 +475,12 @@ def main():
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
+        print("\nSimulated annealing")
+        percorsi_sim, costo_sim = Sim_Annealing(percorsi_local, costo_tot_local, veichle_capacity, dist_matrix, data)
+        for idx, p in enumerate(percorsi_sim):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_sim:.1f}")
+
 
 
     except FileNotFoundError:
