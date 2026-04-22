@@ -210,13 +210,13 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
 #1 Neighborhood: Insertion --> provo a togliere un cliente da un path e lo inserisco in un'altra con FIRST IMPROVMENT
 def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
-    print("\n Neighborhood 1: Insertion")
+    #print("\n Neighborhood 1: Insertion")
     iterazione = 0
     costo_attuale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
     miglioramento = True
-    print(f"Costo ingresso: {costo_tot:.1f}, costo ricalcolato: {costo_attuale:.1f}")
+    #print(f"Costo ingresso: {costo_tot:.1f}, costo ricalcolato: {costo_attuale:.1f}")
     # Per limitare i costi conmputazionali limito il neighborhood ai clienti vicini
-    vicini = calcola_vicini(dist_matrix, k=5)
+    vicini = calcola_vicini(dist_matrix, k=10)
 
     client_to_route = {cliente: r_idx 
                    for r_idx, rotta in enumerate(path) 
@@ -319,7 +319,7 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
 def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
 
     # Definizione dei parmetri
-    T_init = 0.8 * costo_tot
+    T_init = 1000
     T_end = 0.1
     alpha = 0.99
     #alpha = rd.uniform(0.8, 0.99)
@@ -381,6 +381,7 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
         #Calcolo il costo della nuova rotta ma senza i vincoli
         costo_nuovo = sum(valida_rotta_senza_vincoli(r, dist_matrix, data) for r in s_new)
         #Calcolo del delta
+        s_new, costo_nuovo = neigh_1(s_new, veichle_capacity, data, dist_matrix, costo_nuovo)
         delta = costo_nuovo - costo_current
         # Scelta del parametro u
 
@@ -396,6 +397,7 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
             # Se miglioro ed è feasible salvo la nuova rotta
             if all(valida_rotta(r, veichle_capacity, data, dist_matrix)[0] for r in s_new):
                 costo_feasible = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in s_new)
+                mosse_feasible += 1
                 if costo_feasible < costo_best:
                     s_best = copy.deepcopy(s_new)
                     costo_best = costo_feasible
@@ -451,19 +453,13 @@ def main():
         dist_matrix = matrice_distanze(data)
 
         # Approccio Greedy numero 1: Nearest Neighborhood
-        print("Algoritmo 1")
+        print("Greedy 1")
         percorsi, costo_tot = greedy_1(n_clienti, veichle_quantity, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
 
-        # Approccio Greedy numero 2: "rivial solution o singleton solution"
-        print("\nAlgoritmo 2")        
-        percorsi_2, costo_tot_2 = greedy_2(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
-        for idx, p in enumerate(percorsi_2):
-            print(f"Veicolo {idx+1}: {p}")
-        print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
-
+        # Local serach 1 a greedy 1
         percorsi_local, costo_tot_local = neigh_1(percorsi, veichle_capacity, data, dist_matrix, costo_tot)
         # Controllo costo totale nuove rotte
         check_costo = 0
@@ -474,14 +470,34 @@ def main():
         for idx, p in enumerate(percorsi_local):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local:.1f}")
-        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
-        print("\nSimulated annealing")
+        #print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
+        print("\nSimulated annealing 1: ")
         percorsi_sim, costo_sim = Sim_Annealing(percorsi_local, costo_tot_local, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim:.1f}")
+        #percorsi_sim2, costo_sim2 = Sim_Annealing(percorsi, costo_tot, veichle_capacity, dist_matrix, data)
+        #print('\n')
+        #for idx, p in enumerate(percorsi_sim2):
+        #    print(f"Veicolo {idx+1}: {p}")
+        #print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
+        print('\nGreedy 2: ')
+         # Approccio Greedy numero 2: "rivial solution o singleton solution"     
+        percorsi_2, costo_tot_2 = greedy_2(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
+        for idx, p in enumerate(percorsi_2):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
 
-
+        print("\nLocal search 2: Eventuale cambio di rotta per singoli clienti")
+        percorsi_local2, costo_tot_local2 = neigh_1(percorsi_2, veichle_capacity, data, dist_matrix, costo_tot_2)
+        for idx, p in enumerate(percorsi_local2):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_tot_local2:.1f}")
+        print('\nSimulated annealing 2: ')
+        percorsi_sim2, costo_sim2 = Sim_Annealing(percorsi_local2, costo_tot_local2, veichle_capacity, dist_matrix, data)
+        for idx, p in enumerate(percorsi_sim2):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
 
     except FileNotFoundError:
         print(f"ERRORE: Il file '{file_name}' non esiste nella cartella '{fold}'.")
