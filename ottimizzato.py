@@ -315,8 +315,74 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
         
     return path, costo_attuale
 
+# Or-opt-2: Scambi di segmenti intrarotta
+def neigh_2(path, veichle_capacity, data, dist_matrix, costo_tot):
+
+    miglioramento = True
+
+    capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
+                  for idx, rotta in enumerate(path)}
+    
+    while miglioramento:
+        miglioramento = False
+
+        # Itero sulle rotte su cui applicare Or-Opt
+        for idx_rotta in range(len(path)):
+            rotta_src = path[idx_rotta]
+
+            # Controllo sulla lunghezza della rotta
+            if len(rotta_src) < 4: continue
+
+            # Definisco gruppi di 2 da scambiare
+            for idx_pos in range(1, len(rotta_src)-2):
+                cliente_1 = rotta_src[idx_pos]
+                cliente_2 = rotta_src[idx_pos + 1]
+            
+                for idx_pos2 in range(len(path)):
+                    rotta_dest = path[idx_pos2]
+
+
+
+                    
+#Swap neighbothood 
+"""
+def neigh_2(path, veichle_capacity, data, dist_matrix, costo_tot):
+
+    miglioramento = True
+    
+    while miglioramento:
+
+        miglioramento = False
+
+        # Itero sulle rotte scambiando veicoli tra rotte diverse
+
+        for r1_idx in range(len(path)):
+            
+            rotta_1 = path[r1_idx]
+
+            # Controllo sulla lunghezza della rotta
+            if len(rotta_1) <= 2:
+                continue
+
+            for idx_pos in range(1, len(rotta_1) - 1):
+            
+                cliente = rotta_1[idx_pos]
+
+                # seconda rotta
+                for r2_idx in range(len(path)):
+                    
+                    rotta_2 = path[r2_idx]
+                    if(r2_idx == r1_idx) or len(rotta_2) <= 2: continue
+
+                    # secondo cliente
+                    for idx_pos2 in range(1, len(rotta_2) -1):
+
+                        cliente
+"""
+
+
 # Simulated annealing
-def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
+def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data, M):
 
     # Definizione dei parmetri
     T_init = 1000
