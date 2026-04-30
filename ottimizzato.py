@@ -377,8 +377,8 @@ def neigh_2(path, veichle_capacity, data, dist_matrix, costo_tot):
             if miglioramento: break
             
     return path, costo_tot
-#Swap neighbourhood 
 
+#Swap neighbourhood 
 def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
 
     miglioramento = True
@@ -439,9 +439,6 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
             if miglioramento: break # Esci dal ciclo idx_rotta
             
     return path, costo_tot
-
-
-                
 
 # Simulated annealing
 def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
@@ -542,6 +539,11 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
     print(f"Miglior costo feasible trovato: {costo_best:.1f}\n")
     return s_best, costo_best
 
+def Tabu_Search(path, veichle_capacity, data, dist_matrix):
+
+    I_max = 1500
+    d = 10
+
 # MAIN PROGRAM
 def main():
     # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
@@ -551,8 +553,8 @@ def main():
     file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
     # Percorso del file 
-    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
     path = os.path.join(path_base, fold, file_name)
 
@@ -588,9 +590,7 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
 
         # Local serach 1 a greedy 1
-
-        percorsi_local, costo_tot_local = neigh_1(percorsi, veichle_capacity, data, dist_matrix, costo_tot)
-        
+        percorsi_local, costo_tot_local = neigh_1(copy.deepcopy(percorsi), veichle_capacity, data, dist_matrix, costo_tot)
         # Controllo costo totale nuove rotte
         check_costo = 0
         for idx, rotta in enumerate(percorsi_local):
@@ -600,10 +600,10 @@ def main():
         for idx, p in enumerate(percorsi_local):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local:.1f}")
-        #print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
-        # local search 2 a greedy 1
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        percorsi_local_or, costo_tot_local_or = neigh_2(percorsi,veichle_capacity,data,dist_matrix,costo_tot)
+        # local search 2 a greedy 1
+        percorsi_local_or, costo_tot_local_or = neigh_2(copy.deepcopy(percorsi),veichle_capacity,data,dist_matrix,costo_tot)
         # Controllo costo totale nuove rotte
         check_costo = 0
         for idx, rotta in enumerate(percorsi_local_or):
@@ -613,11 +613,11 @@ def main():
         for idx, p in enumerate(percorsi_local_or):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local_or:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
         # Local search 3 a greedy 1
         print("Local search 3 a greedy 1")
-        percorsi_local3, costo_tot_local3 = neigh_3(percorsi,veichle_capacity,data,dist_matrix,costo_tot)
-
+        percorsi_local3, costo_tot_local3 = neigh_3(copy.deepcopy(percorsi),veichle_capacity,data,dist_matrix,costo_tot)
         check_costo = 0
         for idx, rotta in enumerate(percorsi_local3):
             _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
@@ -626,22 +626,24 @@ def main():
         for idx, p in enumerate(percorsi_local3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local3:.1f}")
-        # Simulated annealing
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
+        # Simulated annealing
         print("\nSimulated annealing 1: ")
-        percorsi_sim, costo_sim = Sim_Annealing(percorsi_local, costo_tot_local, veichle_capacity, dist_matrix, data)
+        percorsi_sim, costo_sim = Sim_Annealing(copy.deepcopy(percorsi_local), costo_tot_local, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim:.1f}")
         print("\n")
         print(f"\nCon secondo local search")
-        percorsi_sim2, costo_sim2 = Sim_Annealing(percorsi_local_or, costo_tot_local_or, veichle_capacity, dist_matrix, data)
+
+        percorsi_sim2, costo_sim2 = Sim_Annealing(copy.deepcopy(percorsi_local_or), costo_tot_local_or, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
         print("\n")
         print(f"\nCon terzo local search")
-        percorsi_sim3, costo_sim3 = Sim_Annealing(percorsi_local3, costo_tot_local3, veichle_capacity, dist_matrix, data)
+        percorsi_sim3, costo_sim3 = Sim_Annealing(copy.deepcopy(percorsi_local3), costo_tot_local3, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
@@ -657,40 +659,44 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
 
         print("\nLocal search 1: Eventuale cambio di rotta per singoli clienti")
-        percorsi_local2, costo_tot_local2 = neigh_1(percorsi_2, veichle_capacity, data, dist_matrix, costo_tot_2)
+        percorsi_local2, costo_tot_local2 = neigh_1(copy.deepcopy(percorsi_2), veichle_capacity, data, dist_matrix, costo_tot_2)
         for idx, p in enumerate(percorsi_local2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local2:.1f}")
+        
         #Con neigh_2
         print('\nSecondo greedy con neigh_2:')
-        percorsi_local2or, costo_tot_local2or = neigh_2(percorsi_2, veichle_capacity, data, dist_matrix, costo_tot_2)
+        percorsi_local2or, costo_tot_local2or = neigh_2(copy.deepcopy(percorsi_2), veichle_capacity, data, dist_matrix, costo_tot_2)
         for idx, p in enumerate(percorsi_local2or):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local2or:.1f}")
+
         #Con neigh_3
         print('\nSecondo greedy con neigh_3:')
-        percorsi_local_greedy2_3, costo_tot_local_greedy2_3 = neigh_3(percorsi_2, veichle_capacity, data, dist_matrix, costo_tot_2)
+        percorsi_local_greedy2_3, costo_tot_local_greedy2_3 = neigh_3(copy.deepcopy(percorsi_2), veichle_capacity, data, dist_matrix, costo_tot_2)
         for idx, p in enumerate(percorsi_local_greedy2_3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local_greedy2_3:.1f}")
         # Simulated annealing sul neigh_1
         print('\nSimulated annealing 1: ')
-        percorsi_sim2, costo_sim2 = Sim_Annealing(percorsi_local2, costo_tot_local2, veichle_capacity, dist_matrix, data)
+        percorsi_sim2, costo_sim2 = Sim_Annealing(copy.deepcopy(percorsi_local2), costo_tot_local2, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
         # Simulated annealing sul neigh_2
         print('\nSimulated annealing 2: ')
-        percorsi_sim2or, costo_sim2or = Sim_Annealing(percorsi_local2or, costo_tot_local2or, veichle_capacity, dist_matrix, data)
+        percorsi_sim2or, costo_sim2or = Sim_Annealing(copy.deepcopy(percorsi_local2or), costo_tot_local2or, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim2or):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim2or:.1f}")
+
         # Simulated annealing sul neigh_3
         print('\nSimulated annealing 3: ')
-        percorsi_sim3, costo_sim3 = Sim_Annealing(percorsi_local_greedy2_3, costo_tot_local_greedy2_3, veichle_capacity, dist_matrix, data)
+        percorsi_sim3, costo_sim3 = Sim_Annealing(copy.deepcopy(percorsi_local_greedy2_3), costo_tot_local_greedy2_3, veichle_capacity, dist_matrix, data)
         for idx, p in enumerate(percorsi_sim3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
+
     except FileNotFoundError:
         print(f"ERRORE: Il file '{file_name}' non esiste nella cartella '{fold}'.")
         print("Controlla di aver scritto correttamente i nomi.")
