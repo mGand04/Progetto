@@ -79,6 +79,13 @@ def valida_rotta_senza_vincoli(percorso, dist_matrix, data):
             
     return costo
 
+def controllo_costo(path, veichle_capacity, data, dist_matrix):
+    check_costo = 0
+    for idx, rotta in enumerate(path):
+        _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
+        check_costo += c
+    
+    return check_costo
 
 def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
@@ -343,10 +350,12 @@ def neigh_2(path, veichle_capacity, data, dist_matrix, costo_tot):
                 # 1. Calcolo del risparmio togliendo c1-c2 dalla posizione attuale
                 # Togliamo: (prev->c1), (c1->c2), (c2->next)
                 # Aggiungiamo il ponte: (prev->next)
+                '''
                 rimosso = (dist_matrix[prev_node][c1] + 
                            dist_matrix[c1][c2] + 
                            dist_matrix[c2][next_node])
-                ponte_estrazione = dist_matrix[prev_node][next_node]
+                '''
+                #ponte_estrazione = dist_matrix[prev_node][next_node]
                 
                 # Creiamo la rotta senza i due clienti
                 rotta_ridotta = rotta_src[:i] + rotta_src[i+2:]
@@ -357,22 +366,31 @@ def neigh_2(path, veichle_capacity, data, dist_matrix, costo_tot):
                     n_in_next = rotta_ridotta[k]
 
                     # Costo dell'inserimento tra n_in_prev e n_in_next
+                    '''
                     ponte_rotto = dist_matrix[n_in_prev][n_in_next]
                     nuovo_inserimento = (dist_matrix[n_in_prev][c1] + 
                                         dist_matrix[c1][c2] + 
                                         dist_matrix[c2][n_in_next])
+                    '''
+                                        
+                    nuova_rotta = rotta_ridotta[:k] + [c1, c2] + rotta_ridotta[k:]
+                    #delta = (ponte_estrazione - rimosso) + (nuovo_inserimento - ponte_rotto)
+                    _, costo_iniziale = valida_rotta(rotta_src, veichle_capacity, data, dist_matrix)
+                    feasible, costo_nuovo = valida_rotta(nuova_rotta, veichle_capacity, data, dist_matrix)
 
-                    delta = (ponte_estrazione - rimosso) + (nuovo_inserimento - ponte_rotto)
+                    if not feasible: continue
+
+                    delta = costo_nuovo - costo_iniziale
 
                     if delta < -1e-6:
                         # Applichiamo il miglioramento
-                        nuova_rotta = rotta_ridotta[:k] + [c1, c2] + rotta_ridotta[k:]
-                        feasible, _ = valida_rotta(nuova_rotta, veichle_capacity, data, dist_matrix)
-                        if feasible:
-                            path[idx_rotta] = nuova_rotta
-                            costo_tot += delta
-                            miglioramento = True
-                            break 
+                        #nuova_rotta = rotta_ridotta[:k] + [c1, c2] + rotta_ridotta[k:]
+                        #feasible, _ = valida_rotta(nuova_rotta, veichle_capacity, data, dist_matrix)
+                        #if feasible:
+                        path[idx_rotta] = nuova_rotta
+                        costo_tot += delta
+                        miglioramento = True
+                        break 
                 if miglioramento: break
             if miglioramento: break
             
@@ -396,6 +414,9 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
             # Controllo sulla lunghezza della rotta
             if len(rotta_1) <= 2:
                 continue
+            
+            # Precalcolo costo originale fuori dai loop su i e j
+            _, costo_originale = valida_rotta(rotta_1, veichle_capacity, data, dist_matrix)
 
             for i in range(1, len(rotta_1) - 1):
                 for j in range(i+1, len(rotta_1)-1):
@@ -406,6 +427,8 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
                     p1, n1 = rotta_1[i-1], rotta_1[i+1]
                     # Nodi adiacenti a cliente 2
                     p2, n2 = rotta_1[j-1], rotta_1[j+1]
+
+                    '''
                     if j-i >1:
                         costo_attuale = (dist_matrix[p1][cliente_1] + dist_matrix[cliente_1][n1] + 
                                          dist_matrix[p2][cliente_2] + dist_matrix[cliente_2][n2])
@@ -417,24 +440,27 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
                     else:
                         costo_attuale = (dist_matrix[p1][cliente_1] + dist_matrix[cliente_1][cliente_2] + dist_matrix[cliente_2][n2])
                         costo_nuovo = (dist_matrix[p1][cliente_2] + dist_matrix[cliente_2][cliente_1] + dist_matrix[cliente_1][n2])
+                    '''
+                    # Creiamo la rotta potenziale scambiando i nodi
+                    nuova_rotta_test = list(rotta_1) # Copia veloce
+                    nuova_rotta_test[i], nuova_rotta_test[j] = nuova_rotta_test[j], nuova_rotta_test[i]
+                    ammissibile, costo_nuovo = valida_rotta(nuova_rotta_test, veichle_capacity, data, dist_matrix)
+                    
+                    if not ammissibile: continue
 
-                    delta = costo_nuovo - costo_attuale
+                    delta = costo_nuovo - costo_originale
 
                     # Se lo scambio riduce la distanza
                     if delta < -1e-6:
                         # Creiamo la rotta potenziale scambiando i nodi
-                        nuova_rotta_test = list(rotta_1) # Copia veloce
-                        nuova_rotta_test[i], nuova_rotta_test[j] = nuova_rotta_test[j], nuova_rotta_test[i]
+                        #nuova_rotta_test = list(rotta_1) # Copia veloce
+                        #nuova_rotta_test[i], nuova_rotta_test[j] = nuova_rotta_test[j], nuova_rotta_test[i]
                         
-                        # --- VERIFICA FEASIBILITY (Tua funzione) ---
-                        ammissibile, _ = valida_rotta(nuova_rotta_test, veichle_capacity, data, dist_matrix)
-                        
-                        if ammissibile:
-                            # Applichiamo il miglioramento alla rotta reale
-                            path[r_idx] = nuova_rotta_test
-                            costo_tot += delta
-                            miglioramento = True
-                            break # Esci dal ciclo j
+                        # Applichiamo il miglioramento alla rotta reale
+                        path[r_idx] = nuova_rotta_test
+                        costo_tot += delta
+                        miglioramento = True
+                        break # Esci dal ciclo j
                 if miglioramento: break # Esci dal ciclo i
             if miglioramento: break # Esci dal ciclo idx_rotta
             
@@ -539,10 +565,28 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
     print(f"Miglior costo feasible trovato: {costo_best:.1f}\n")
     return s_best, costo_best
 
-def Tabu_Search(path, veichle_capacity, data, dist_matrix):
+def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
 
+    # Parametri tabu search
     I_max = 1500
     d = 10
+
+    # Conterrà le mosse tabu: Dizionario (cliente, mossa) | iterazione di scadenza
+    tabu_list = {}
+
+    # Inizializzazioni
+    s_best = copy.deepcopy(path)
+    s = s_best
+    costo_best = costo_iniziale
+
+    for iterazione in range(I_max):
+
+        # Variabili per tracciare la miglior mossa non tabù
+        best_delta = float('inf')
+        best_move = None  #
+        
+
+
 
 # MAIN PROGRAM
 def main():
@@ -589,113 +633,124 @@ def main():
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
 
-        # Local serach 1 a greedy 1
+        # Insertion applicato a greedy 1
         percorsi_local, costo_tot_local = neigh_1(copy.deepcopy(percorsi), veichle_capacity, data, dist_matrix, costo_tot)
         # Controllo costo totale nuove rotte
-        check_costo = 0
-        for idx, rotta in enumerate(percorsi_local):
-            _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
-            check_costo += c
+        check_costo = controllo_costo(percorsi_local, veichle_capacity, data, dist_matrix)
         print("\nLocal search 1: Eventuale cambio di rotta per singoli clienti")
         for idx, p in enumerate(percorsi_local):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        # local search 2 a greedy 1
+        # Or-opt-2 applicato a greedy 1
         percorsi_local_or, costo_tot_local_or = neigh_2(copy.deepcopy(percorsi),veichle_capacity,data,dist_matrix,costo_tot)
         # Controllo costo totale nuove rotte
-        check_costo = 0
-        for idx, rotta in enumerate(percorsi_local_or):
-            _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
-            check_costo += c
-        print("\nLocal search 2: Eventuale cambio di rotta per singoli clienti")
+        check_costo = controllo_costo(percorsi_local_or, veichle_capacity, data, dist_matrix)
+        print("\nLocal search 2: Or-opt-2 scambio intra-rotta di blocchi di due clienti")
         for idx, p in enumerate(percorsi_local_or):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local_or:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        # Local search 3 a greedy 1
-        print("Local search 3 a greedy 1")
+        # Swap applicato a greedy 1
         percorsi_local3, costo_tot_local3 = neigh_3(copy.deepcopy(percorsi),veichle_capacity,data,dist_matrix,costo_tot)
-        check_costo = 0
-        for idx, rotta in enumerate(percorsi_local3):
-            _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
-            check_costo += c
-        print("\nLocal search 3: Eventuale cambio di rotta per singoli clienti")
+        check_costo = controllo_costo(percorsi_local3, veichle_capacity, data, dist_matrix)
+        print("\nLocal search 3: Swap di due clienti iter-rotta")
         for idx, p in enumerate(percorsi_local3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local3:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        # Simulated annealing
-        print("\nSimulated annealing 1: ")
+        # Simulated annealing: Applico alla solzuione già migliorata con local search
+        #1st neighborhood
+        print("\nSimulated annealing applicato alla soluzione del primo neighborhood: ")
         percorsi_sim, costo_sim = Sim_Annealing(copy.deepcopy(percorsi_local), costo_tot_local, veichle_capacity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_sim, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_sim):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim:.1f}")
+        print(f"Costo Totale della solzuione controllato in seguito: {check_costo:.1f}")
         print("\n")
-        print(f"\nCon secondo local search")
-
+        # 2nd neighborhood
+        print("\nSimulated annealing applicato alla soluzione del secondo neighborhood: ")
         percorsi_sim2, costo_sim2 = Sim_Annealing(copy.deepcopy(percorsi_local_or), costo_tot_local_or, veichle_capacity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_sim2, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_sim2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
         print("\n")
-        print(f"\nCon terzo local search")
+        # 3rd neighborhood
+        print("\nSimulated annealing applicato alla soluzione del secondo neighborhood: ")
         percorsi_sim3, costo_sim3 = Sim_Annealing(copy.deepcopy(percorsi_local3), costo_tot_local3, veichle_capacity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_sim3, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_sim3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
-        #print('\n')
-        #for idx, p in enumerate(percorsi_sim2):
-        #    print(f"Veicolo {idx+1}: {p}")
-        #print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
-        print('\nGreedy 2: ')
-         # Approccio Greedy numero 2: "rivial solution o singleton solution"     
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
+       # Approccio Greedy numero 2: "rivial solution o singleton solution"    
+        print('\nGreedy 2: ') 
         percorsi_2, costo_tot_2 = greedy_2(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
+        check_costo = controllo_costo(percorsi_2, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_2:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
+        # Insertion applicato a greedy 2
         print("\nLocal search 1: Eventuale cambio di rotta per singoli clienti")
         percorsi_local2, costo_tot_local2 = neigh_1(copy.deepcopy(percorsi_2), veichle_capacity, data, dist_matrix, costo_tot_2)
+        check_costo = controllo_costo(percorsi_local2, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_local2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local2:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
         
-        #Con neigh_2
-        print('\nSecondo greedy con neigh_2:')
+        # Or-opt-2 applicato a greedy 2
+        print('\nLocal search 2: Or-opt-2 scambio intra-rotta di blocchi di due clienti')
         percorsi_local2or, costo_tot_local2or = neigh_2(copy.deepcopy(percorsi_2), veichle_capacity, data, dist_matrix, costo_tot_2)
+        check_costo = controllo_costo(percorsi_local2or, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_local2or):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local2or:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        #Con neigh_3
-        print('\nSecondo greedy con neigh_3:')
+        # Swap applicato a greedy 2
+        print('\nLocal search 3: Swap di due clienti iter-rotta')
         percorsi_local_greedy2_3, costo_tot_local_greedy2_3 = neigh_3(copy.deepcopy(percorsi_2), veichle_capacity, data, dist_matrix, costo_tot_2)
+        check_costo = controllo_costo(percorsi_local_greedy2_3, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_local_greedy2_3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot_local_greedy2_3:.1f}")
-        # Simulated annealing sul neigh_1
-        print('\nSimulated annealing 1: ')
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
+
+        # Simulated annealing: Applico alla solzuione già migliorata con local search
+        #1st neighborhood
+        print('\nSimulated annealing applicato alla soluzione del primo neighborhood: ')
         percorsi_sim2, costo_sim2 = Sim_Annealing(copy.deepcopy(percorsi_local2), costo_tot_local2, veichle_capacity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_sim2, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_sim2):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim2:.1f}")
-        # Simulated annealing sul neigh_2
-        print('\nSimulated annealing 2: ')
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
+        # 2nd neighborhood
+        print('\nSimulated annealing applicato alla soluzione del secondo neighborhood: ')
         percorsi_sim2or, costo_sim2or = Sim_Annealing(copy.deepcopy(percorsi_local2or), costo_tot_local2or, veichle_capacity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_sim2or, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_sim2or):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim2or:.1f}")
-
-        # Simulated annealing sul neigh_3
-        print('\nSimulated annealing 3: ')
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
+        # 3rd neighborhood
+        print('\nSimulated annealing applicato alla soluzione del primo neighborhood: ')
         percorsi_sim3, costo_sim3 = Sim_Annealing(copy.deepcopy(percorsi_local_greedy2_3), costo_tot_local_greedy2_3, veichle_capacity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_sim3, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_sim3):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
     except FileNotFoundError:
         print(f"ERRORE: Il file '{file_name}' non esiste nella cartella '{fold}'.")
