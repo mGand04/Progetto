@@ -565,29 +565,82 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
     print(f"Miglior costo feasible trovato: {costo_best:.1f}\n")
     return s_best, costo_best
 
+import copy
+
 def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
-
-    # Parametri tabu search
-    I_max = 1500
-    d = 10
-
-    # Conterrà le mosse tabu: Dizionario (cliente, mossa) | iterazione di scadenza
+    # --- 1. Parametri ---
+    I_max = 3000
+    d = 15
     tabu_list = {}
 
-    # Inizializzazioni
-    s_best = copy.deepcopy(path)
-    s = s_best
+    s = copy.deepcopy(path)
+    s_best = copy.deepcopy(s)
     costo_best = costo_iniziale
+    costo_current = costo_iniziale
 
     for iterazione in range(I_max):
-
-        # Variabili per tracciare la miglior mossa non tabù
         best_delta = float('inf')
-        best_move = None  #
-        
+        best_move = None
 
+        # Esplorazione intorno di 's'
+        for r_src_idx, route_src in enumerate(s):
+            if len(route_src) <= 2: continue 
 
+            for i in range(1, len(route_src) - 1):
+                cliente = route_src[i]
+                
+                for r_dest_idx, route_dest in enumerate(s):
+                    # Definiamo il range di inserimento
+                    range_j = len(route_dest)
+                    
+                    for j in range(1, range_j + 1):
+                        if r_src_idx == r_dest_idx and (j == i or j == i + 1):
+                            continue
 
+                        # --- SIMULAZIONE ---
+                        new_src = route_src[:i] + route_src[i+1:]
+                        new_dest = route_dest[:j] + [cliente] + route_dest[j:]
+
+                        # --- VALIDAZIONE (Ordine: rotta, data, matrice, capacità) ---
+                        f1, c1 = valida_rotta(new_src, veichle_capacity, data, dist_matrix)
+                        f2, c2 = valida_rotta(new_dest, veichle_capacity, data, dist_matrix)
+
+                        # ENTRA QUI SOLO SE LA MOSSA È FEASIBLE
+                        if f1 and f2:
+                            # Calcoliamo i costi originali (sempre stesso ordine parametri!)
+                            _, old_c1 = valida_rotta(route_src,veichle_capacity, data, dist_matrix )
+                            _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
+                            
+                            # ORA delta è sicuramente assegnato
+                            delta = (c1 + c2) - (old_c1 + old_c2)
+                            
+                            mossa_id = (cliente, r_dest_idx)
+                            is_tabu = tabu_list.get(mossa_id, 0) > iterazione
+                            
+                            # --- LOGICA DI SCELTA (DENTRO L'IF) ---
+                            # Aspirazione: se batte il record assoluto, ignora il Tabu
+                            if not is_tabu or (costo_current + delta < costo_best - 1e-9):
+                                if delta < best_delta:
+                                    best_delta = delta
+                                    best_move = (r_src_idx, i, r_dest_idx, j, mossa_id)
+
+        # --- ESECUZIONE DELLA MOSSA ---
+        if best_move:
+            r_s, pos_i, r_d, pos_j, m_id = best_move
+            
+            c_estratto = s[r_s].pop(pos_i)
+            actual_j = pos_j if (r_s != r_d or pos_i > pos_j) else pos_j - 1
+            s[r_d].insert(actual_j, c_estratto)
+            
+            costo_current += best_delta
+            tabu_list[m_id] = iterazione + d
+            
+            if costo_current < costo_best - 1e-9:
+                costo_best = costo_current
+                s_best = copy.deepcopy(s)
+               
+
+    return s_best, costo_best
 # MAIN PROGRAM
 def main():
     # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
@@ -597,8 +650,8 @@ def main():
     file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
     # Percorso del file 
-    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
     path = os.path.join(path_base, fold, file_name)
 
@@ -689,6 +742,16 @@ def main():
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
+        # Taboo Search con local search 1
+        print("\nTaboo Search con il primo local search: ")
+        percorsi_tab_search, costo_tab_search = Tabu_Search(copy.deepcopy(percorsi_local),costo_tot_local, veichle_capacity, data, dist_matrix)
+        check_costo = controllo_costo(percorsi_tab_search, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi_sim3):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_tab_search:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
 
        # Approccio Greedy numero 2: "rivial solution o singleton solution"    
         print('\nGreedy 2: ') 
