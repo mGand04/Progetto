@@ -580,9 +580,6 @@ def grasp(path,costo_tot, veichle_capacity,dist_matrix, data):
         R = list[E] #Elementi in input
 
 
-
-import copy
-
 def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
     # --- 1. Parametri ---
     I_max = 3000
