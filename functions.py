@@ -98,12 +98,12 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     # Controllo i clienti serviti
     clienti_serviti = 0
 
-    # Ciclo sui veicoli disponibili [cite: 34]
+    # Ciclo sui veicoli disponibili
     while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
         percorso_attuale = [0]
         nodo_corrente = 0 # Indice intero
         capacita_residua = v_cap
-        tempo_attuale = 0 # y_i^k [cite: 42, 71]
+        tempo_attuale = 0 
 
         while True:
             miglior_prossimo = None
@@ -565,9 +565,9 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
     return s_best, costo_best
 
 # Grasp
-def grasp(path,costo_tot, veichle_capacity,dist_matrix, data):
+def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti):
     I_max = 1000
-    alpha = 0.1
+    alpha = 0.3
     # Passo la soluzione iniziale in s per non modificarla subito
     s = copy.deepcopy(path)
     costo_current = costo_tot
@@ -575,9 +575,82 @@ def grasp(path,costo_tot, veichle_capacity,dist_matrix, data):
     # Inizializzo la soluzione migliore
     s_best = copy.deepcopy(path)
     costo_best = costo_tot
+
     for i in range(I_max):
-        s = []
-        R = list[E] #Elementi in input
+        visitati = np.zeros(n_clienti+1, dtype=bool)
+        visitati[0] = True # Il deposito è il punto di partenza
+    
+        # Definisco la lista dei percorsi
+        percorsi_totali = []
+        # Inizializzo i costi
+        costo_totale_global = 0
+        # Controllo i clienti serviti
+        clienti_serviti = 0
+        while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity :
+
+            percorso_attuale = [0]
+            nodo_corrente = 0 # Indice intero
+            capacita_residua = veichle_capacity
+            tempo_attuale = 0 
+
+            while True:
+                clienti_feasible = []
+                dist_minima = float('inf')
+                orario_inizio_prossimo = 0
+                for i in range(1, n_clienti+1):
+                    if not visitati[i]:
+
+                        tij = dist_matrix[nodo_corrente, i]
+                         # Calcolo orario di inizio servizio
+                        # tempo_attuale + service_time_corrente + tempo_viaggio
+                        arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij, 
+                                    data[i, 4])
+                        if capacita_residua >= data[i, 3] and arrivo <= data[i, 5]:
+                            clienti_feasible.append((i, tij, arrivo))
+                    
+                if not clienti_feasible:
+                    percorso_attuale.append(0)
+                    break
+                    
+                dmin = min(c[1] for c in clienti_feasible)
+                dmax = max(c[1] for c in clienti_feasible)
+                soglia = dmin + alpha * (dmax - dmin)
+                best_vicini = [c for c in clienti_feasible if c[1] <= soglia]
+                scelta = rd.choice(best_vicini)
+                miglior_prossimo, distanza_scelta, arrivo_scelto = scelta
+            
+                # Aggiornamento stato
+                visitati[miglior_prossimo] = True
+                clienti_serviti += 1
+                capacita_residua -= data[miglior_prossimo, 3]
+                tempo_attuale = arrivo_scelto
+                costo_totale_global += distanza_scelta
+                percorso_attuale.append(miglior_prossimo)
+                nodo_corrente = miglior_prossimo # Mantiene l'indice intero
+
+            percorsi_totali.append(percorso_attuale)
+
+        # Padding rotte vuote
+        while len(percorsi_totali) < veichle_quantity:
+            percorsi_totali.append([0, 0])
+        
+        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] 
+                  for r in percorsi_totali)
+
+        neigh = np.floor(rd.uniform(1, 3))
+        if(neigh == 1):
+            s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+        elif(neigh==2):
+            s_prime, costo_nuovo = neigh_2(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+        elif(neigh==3):
+            s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+
+        if costo_nuovo <= costo_best:
+            s_best = s.deepcopy(s_prime)
+            costo_best = costo_nuovo
+            
+    return s_best, costo_best
+        
 
 
 def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
