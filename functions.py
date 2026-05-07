@@ -637,7 +637,7 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
         costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] 
                   for r in percorsi_totali)
 
-        neigh = np.floor(rd.uniform(1, 3))
+        neigh = np.floor(rd.uniform(1, 4))
         if(neigh == 1):
             s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
         elif(neigh==2):
@@ -650,9 +650,110 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
             costo_best = costo_nuovo
             
     return s_best, costo_best
-        
+
+# VNS
+def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
+
+    # Soluzione iniziale da manipolare
+    s = copy.deepcopy(path)
+    costo_attuale = costo_tot
+    
+    # Soluzione migliore iniziale
+    s_best = copy.deepcopy(s)
+    costo_best = costo_attuale
+
+    # Numero di neighborhood
+    p = 3 
+
+    # Massimo numero di iterazioni senza miglioramento
+    max_no_improve = 100
+    no_improve = 0
+
+    while no_improve < max_no_improve:
+
+        # Neighborhood da cui prendo la mossa
+        k=1
+        while k <= p:
+
+            s_new = copy.deepcopy(s)
+            rotte_attive = [idx for idx, rotta in enumerate(s_new) if len(rotta)>2]
+
+            if not rotte_attive:
+                k+=1
+                continue
+
+            # Mossa dal primo neighborhood
+            if k == 1:
+                
+                idx_src = rd.choice(rotte_attive)
+                rotta_src = s_new[idx_src]
+                idx_cliente = rd.randint(1, len(rotta_src)-2)
+                cliente = rotta_src.pop(idx_cliente)
+                idx_dest = rd.randint(0, len(s_new)-1)
+                rotta_dest = s_new[idx_dest]
+                pos_ins = rd.randint(1, len(rotta_dest)-1)
+                rotta_dest.insert(pos_ins, cliente)
+                costo_nuovo = sum(valida_rotta_senza_vincoli(r, dist_matrix, data) for r in s_new)
+
+            # Mossa dal seconda neighborhood
+            if k == 2:
+                
+                rotte_valide = [idx for idx, rotta in enumerate(s_new) if len(rotta)>4]
+                if not rotte_valide:
+                    k+=1
+                    continue
+                idx_src = rd.choice(rotte_valide)
+                rotta_src = s_new[idx_src]
+                idx_seg = rd.randint(1, len(rotta_src) - 3)
+                c1 = rotta_src.pop(idx_seg)
+                c2 = rotta_src.pop(idx_seg)
+                idx_dest = rd.randint(0, len(s_new) - 1)
+                rotta_dest = s_new[idx_dest]
+                idx_ins = rd.randint(1, max(1, len(rotta_dest) - 1))
+                rotta_dest.insert(idx_ins, c1)
+                rotta_dest.insert(idx_ins + 1, c2)
+                costo_nuovo = sum(valida_rotta_senza_vincoli(r, dist_matrix, data) for r in s_new)
+
+            # Mossa dal terzo neighborhood
+            if k == 3:
+                rotte_valide = [idx for idx in rotte_attive if len(s_new[idx]) >= 4]
+                if not rotte_valide:
+                    k += 1
+                    continue
+                idx_r = rd.choice(rotte_valide)
+                rotta = s_new[idx_r]
+                i = rd.randint(1, len(rotta) - 2)
+                j = rd.randint(1, len(rotta) - 2)
+                while j == i:
+                    j = rd.randint(1, len(rotta) - 2)
+                rotta[i], rotta[j] = rotta[j], rotta[i]
+                costo_nuovo = sum(valida_rotta_senza_vincoli(r, dist_matrix, data) for r in s_new)
+
+            # Local Search con k-esimo neigh
+            if k == 1:
+                s_local, costo_new = neigh_1(s_new, veichle_capacity, data, dist_matrix, costo_nuovo)
+            # Altri casi
+            if k == 2:
+                s_local, costo_new = neigh_2(s_new, veichle_capacity, data, dist_matrix, costo_nuovo)
+            if k == 3:
+                s_local, costo_new = neigh_3(s_new, veichle_capacity, data, dist_matrix, costo_nuovo)
 
 
+            if costo_new < costo_attuale:
+                s = copy.deepcopy(s_local)
+                costo_attuale = costo_new
+                if all(valida_rotta(r, veichle_capacity, data, dist_matrix)[0] for r in s):
+                    if costo_new < costo_best:
+                        s_best = copy.deepcopy(s)
+                        costo_best = costo_new
+                    no_improve = 0
+            else:
+                k+=1
+                no_improve +=1
+
+    return s_best, costo_best
+
+# Tabu Search
 def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
     # --- 1. Parametri ---
     I_max = 3000
