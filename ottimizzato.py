@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import random as rd
-import math
+import time
 import copy
 from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
 
@@ -22,7 +22,7 @@ def main():
 
     # Lettura dell'header del file
     try:
-
+        start = time.time()
         # Leggo le informazioni testuali sui veicoli
         veichle_info = np.genfromtxt(path, skip_header=4, max_rows=1)
 
@@ -235,6 +235,11 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_mem:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
 
+        finish = time.time()
+
+        tempo_esecuzione = finish - start
+        print(f"Tempo di esecuzione: {tempo_esecuzione:.2f} secondi")
+        
     except FileNotFoundError:
         print(f"ERRORE: Il file '{file_name}' non esiste nella cartella '{fold}'.")
         print("Controlla di aver scritto correttamente i nomi.")
