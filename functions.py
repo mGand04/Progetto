@@ -642,7 +642,7 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
         
         if(neigh == 1):
             s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
-        elif(neigh==2):
+        elif(neigh == 2):
             s_prime, costo_nuovo = neigh_2(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
         elif(neigh==3):
             s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
