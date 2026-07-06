@@ -831,3 +831,12 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
 
     return s_best, costo_best
 
+# Algoritmi genetici
+def costo_soluzione(path, veichle_capacity, data, dist_matrix):
+    return sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
+
+def verifica_completezza(path, n_clienti):
+    clienti_presenti = set()
+    for r in path:
+        clienti_presenti.update(r[1:-1])
+    return len(clienti_presenti) == n_clienti
