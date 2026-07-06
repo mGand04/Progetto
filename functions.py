@@ -576,7 +576,7 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
     s_best = copy.deepcopy(path)
     costo_best = costo_tot
 
-    for i in range(I_max):
+    for iter in range(I_max):
         visitati = np.zeros(n_clienti+1, dtype=bool)
         visitati[0] = True # Il deposito è il punto di partenza
     
@@ -637,7 +637,9 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
         costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] 
                   for r in percorsi_totali)
 
-        neigh = np.floor(rd.uniform(1, 4))
+        # Randomicamente seleziono un neighborhood da esplorare
+        neigh = rd.randint(1,3)
+
         if(neigh == 1):
             s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
         elif(neigh==2):
@@ -646,7 +648,7 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
             s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
 
         if costo_nuovo <= costo_best:
-            s_best = s.deepcopy(s_prime)
+            s_best = copy.deepcopy(s_prime)
             costo_best = costo_nuovo
             
     return s_best, costo_best
