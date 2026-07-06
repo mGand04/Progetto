@@ -4,10 +4,14 @@ import numpy as np
 import random as rd
 import math
 import copy
+<<<<<<< HEAD
 from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
 # Funzione per il calcolo della matrice dei costi del dataset passato come parametro
 
 # Funzione utilizzata per validare la feasibility di una singola rotta
+=======
+from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns
+>>>>>>> fe04a961b88592794c8c259664c7651f247c1f89
 
 # MAIN PROGRAM
 def main():
@@ -18,8 +22,8 @@ def main():
     file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
     # Percorso del file 
-    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
     path = os.path.join(path_base, fold, file_name)
 
@@ -113,7 +117,7 @@ def main():
 
         # Grasp
         print("\nGrasp con local search 1: ")
-        percorsi_grasp, costo_grasp = grasp1(copy.deepcopy(percorsi_local), costo_tot_local, veichle_capacity, veichle_quantity, dist_matrix)
+        percorsi_grasp, costo_grasp = grasp1(copy.deepcopy(percorsi_local), costo_tot_local, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti)
         check_costo = controllo_costo(percorsi_grasp, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_grasp):
             print(f"Veicolo {idx+1}: {p}")
@@ -123,7 +127,7 @@ def main():
 
         # Taboo Search con local search 1
         print("\nTaboo Search con il primo local search: ")
-        percorsi_tab_search, costo_tab_search = Tabu_Search(copy.deepcopy(percorsi_local),costo_tot_local, veichle_capacity, data, dist_matrix, data, n_clienti)
+        percorsi_tab_search, costo_tab_search = Tabu_Search(copy.deepcopy(percorsi_local),costo_tot_local, veichle_capacity, data, dist_matrix)
         check_costo = controllo_costo(percorsi_tab_search, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi_tab_search):
             print(f"Veicolo {idx+1}: {p}")
@@ -203,7 +207,7 @@ def main():
 
         # Grasp
         print("\nGrasp con local search 1: ")
-        percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_2 , veichle_capacity, veichle_quantity, dist_matrix)
+        percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_2 , veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti)
         check_costo = controllo_costo(percorsi2_grasp, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi2_grasp):
             print(f"Veicolo {idx+1}: {p}")
@@ -213,7 +217,7 @@ def main():
 
         # Taboo Search con local search 1
         print("\nTaboo Search con il primo local search: ")
-        percorsi2_tab_search, costo2_tab_search = Tabu_Search(copy.deepcopy(percorsi_local2),costo_tot_2, veichle_capacity, data, dist_matrix, data, n_clienti)
+        percorsi2_tab_search, costo2_tab_search = Tabu_Search(copy.deepcopy(percorsi_local2),costo_tot_2, veichle_capacity, data, dist_matrix)
         check_costo = controllo_costo(percorsi2_tab_search, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi2_tab_search):
             print(f"Veicolo {idx+1}: {p}")
@@ -243,7 +247,6 @@ def main():
         print("Controlla di aver scritto correttamente i nomi.")
     except Exception as e:
         print(f"ERRORE imprevisto: {e}")
-
 
 if __name__ == "__main__":
     main()
