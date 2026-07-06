@@ -4,14 +4,12 @@ import numpy as np
 import random as rd
 import math
 import copy
-<<<<<<< HEAD
-from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
-# Funzione per il calcolo della matrice dei costi del dataset passato come parametro
 
-# Funzione utilizzata per validare la feasibility di una singola rotta
-=======
-from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns
->>>>>>> fe04a961b88592794c8c259664c7651f247c1f89
+from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
+
+
+
+
 
 # MAIN PROGRAM
 def main():
