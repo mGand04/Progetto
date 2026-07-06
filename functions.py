@@ -840,3 +840,238 @@ def verifica_completezza(path, n_clienti):
     for r in path:
         clienti_presenti.update(r[1:-1])
     return len(clienti_presenti) == n_clienti
+
+def selezione_torneo(popolazione, k=3):
+    torneo = rd.sample(popolazione, k)
+    torneo.sort(key=lambda x: x[1])
+    return torneo[0]
+
+def costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap, dati_nodi, costi, alpha=0.3):
+    visitati = np.zeros(n_clienti + 1, dtype=bool)
+    visitati[0] = True
+    percorsi_totali = []
+    clienti_serviti = 0
+
+    while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
+        percorso_attuale = [0]
+        nodo_corrente = 0
+        capacita_residua = v_cap
+        tempo_attuale = 0
+
+        while True:
+            clienti_feasible = []
+            for i in range(1, n_clienti + 1):
+                if not visitati[i]:
+                    tij = costi[nodo_corrente, i]
+                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + tij,
+                                 dati_nodi[i, 4])
+                    if capacita_residua >= dati_nodi[i, 3] and arrivo <= dati_nodi[i, 5]:
+                        clienti_feasible.append((i, tij, arrivo))
+
+            if not clienti_feasible:
+                percorso_attuale.append(0)
+                break
+
+            dmin = min(c[1] for c in clienti_feasible)
+            dmax = max(c[1] for c in clienti_feasible)
+            soglia = dmin + alpha * (dmax - dmin)
+            rcl = [c for c in clienti_feasible if c[1] <= soglia]
+            scelto = rd.choice(rcl)
+            miglior_prossimo, dist_scelta, arrivo_scelto = scelto
+
+            visitati[miglior_prossimo] = True
+            clienti_serviti += 1
+            capacita_residua -= dati_nodi[miglior_prossimo, 3]
+            tempo_attuale = arrivo_scelto
+            percorso_attuale.append(miglior_prossimo)
+            nodo_corrente = miglior_prossimo
+
+        percorsi_totali.append(percorso_attuale)
+
+    while len(percorsi_totali) < veichle_quantity:
+        percorsi_totali.append([0, 0])
+
+    if clienti_serviti < n_clienti:
+        return None  # non è stato possibile servire tutti i clienti con questi vincoli
+
+    costo = costo_soluzione(percorsi_totali, v_cap, dati_nodi, costi)
+    return percorsi_totali, costo
+
+def crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity, v_cap, data, dist_matrix):
+    popolazione = []
+
+    p_g1, c_g1 = greedy_1(n_clienti, veichle_quantity, v_cap, data, dist_matrix)
+    p_g2, c_g2 = greedy_2(n_clienti, veichle_quantity, v_cap, data, dist_matrix)
+    popolazione.append((p_g1, c_g1))
+    popolazione.append((p_g2, c_g2))
+
+    tentativi = 0
+    max_tentativi = (pop_size - 2) * 20
+
+    while len(popolazione) < pop_size and tentativi < max_tentativi:
+        tentativi += 1
+        alpha = rd.uniform(0.1, 0.5)
+        risultato = costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap,
+                                             data, dist_matrix, alpha)
+        if risultato is not None:
+            popolazione.append(risultato)
+
+    while len(popolazione) < pop_size:
+        seme = rd.choice([(p_g1, c_g1), (p_g2, c_g2)])
+        popolazione.append(copy.deepcopy(seme))
+
+    return popolazione
+
+def crossover_twopoints(parent1, parent2, v_cap, data, dist_matrix):
+    p1 = copy.deepcopy(parent1)
+    p2 = copy.deepcopy(parent2)
+    
+    n_rotte = len(p1)
+    if n_rotte < 3:
+        # Troppo poche rotte per avere due punti di taglio distinti e significativi
+        costo = costo_soluzione(p1, v_cap, data, dist_matrix)
+        return p1, costo
+    
+    # 1. Scelgo due punti di taglio distinti sull'indice delle rotte
+    punto1, punto2 = sorted(rd.sample(range(1, n_rotte), 2))
+
+    # 2. Costruisco il figlio
+    figlio = copy.deepcopy(p1[: punto1]) + copy.deepcopy(p2[punto1:punto2]) + copy.deepcopy(p1[punto2:])
+
+    # 3. Rimuovo i duplicati: un cliente che compare sia nel segmento "esterno" (da p1)
+    #    sia nel segmento "centrale" (da p2) va tolto da uno dei due -> lo tolgo dagli esterni,
+    #    dando priorità al segmento centrale appena innestato
+    clienti_centrale = set()
+    for r in figlio[punto1:punto2]:      
+        clienti_centrale.update(r[1:-1])
+    for idx in list(range(0, punto1)) + list(range(punto2, len(figlio))):
+        figlio[idx] = [nodo for nodo in figlio[idx] if nodo == 0 or nodo not in clienti_centrale]
+
+    # 4. Trovo i clienti mancanti 
+    tutti_i_clienti = set()
+    for r in p1:
+        tutti_i_clienti.update(r[1:-1])
+
+    clienti_presenti = set()
+    for r in figlio:
+        clienti_presenti.update(r[1:-1])
+
+    clienti_mancanti = tutti_i_clienti - clienti_presenti
+
+    # 5. Reinserisco i mancanti con cheapest insertion (stessa logica di greedy_2 fase 2)
+    for cliente in clienti_mancanti:
+        miglior_costo_extra = float('inf')
+        miglior_rotta_idx = None
+        miglior_pos = None
+
+        for r_idx, rotta in enumerate(figlio):
+            _, costo_attuale = valida_rotta(rotta, v_cap, data, dist_matrix)
+            for pos in range(1, len(rotta)):
+                nuova = rotta[:pos] + [cliente] + rotta[pos:]
+                ok, nuovo_costo = valida_rotta(nuova, v_cap, data, dist_matrix)
+                if not ok:
+                    continue
+                extra = nuovo_costo - costo_attuale
+                if extra < miglior_costo_extra:
+                    miglior_costo_extra = extra
+                    miglior_rotta_idx = r_idx
+                    miglior_pos = pos
+
+        if miglior_rotta_idx is not None:
+            figlio[miglior_rotta_idx].insert(miglior_pos, cliente)
+        # se non è inseribile da nessuna parte, resta fuori:
+        # la verifica di completezza nel ciclo principale gestirà il fallback
+
+    costo_figlio = costo_soluzione(figlio, v_cap, data, dist_matrix)
+    return figlio, costo_figlio
+
+def mutazione(path, v_cap, data, dist_matrix, prob=0.15):
+    if rd.random() > prob:
+        return path
+
+    figlio = copy.deepcopy(path)
+    rotte_attive = [i for i, r in enumerate(figlio) if len(r) > 2]
+    if not rotte_attive:
+        return figlio
+
+    tipo = rd.choice(['relocate', 'swap'])
+
+    if tipo == 'relocate':
+        idx_src = rd.choice(rotte_attive)
+        rotta_src = figlio[idx_src]
+        if len(rotta_src) <= 2:
+            return figlio
+        pos = rd.randint(1, len(rotta_src) - 2)
+        cliente = rotta_src.pop(pos)
+        idx_dest = rd.randint(0, len(figlio) - 1)
+        rotta_dest = figlio[idx_dest]
+        pos_ins = rd.randint(1, len(rotta_dest) - 1)
+        rotta_dest.insert(pos_ins, cliente)
+
+    else:  # swap
+        idx_r1 = rd.choice(rotte_attive)
+        idx_r2 = rd.choice(rotte_attive)
+        r1 = figlio[idx_r1]
+        r2 = figlio[idx_r2]
+        if len(r1) <= 2 or len(r2) <= 2:
+            return figlio
+        pos1 = rd.randint(1, len(r1) - 2)
+        pos2 = rd.randint(1, len(r2) - 2)
+        r1[pos1], r2[pos2] = r2[pos2], r1[pos1]
+
+    return figlio
+
+def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix,
+                       pop_size=30, generazioni=200, prob_mutazione=0.15,
+                       tasso_local_search=1.0):
+
+    popolazione = crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity,
+                                             v_cap, data, dist_matrix)
+
+    # local search anche sulla popolazione iniziale
+    for idx in range(len(popolazione)):
+        path, costo = popolazione[idx]
+        neigh_scelto = rd.choice([neigh_1, neigh_2, neigh_3])
+        path_ls, costo_ls = neigh_scelto(path, v_cap, data, dist_matrix, costo)
+        popolazione[idx] = (path_ls, costo_ls)
+
+    popolazione.sort(key=lambda x: x[1])
+    miglior_soluzione = copy.deepcopy(popolazione[0][0])
+    miglior_costo = popolazione[0][1]
+
+    for gen in range(generazioni):
+        nuova_popolazione = [copy.deepcopy(popolazione[0])]  
+
+        while len(nuova_popolazione) < pop_size:
+            p1, _ = selezione_torneo(popolazione, k=3)
+            p2, _ = selezione_torneo(popolazione, k=3)
+
+            figlio, costo_figlio = crossover_twopoints(p1, p2, v_cap, data, dist_matrix)
+
+            # Fallback se il crossover non è riuscito a servire tutti i clienti
+            if not verifica_completezza(figlio, n_clienti):
+                figlio = copy.deepcopy(p1)
+                costo_figlio = costo_soluzione(figlio, v_cap, data, dist_matrix)
+
+            figlio_mut = mutazione(figlio, v_cap, data, dist_matrix, prob=prob_mutazione)
+            if all(valida_rotta(r, v_cap, data, dist_matrix)[0] for r in figlio_mut):
+                figlio = figlio_mut
+                costo_figlio = costo_soluzione(figlio, v_cap, data, dist_matrix)
+
+            if rd.random() < tasso_local_search:
+                neigh_scelto = rd.choice([neigh_1, neigh_2, neigh_3])
+                figlio, costo_figlio = neigh_scelto(figlio, v_cap, data, dist_matrix, costo_figlio)
+
+            nuova_popolazione.append((figlio, costo_figlio))
+
+        popolazione = nuova_popolazione
+        popolazione.sort(key=lambda x: x[1])
+
+        if popolazione[0][1] < miglior_costo:
+            miglior_costo = popolazione[0][1]
+            miglior_soluzione = copy.deepcopy(popolazione[0][0])
+
+        if gen % 10 == 0:
+            print(f"Generazione {gen}: miglior costo trovato = {miglior_costo:.1f}")
+
+    return miglior_soluzione, miglior_costo

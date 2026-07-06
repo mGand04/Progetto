@@ -4,7 +4,7 @@ import numpy as np
 import random as rd
 import math
 import copy
-from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns
+from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
 # Funzione per il calcolo della matrice dei costi del dataset passato come parametro
 
 # Funzione utilizzata per validare la feasibility di una singola rotta
@@ -227,6 +227,15 @@ def main():
         for idx, p in enumerate(percorsi2_vns):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo2_vns:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
+        # Genetici
+        print("\nAlgoritmo Memetico: ")
+        percorsi_mem, costo_mem = Memetic_Algorithm(n_clienti, veichle_quantity, veichle_capacity, data, dist_matrix,pop_size=30, generazioni=200, prob_mutazione=0.15,tasso_local_search=1.0)
+        check_costo = controllo_costo(percorsi_mem, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi_mem):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_mem:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
 
     except FileNotFoundError:
