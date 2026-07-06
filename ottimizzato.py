@@ -4,7 +4,7 @@ import numpy as np
 import random as rd
 import math
 import copy
-from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1
+from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns
 # Funzione per il calcolo della matrice dei costi del dataset passato come parametro
 
 # Funzione utilizzata per validare la feasibility di una singola rotta
@@ -111,15 +111,33 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
 
+        # Grasp
+        print("\nGrasp con local search 1: ")
+        percorsi_grasp, costo_grasp = grasp1(copy.deepcopy(percorsi_local), costo_tot_local, veichle_capacity, veichle_quantity, dist_matrix)
+        check_costo = controllo_costo(percorsi_grasp, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi_grasp):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_grasp:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
+
         # Taboo Search con local search 1
         print("\nTaboo Search con il primo local search: ")
-        percorsi_tab_search, costo_tab_search = Tabu_Search(copy.deepcopy(percorsi_local),costo_tot_local, veichle_capacity, data, dist_matrix)
+        percorsi_tab_search, costo_tab_search = Tabu_Search(copy.deepcopy(percorsi_local),costo_tot_local, veichle_capacity, data, dist_matrix, data, n_clienti)
         check_costo = controllo_costo(percorsi_tab_search, veichle_capacity, data, dist_matrix)
-        for idx, p in enumerate(percorsi_sim3):
+        for idx, p in enumerate(percorsi_tab_search):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tab_search:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
 
+        # VNS
+        print("\nVNS con local search 1: " )
+        percorsi_vns, costo_vns = vns(copy.deepcopy(percorsi_local), costo_tot_local, veichle_capacity, veichle_quantity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi_vns, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi_vns):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo_vns:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
 
        # Approccio Greedy numero 2: "rivial solution o singleton solution"    
         print('\nGreedy 2: ') 
@@ -157,7 +175,7 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_tot_local_greedy2_3:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        # Simulated annealing: Applico alla solzuione già migliorata con local search
+        # Simulated annealing: Applico alla soluzione già migliorata con local search
         #1st neighborhood
         print('\nSimulated annealing applicato alla soluzione del primo neighborhood: ')
         percorsi_sim2, costo_sim2 = Sim_Annealing(copy.deepcopy(percorsi_local2), costo_tot_local2, veichle_capacity, dist_matrix, data)
@@ -182,6 +200,34 @@ def main():
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
+
+        # Grasp
+        print("\nGrasp con local search 1: ")
+        percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_2 , veichle_capacity, veichle_quantity, dist_matrix)
+        check_costo = controllo_costo(percorsi2_grasp, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi2_grasp):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo2_grasp:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
+
+        # Taboo Search con local search 1
+        print("\nTaboo Search con il primo local search: ")
+        percorsi2_tab_search, costo2_tab_search = Tabu_Search(copy.deepcopy(percorsi_local2),costo_tot_2, veichle_capacity, data, dist_matrix, data, n_clienti)
+        check_costo = controllo_costo(percorsi2_tab_search, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi2_tab_search):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo2_tab_search:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
+
+        # VNS
+        print("\nVNS con local search 1: " )
+        percorsi2_vns, costo2_vns = vns(copy.deepcopy(percorsi_local2), costo_tot_2, veichle_capacity, veichle_quantity, dist_matrix, data)
+        check_costo = controllo_costo(percorsi2_vns, veichle_capacity, data, dist_matrix)
+        for idx, p in enumerate(percorsi2_vns):
+            print(f"Veicolo {idx+1}: {p}")
+        print(f"Costo Totale della Soluzione: {costo2_vns:.1f}")
+        print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f} ")
 
     except FileNotFoundError:
         print(f"ERRORE: Il file '{file_name}' non esiste nella cartella '{fold}'.")

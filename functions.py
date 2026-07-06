@@ -828,3 +828,4 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
                
 
     return s_best, costo_best
+
