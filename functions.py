@@ -760,90 +760,97 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
     return s_best, costo_best
 
 # Tabu Search
+import time
+
 def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
     # --- 1. Parametri ---
-    I_max = 3000
+    I_max=3000
+    tempo_limite=60
     d = 15
     tabu_list = {}
-    tempo_limite = 60
-    max_no_improve = 200
+
     s = copy.deepcopy(path)
     s_best = copy.deepcopy(s)
     costo_best = costo_iniziale
     costo_current = costo_iniziale
+
+    # Precalcolo dei vicini spaziali (dipende solo da dist_matrix, invariante durante l'esecuzione)
+    vicini = calcola_vicini(dist_matrix, k=10)
+
     tempo_inizio = time.time()
-    no_improve = 0
-    iterazione = 0
-    while iterazione < I_max and no_improve < max_no_improve:
+
+    for iterazione in range(I_max):
+        # --- Budget di tempo: interrompe l'esecuzione se supera il limite ---
         if time.time() - tempo_inizio > tempo_limite:
             break
-        for iterazione in range(I_max):
-            best_delta = float('inf')
-            best_move = None
 
-            # Esplorazione intorno di 's'
-            for r_src_idx, route_src in enumerate(s):
-                if len(route_src) <= 2: continue 
+        best_delta = float('inf')
+        best_move = None
 
-                for i in range(1, len(route_src) - 1):
-                    cliente = route_src[i]
-                    
-                    for r_dest_idx, route_dest in enumerate(s):
-                        # Definiamo il range di inserimento
-                        range_j = len(route_dest)
-                        
-                        for j in range(1, range_j + 1):
-                            if r_src_idx == r_dest_idx and (j == i or j == i + 1):
-                                continue
+        # Mappa cliente -> indice rotta, ricalcolata una volta per iterazione
+        # (serve per restringere le rotte candidate ai vicini spaziali)
+        client_to_route = {c: idx for idx, r in enumerate(s) for c in r[1:-1]}
 
-                            # --- SIMULAZIONE ---
-                            new_src = route_src[:i] + route_src[i+1:]
-                            new_dest = route_dest[:j] + [cliente] + route_dest[j:]
+        # Esplorazione intorno di 's'
+        for r_src_idx, route_src in enumerate(s):
+            if len(route_src) <= 2:
+                continue
 
-                            # --- VALIDAZIONE (Ordine: rotta, data, matrice, capacità) ---
-                            f1, c1 = valida_rotta(new_src, veichle_capacity, data, dist_matrix)
-                            f2, c2 = valida_rotta(new_dest, veichle_capacity, data, dist_matrix)
+            # FIX 1: costo della rotta sorgente non dipende da i, j -> calcolato una sola volta per rotta
+            _, old_c1 = valida_rotta(route_src, veichle_capacity, data, dist_matrix)
 
-                            # ENTRA QUI SOLO SE LA MOSSA È FEASIBLE
-                            if f1 and f2:
-                                # Calcoliamo i costi originali (sempre stesso ordine parametri!)
-                                _, old_c1 = valida_rotta(route_src,veichle_capacity, data, dist_matrix )
-                                _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
-                                
-                                # ORA delta è sicuramente assegnato
-                                delta = (c1 + c2) - (old_c1 + old_c2)
-                                
-                                mossa_id = (cliente, r_dest_idx)
-                                is_tabu = tabu_list.get(mossa_id, 0) > iterazione
-                                
-                                # --- LOGICA DI SCELTA (DENTRO L'IF) ---
-                                # Aspirazione: se batte il record assoluto, ignora il Tabu
-                                if not is_tabu or (costo_current + delta < costo_best - 1e-9):
-                                    if delta < best_delta:
-                                        best_delta = delta
-                                        best_move = (r_src_idx, i, r_dest_idx, j, mossa_id)
+            for i in range(1, len(route_src) - 1):
+                cliente = route_src[i]
+
+                # FIX 2: restringo le rotte destinazione candidate ai vicini spaziali del cliente
+                rotte_candidate = {client_to_route[v] for v in vicini[cliente] if v in client_to_route}
+                rotte_candidate.add(r_src_idx)  # includo sempre la rotta di origine (riposizionamento interno)
+
+                for r_dest_idx in rotte_candidate:
+                    route_dest = s[r_dest_idx]
+
+                    # FIX 1: costo della rotta destinazione non dipende da j -> calcolato una sola volta per rotta
+                    _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
+                    range_j = len(route_dest)
+
+                    for j in range(1, range_j + 1):
+                        if r_src_idx == r_dest_idx and (j == i or j == i + 1):
+                            continue
+
+                        # --- SIMULAZIONE ---
+                        new_src = route_src[:i] + route_src[i+1:]
+                        new_dest = route_dest[:j] + [cliente] + route_dest[j:]
+
+                        # --- VALIDAZIONE ---
+                        f1, c1 = valida_rotta(new_src, veichle_capacity, data, dist_matrix)
+                        f2, c2 = valida_rotta(new_dest, veichle_capacity, data, dist_matrix)
+
+                        if f1 and f2:
+                            delta = (c1 + c2) - (old_c1 + old_c2)
+
+                            mossa_id = (cliente, r_dest_idx)
+                            is_tabu = tabu_list.get(mossa_id, 0) > iterazione
+
+                            # Aspirazione: se batte il record assoluto, ignora il Tabu
+                            if not is_tabu or (costo_current + delta < costo_best - 1e-9):
+                                if delta < best_delta:
+                                    best_delta = delta
+                                    best_move = (r_src_idx, i, r_dest_idx, j, mossa_id)
 
         # --- ESECUZIONE DELLA MOSSA ---
         if best_move:
             r_s, pos_i, r_d, pos_j, m_id = best_move
-            
+
             c_estratto = s[r_s].pop(pos_i)
             actual_j = pos_j if (r_s != r_d or pos_i > pos_j) else pos_j - 1
             s[r_d].insert(actual_j, c_estratto)
-            
+
             costo_current += best_delta
             tabu_list[m_id] = iterazione + d
-            
+
             if costo_current < costo_best - 1e-9:
                 costo_best = costo_current
                 s_best = copy.deepcopy(s)
-                no_improve = 0
-            else:
-                no_improve += 1
-        else:
-            no_improve += 1
-        iterazione += 1
-               
 
     return s_best, costo_best
 
