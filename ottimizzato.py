@@ -20,8 +20,8 @@ def main():
     file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
     # Percorso del file 
-    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
     path = os.path.join(path_base, fold, file_name)
 

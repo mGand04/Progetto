@@ -175,8 +175,11 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
                     arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + t_ij, 
                                     dati_nodi[i, 4])
                     
+                    # Finiamo il servizio al cliente i e viaggiamo fino al deposito 0
+                    tempo_rientro_deposito = arrivo + dati_nodi[i, 6] + costi[i, 0]
+                    
                     # Verifica vincoli: Capacità (1f) e Time Window (1h)
-                    if capacita_residua >= dati_nodi[i, 3] and arrivo <= dati_nodi[i, 5]:
+                    if capacita_residua >= dati_nodi[i, 3] and arrivo <= dati_nodi[i, 5] and tempo_rientro_deposito <= dati_nodi[0, 5]:
                         if t_ij < distanza_minima:
                             distanza_minima = t_ij
                             miglior_prossimo = i
@@ -867,7 +870,7 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
                     _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
                     range_j = len(route_dest)
 
-                    for j in range(1, range_j + 1):
+                    for j in range(1, range_j):
                         if r_src_idx == r_dest_idx and (j == i or j == i + 1):
                             continue
 
