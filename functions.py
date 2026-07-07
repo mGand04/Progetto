@@ -21,10 +21,11 @@ def matrice_distanze(data_array):
             
             # Troncamento alla prima cifra decimale 
                 matrice[i, j] = math.floor(10 * dist_euclidea) / 10
+    
     return matrice
 
 # Funzione utilizzata per validare la feasibility di una singola rotta
-def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
+'''def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
     carico = 0
     tempo = 0
     costo = 0
@@ -45,8 +46,61 @@ def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
         
         tempo = inizio_servizio
         costo += t_uv
-    return True, costo
+    return True, costo'''
+def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
+    """
+    Valida una rotta e ne calcola il costo reale.
+    
+    Argomenti:
+    - percorso: lista di indici nodi [0, c1, c2, ..., 0]
+    - veichle_capacity: capacità massima del veicolo
+    - data: array con colonne [ID, X, Y, Demand, Ready, Due, Service]
+    - dist_matrix: matrice delle distanze
+    """
+    costo_totale = 0.0
+    carico_attuale = 0.0
+    tempo_attuale = 0.0
+    
+    # Costanti per migliorare la leggibilità e la generalizzazione
+    COL_DEMAND = 3
+    COL_READY  = 4
+    COL_DUE    = 5
+    COL_SERVICE = 6
+    
+    # Validazione base: percorso deve avere almeno [0, 0]
+    if len(percorso) < 2:
+        return False, 0.0
 
+    # Ciclo su tutti gli archi della rotta
+    for k in range(len(percorso) - 1):
+        u = int(percorso[k])
+        v = int(percorso[k+1])
+        
+        # 1. Calcolo distanza (costo del viaggio)
+        distanza_uv = dist_matrix[u, v]
+        costo_totale += distanza_uv
+        
+        # 2. Aggiornamento Carico
+        carico_attuale += data[v, COL_DEMAND]
+        
+        # 3. Aggiornamento Tempo
+        # Tempo arrivo = (tempo precedente + service time precedente + viaggio)
+        # Il service time del deposito (nodo 0) è solitamente 0.
+        arrivo = tempo_attuale + data[u, COL_SERVICE] + distanza_uv
+        
+        # Inizio servizio non può essere prima di READY TIME
+        inizio_servizio = max(arrivo, data[v, COL_READY])
+        
+        tempo_attuale = inizio_servizio
+        
+    # Verifica violazioni a fine rotta
+    violazione_capacita = carico_attuale > veichle_capacity
+    violazione_tempo = any(inizio_servizio > data[v, COL_DUE] for v in percorso[1:])
+    
+    # Ritorna lo stato di validità e il costo calcolato
+    is_feasible = not (violazione_capacita or violazione_tempo)
+    
+    return is_feasible, round(costo_totale, 2)
 # Funzione che permette di trovare i clienti vicini
 def calcola_vicini(dist_matrix, k=10):
     n = dist_matrix.shape[0]

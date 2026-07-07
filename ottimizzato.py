@@ -48,7 +48,8 @@ def main():
 
         # Matrice contente le distanze e i costi per ogni coppia di cliente
         dist_matrix = matrice_distanze(data)
-
+        print("Distanza 0-1:", dist_matrix[0, 1])
+        print("Max valore matrice:", np.max(dist_matrix))
         # Approccio Greedy numero 1: Nearest Neighborhood
         print("Greedy 1")
         percorsi, costo_tot = greedy_1(n_clienti, veichle_quantity, veichle_capacity, data, dist_matrix)
