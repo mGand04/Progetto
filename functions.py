@@ -4,6 +4,7 @@ import numpy as np
 import random as rd
 import math
 import copy
+import time
 # Funzione per il calcolo della matrice dei costi del dataset passato come parametro
 def matrice_distanze(data_array):
     n = data_array.shape[0]
@@ -31,16 +32,16 @@ def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
     # len -1 poichè torniamo sempre nel magazzino alla fine
     for k in range(len(percorso) - 1):
         u, v = percorso[k], percorso[k+1]
-        t_uv = dist_matrix[u, v] # Il tempo è uguale al costo [cite: 93]
+        t_uv = dist_matrix[u, v] # Il tempo è uguale al costo 
         
-        carico += data[v, 3] # Domanda del cliente [cite: 9, 28]
+        carico += data[v, 3] # Domanda del cliente 
         if carico > veichle_capacity: return False, 0
         
-        # Calcolo tempo di arrivo e inizio servizio [cite: 17, 58, 76]
+        # Calcolo tempo di arrivo e inizio servizio 
         arrivo = tempo + data[u, 6] + t_uv # tempo + service + travel
-        inizio_servizio = max(arrivo, data[v, 4]) # max(arrivo, ready_time) [cite: 17, 61]
+        inizio_servizio = max(arrivo, data[v, 4]) # max(arrivo, ready_time) 
         
-        if inizio_servizio > data[v, 5]: return False, 0 # [cite: 16, 61]
+        if inizio_servizio > data[v, 5]: return False, 0 
         
         tempo = inizio_servizio
         costo += t_uv
@@ -128,7 +129,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
                             orario_inizio_prossimo = arrivo
 
             if miglior_prossimo is None:
-                # Ritorno al deposito [cite: 27, 32]
+                # Ritorno al deposito 
                 costo_ritorno = costi[nodo_corrente, 0]
                 costo_totale_global += costo_ritorno
                 percorso_attuale.append(0)
@@ -221,7 +222,7 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
     costo_attuale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
     miglioramento = True
     #print(f"Costo ingresso: {costo_tot:.1f}, costo ricalcolato: {costo_attuale:.1f}")
-    # Per limitare i costi conmputazionali limito il neighborhood ai clienti vicini
+    # Per limitare i costi computazionali limito il neighborhood ai clienti vicini
     vicini = calcola_vicini(dist_matrix, k=10)
 
     client_to_route = {cliente: r_idx 
@@ -568,89 +569,92 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
 def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti):
     I_max = 1000
     alpha = 0.3
+    tempo_limite=60 
+    max_no_improve=150
     # Passo la soluzione iniziale in s per non modificarla subito
-    s = copy.deepcopy(path)
-    costo_current = costo_tot
-
-    # Inizializzo la soluzione migliore
     s_best = copy.deepcopy(path)
     costo_best = costo_tot
 
-    for iter in range(I_max):
-        visitati = np.zeros(n_clienti+1, dtype=bool)
-        visitati[0] = True # Il deposito è il punto di partenza
-    
-        # Definisco la lista dei percorsi
-        percorsi_totali = []
-        # Inizializzo i costi
-        costo_totale_global = 0
-        # Controllo i clienti serviti
-        clienti_serviti = 0
-        while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity :
+    tempo_inizio = time.time()
+    no_improve = 0
+    iterazione = 0
 
+    while iterazione < I_max and no_improve < max_no_improve:
+
+        if time.time() - tempo_inizio > tempo_limite:
+            break
+
+        # alpha randomizzato ad ogni iterazione, per diversificare exploration/exploitation
+        #alpha = rd.uniform(0.0, 0.5)
+
+        # --- Costruzione semi-greedy ---
+        visitati = np.zeros(n_clienti + 1, dtype=bool)
+        visitati[0] = True
+
+        percorsi_totali = []
+        clienti_serviti = 0
+
+        while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
             percorso_attuale = [0]
-            nodo_corrente = 0 # Indice intero
+            nodo_corrente = 0
             capacita_residua = veichle_capacity
-            tempo_attuale = 0 
+            tempo_attuale = 0
 
             while True:
                 clienti_feasible = []
-                dist_minima = float('inf')
-                orario_inizio_prossimo = 0
-                for i in range(1, n_clienti+1):
+                for i in range(1, n_clienti + 1):
                     if not visitati[i]:
-
                         tij = dist_matrix[nodo_corrente, i]
-                         # Calcolo orario di inizio servizio
-                        # tempo_attuale + service_time_corrente + tempo_viaggio
-                        arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij, 
-                                    data[i, 4])
+                        arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij,
+                                     data[i, 4])
                         if capacita_residua >= data[i, 3] and arrivo <= data[i, 5]:
                             clienti_feasible.append((i, tij, arrivo))
-                    
+
                 if not clienti_feasible:
                     percorso_attuale.append(0)
                     break
-                    
+
                 dmin = min(c[1] for c in clienti_feasible)
                 dmax = max(c[1] for c in clienti_feasible)
                 soglia = dmin + alpha * (dmax - dmin)
                 best_vicini = [c for c in clienti_feasible if c[1] <= soglia]
                 scelta = rd.choice(best_vicini)
                 miglior_prossimo, distanza_scelta, arrivo_scelto = scelta
-            
-                # Aggiornamento stato
+
                 visitati[miglior_prossimo] = True
                 clienti_serviti += 1
                 capacita_residua -= data[miglior_prossimo, 3]
                 tempo_attuale = arrivo_scelto
-                costo_totale_global += distanza_scelta
                 percorso_attuale.append(miglior_prossimo)
-                nodo_corrente = miglior_prossimo # Mantiene l'indice intero
+                nodo_corrente = miglior_prossimo
 
             percorsi_totali.append(percorso_attuale)
 
-        # Padding rotte vuote
         while len(percorsi_totali) < veichle_quantity:
             percorsi_totali.append([0, 0])
-        
-        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] 
-                  for r in percorsi_totali)
 
-        # Randomicamente seleziono un neighborhood da esplorare
-        neigh = rd.randint(1,3)
-        
-        if(neigh == 1):
+        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1]
+                           for r in percorsi_totali)
+
+        # --- Local search (invariata, neigh_1/2/3 esattamente come le hai già) ---
+        neigh = rd.randint(1, 3)
+        if neigh == 1:
             s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
-        elif(neigh == 2):
+        elif neigh == 2:
             s_prime, costo_nuovo = neigh_2(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
-        elif(neigh==3):
+        else:
             s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
 
-        if costo_nuovo <= costo_best:
-            s_best = copy.deepcopy(s_prime)
+        # --- Aggiornamento record e stagnazione ---
+        if costo_nuovo < costo_best - 1e-9:
+            s_best = copy.deepcopy(s_prime)   # fix: era s.deepcopy(s_prime), bug
             costo_best = costo_nuovo
-            
+            no_improve = 0
+        else:
+            no_improve += 1
+
+        iterazione += 1
+
     return s_best, costo_best
 
 # VNS
@@ -761,57 +765,63 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
     I_max = 3000
     d = 15
     tabu_list = {}
-
+    tempo_limite = 60
+    max_no_improve = 200
     s = copy.deepcopy(path)
     s_best = copy.deepcopy(s)
     costo_best = costo_iniziale
     costo_current = costo_iniziale
+    tempo_inizio = time.time()
+    no_improve = 0
+    iterazione = 0
+    while iterazione < I_max and no_improve < max_no_improve:
+        if time.time() - tempo_inizio > tempo_limite:
+            break
+        for iterazione in range(I_max):
+            best_delta = float('inf')
+            best_move = None
 
-    for iterazione in range(I_max):
-        best_delta = float('inf')
-        best_move = None
+            # Esplorazione intorno di 's'
+            for r_src_idx, route_src in enumerate(s):
+                if len(route_src) <= 2: continue 
 
-        # Esplorazione intorno di 's'
-        for r_src_idx, route_src in enumerate(s):
-            if len(route_src) <= 2: continue 
-
-            for i in range(1, len(route_src) - 1):
-                cliente = route_src[i]
-                
-                for r_dest_idx, route_dest in enumerate(s):
-                    # Definiamo il range di inserimento
-                    range_j = len(route_dest)
+                for i in range(1, len(route_src) - 1):
+                    cliente = route_src[i]
                     
-                    for j in range(1, range_j + 1):
-                        if r_src_idx == r_dest_idx and (j == i or j == i + 1):
-                            continue
+                    for r_dest_idx, route_dest in enumerate(s):
+                        # Definiamo il range di inserimento
+                        range_j = len(route_dest)
+                        
+                        for j in range(1, range_j + 1):
+                            if r_src_idx == r_dest_idx and (j == i or j == i + 1):
+                                continue
 
-                        # --- SIMULAZIONE ---
-                        new_src = route_src[:i] + route_src[i+1:]
-                        new_dest = route_dest[:j] + [cliente] + route_dest[j:]
+                            # --- SIMULAZIONE ---
+                            new_src = route_src[:i] + route_src[i+1:]
+                            new_dest = route_dest[:j] + [cliente] + route_dest[j:]
 
-                        # --- VALIDAZIONE (Ordine: rotta, data, matrice, capacità) ---
-                        f1, c1 = valida_rotta(new_src, veichle_capacity, data, dist_matrix)
-                        f2, c2 = valida_rotta(new_dest, veichle_capacity, data, dist_matrix)
+                            # --- VALIDAZIONE (Ordine: rotta, data, matrice, capacità) ---
+                            f1, c1 = valida_rotta(new_src, veichle_capacity, data, dist_matrix)
+                            f2, c2 = valida_rotta(new_dest, veichle_capacity, data, dist_matrix)
 
-                        # ENTRA QUI SOLO SE LA MOSSA È FEASIBLE
-                        if f1 and f2:
-                            # Calcoliamo i costi originali (sempre stesso ordine parametri!)
-                            _, old_c1 = valida_rotta(route_src,veichle_capacity, data, dist_matrix )
-                            _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
-                            
-                            # ORA delta è sicuramente assegnato
-                            delta = (c1 + c2) - (old_c1 + old_c2)
-                            
-                            mossa_id = (cliente, r_dest_idx)
-                            is_tabu = tabu_list.get(mossa_id, 0) > iterazione
-                            
-                            # --- LOGICA DI SCELTA (DENTRO L'IF) ---
-                            # Aspirazione: se batte il record assoluto, ignora il Tabu
-                            if not is_tabu or (costo_current + delta < costo_best - 1e-9):
-                                if delta < best_delta:
-                                    best_delta = delta
-                                    best_move = (r_src_idx, i, r_dest_idx, j, mossa_id)
+                            # ENTRA QUI SOLO SE LA MOSSA È FEASIBLE
+                            if f1 and f2:
+                                # Calcoliamo i costi originali (sempre stesso ordine parametri!)
+                                _, old_c1 = valida_rotta(route_src,veichle_capacity, data, dist_matrix )
+                                _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
+                                
+                                # ORA delta è sicuramente assegnato
+                                delta = (c1 + c2) - (old_c1 + old_c2)
+                                
+                                mossa_id = (cliente, r_dest_idx)
+                                is_tabu = tabu_list.get(mossa_id, 0) > iterazione
+                                
+                                # --- LOGICA DI SCELTA (DENTRO L'IF) ---
+                                # Aspirazione: se batte il record assoluto, ignora il Tabu
+                                if not is_tabu or (costo_current + delta < costo_best - 1e-9):
+                                    if delta < best_delta:
+                                        best_delta = delta
+                                        best_move = (r_src_idx, i, r_dest_idx, j, mossa_id)
 
         # --- ESECUZIONE DELLA MOSSA ---
         if best_move:
@@ -827,6 +837,12 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
             if costo_current < costo_best - 1e-9:
                 costo_best = costo_current
                 s_best = copy.deepcopy(s)
+                no_improve = 0
+            else:
+                no_improve += 1
+        else:
+            no_improve += 1
+        iterazione += 1
                
 
     return s_best, costo_best
