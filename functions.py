@@ -215,7 +215,8 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     costo_totale_global = 0.0
     clienti_in_attesa = []
     
-    # FASE 1: rotte "singolette" finché ci sono veicoli
+    # FASE 1: rotte "singolette" finché ci sono veicoli, con clienti spazialmente distribuiti (farthest-point sampling)
+    candidati_seed = []
     for i in range(1, n_clienti + 1):
         
         # 1. Recupero dati del cliente
@@ -229,45 +230,77 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
         # 3. Verifica ammissibilità temporale
         # Il veicolo arriva e inizia il servizio non prima di a_i
         tempo_arrivo = max(costo_andata, dati_nodi[i, 4]) 
+
+        # 4. Verifica ammissibilità temporale (rientro al deposito)
+        tempo_rientro_deposito = tempo_arrivo + dati_nodi[i, 6] + costo_ritorno
         
         # Controllo dei vincoli
         # Verifica capacità (1f)  e tempo massimo (1h)
-        if domanda_cliente > v_cap or tempo_arrivo > fine_finestra:
+        if (domanda_cliente > v_cap or tempo_arrivo > fine_finestra or tempo_rientro_deposito > dati_nodi[0, 5]):
             # Clienti i infeasible anche in rotta singola
             continue
-        if len(percorsi_totali) < veichle_quantity:
-            # Creazione rotta elementare: Deposito -> Cliente -> Deposito
-            percorso_attuale = [0, i, 0] 
-            percorsi_totali.append(percorso_attuale)
-            costo_totale_global += (costo_andata + costo_ritorno)
-        else:
-            # Veicoli esauriti: metto il cliente in attesa per la fase 2
+
+        candidati_seed.append(i)
+
+    seed_indices = []
+    if candidati_seed:
+        # Primo seed: il cliente più lontano dal deposito
+        primo = max(candidati_seed, key=lambda c:costi[0,c])
+        seed_indices.append(primo)
+
+        while len(seed_indices) < veichle_quantity and len(seed_indices) < len(candidati_seed):
+            migliore = max((c for c in candidati_seed if c not in seed_indices), key=lambda c:min(costi[c,s] for s in seed_indices))
+            seed_indices.append(migliore)
+    
+    seed_set = set(seed_indices)
+    for i in seed_indices:
+        costo_andata = costi[0,i]
+        costo_ritorno = costi[i, 0]
+        percorso_attuale = [0,i,0]
+        percorsi_totali.append(percorso_attuale)
+        costo_totale_global += (costo_andata + costo_ritorno)
+    
+    for i in range(1, n_clienti + 1):
+        if i not in seed_set:
             clienti_in_attesa.append(i)
+    
+    # Completo le rotte vuote se non ho abbastanza clienti
+    while len(percorsi_totali) < veichle_quantity:
+        percorsi_totali.append([0, 0])
+
     # FASE 2: Completo le rotte tramite cheapest insertion per inserire tutti i clienti
-    for cliente in clienti_in_attesa:
+    clienti_rimanenti = list(clienti_in_attesa)
+
+    while clienti_rimanenti:
         miglior_costo_extra = float('inf')
+        miglior_cliente = None
         miglior_rotta_idx = None
         miglior_pos = None
-        for r_idx, rotta in enumerate(percorsi_totali):
-            # Provo ogni posizione di inserimento nella rotta
-            for pos in range(1, len(rotta)):
-                nuova_rotta = rotta[:pos] + [cliente] + rotta[pos:]
-                check, nuovo_costo = valida_rotta(nuova_rotta, v_cap, dati_nodi, costi)
-                if not check: continue
 
-                _, costo_attuale = valida_rotta(rotta, v_cap, dati_nodi, costi)
-                costo_extra = nuovo_costo - costo_attuale
+        for cliente in clienti_rimanenti:
+            for r_idx, rotta in enumerate(percorsi_totali):
+                costo_attuale = valida_rotta(rotta, v_cap, dati_nodi, costi)[1]
+                for pos in range(1, len(rotta)):
+                    nuova_rotta = rotta[:pos] + [cliente] + rotta[pos:]
+                    check, nuovo_costo = valida_rotta(nuova_rotta, v_cap, dati_nodi, costi)
+                    if not check: continue
+                    costo_extra = nuovo_costo - costo_attuale
 
-                if costo_extra < miglior_costo_extra:
-                    miglior_costo_extra = costo_extra
-                    miglior_rotta_idx = r_idx
-                    miglior_pos = pos
-        if miglior_rotta_idx is not None:
-            # Inserimento nella rotta migliore trovata
-            percorsi_totali[miglior_rotta_idx].insert(miglior_pos, cliente)
+                    if costo_extra < miglior_costo_extra:
+                        miglior_costo_extra = costo_extra
+                        miglior_cliente = cliente
+                        miglior_rotta_idx = r_idx
+                        miglior_pos = pos
+
+        if miglior_cliente is not None:
+            percorsi_totali[miglior_rotta_idx].insert(miglior_pos, miglior_cliente)
             costo_totale_global += miglior_costo_extra
+            clienti_rimanenti.remove(miglior_cliente)
         else:
-            print(f"Cliente {int(dati_nodi[cliente, 0])} non inseribile in nessuna rotta esistente.")
+            for c in clienti_rimanenti:
+                print(f"Cliente {int(dati_nodi[c, 0])} non inseribile in nessuna rotta esistente.")
+            break
+
     costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] 
                   for r in percorsi_totali)
     return percorsi_totali, round(costo_reale, 1)
