@@ -47,7 +47,7 @@ def matrice_distanze(data_array):
         tempo = inizio_servizio
         costo += t_uv
     return True, costo'''
-def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
+'''def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
     """
     Valida una rotta e ne calcola il costo reale.
     
@@ -100,7 +100,52 @@ def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
     # Ritorna lo stato di validità e il costo calcolato
     is_feasible = not (violazione_capacita or violazione_tempo)
     
-    return is_feasible, round(costo_totale, 2)
+    return is_feasible, round(costo_totale, 2)'''
+def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
+    """
+    Valida una rotta e ne calcola il costo reale.
+    Ritorna (False, 0.0) appena individua una violazione di capacità o tempo.
+    """
+    if len(percorso) < 2:
+        return False, 0.0
+
+    costo_totale = 0.0
+    carico_attuale = 0.0
+    tempo_attuale = 0.0
+    
+    COL_DEMAND  = 3
+    COL_READY   = 4
+    COL_DUE     = 5
+    COL_SERVICE = 6
+
+    # Ciclo su tutti gli archi della rotta
+    for k in range(len(percorso) - 1):
+        u = int(percorso[k])
+        v = int(percorso[k+1])
+        
+        # 1. Calcolo distanza e aggiornamento costo
+        distanza_uv = dist_matrix[u, v]
+        costo_totale += distanza_uv
+        
+        # 2. Controllo Capacità (solo se v non è il deposito)
+        if v != 0:
+            carico_attuale += data[v, COL_DEMAND]
+            if carico_attuale > veichle_capacity:
+                return False, 0.0  # Violazione capacità: rotta inammissibile!
+        
+        # 3. Calcolo Arrivo e Inizio Servizio
+        arrivo = tempo_attuale + data[u, COL_SERVICE] + distanza_uv
+        inizio_servizio = max(arrivo, data[v, COL_READY])
+        
+        # 4. Controllo Finestra Temporale per il nodo v (cliente o deposito finale)
+        if inizio_servizio > data[v, COL_DUE]:
+            return False, 0.0  # Violazione time window: siamo arrivati troppo tardi!
+            
+        # Aggiorniamo il tempo per il prossimo arco
+        tempo_attuale = inizio_servizio
+        
+    # Se il ciclo termina senza ritorni anticipati, la rotta è al 100% fattibile
+    return True, round(costo_totale, 2)
 # Funzione che permette di trovare i clienti vicini
 def calcola_vicini(dist_matrix, k=10):
     n = dist_matrix.shape[0]
@@ -210,7 +255,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     return percorsi_totali, costo_reale
 
 # Secondo algoritmo greedy: un veicolo dedicato per ogni nodo (se possibile) + cheapest insertion
-def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
+'''def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     percorsi_totali = []
     costo_totale_global = 0.0
     clienti_in_attesa = []
@@ -296,6 +341,104 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             percorsi_totali[miglior_rotta_idx].insert(miglior_pos, miglior_cliente)
             costo_totale_global += miglior_costo_extra
             clienti_rimanenti.remove(miglior_cliente)
+        else:
+            for c in clienti_rimanenti:
+                print(f"Cliente {int(dati_nodi[c, 0])} non inseribile in nessuna rotta esistente.")
+            break
+
+    costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] 
+                  for r in percorsi_totali)
+    return percorsi_totali, round(costo_reale, 1)'''
+def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
+    percorsi_totali = []
+    costo_totale_global = 0.0
+    clienti_in_attesa = []
+    
+    # FASE 1: rotte "singolette" finché ci sono veicoli, con clienti spazialmente distribuiti (farthest-point sampling)
+    candidati_seed = []
+    for i in range(1, n_clienti + 1):
+        domanda_cliente = dati_nodi[i, 3]  # q_i
+        fine_finestra = dati_nodi[i, 5]    # b_i
+        costo_andata = costi[0, i]  # c_0i
+        costo_ritorno = costi[i, 0] # c_i,n+1 (torna al deposito)
+        
+        tempo_arrivo = max(costo_andata, dati_nodi[i, 4]) 
+        tempo_rientro_deposito = tempo_arrivo + dati_nodi[i, 6] + costo_ritorno
+        
+        if (domanda_cliente > v_cap or tempo_arrivo > fine_finestra or tempo_rientro_deposito > dati_nodi[0, 5]):
+            continue
+
+        candidati_seed.append(i)
+
+    seed_indices = []
+    if candidati_seed:
+        primo = max(candidati_seed, key=lambda c: costi[0,c])
+        seed_indices.append(primo)
+
+        while len(seed_indices) < veichle_quantity and len(seed_indices) < len(candidati_seed):
+            migliore = max((c for c in candidati_seed if c not in seed_indices), key=lambda c: min(costi[c,s] for s in seed_indices))
+            seed_indices.append(migliore)
+    
+    seed_set = set(seed_indices)
+    for i in seed_indices:
+        costo_andata = costi[0,i]
+        costo_ritorno = costi[i, 0]
+        percorso_attuale = [0,i,0]
+        percorsi_totali.append(percorso_attuale)
+        costo_totale_global += (costo_andata + costo_ritorno)
+    
+    for i in range(1, n_clienti + 1):
+        if i not in seed_set:
+            clienti_in_attesa.append(i)
+    
+    # Completo le rotte vuote se non ho abbastanza veicoli occupati dai seed
+    while len(percorsi_totali) < veichle_quantity:
+        percorsi_totali.append([0, 0])
+
+    # FASE 2: Completo le rotte tramite REGRET-2 INSERTION (Al posto della Cheapest Insertion)
+    clienti_rimanenti = list(clienti_in_attesa)
+
+    while clienti_rimanenti:
+        miglior_regret = -float('inf')
+        miglior_scelta = None  # Conterrà (cliente, rotta_idx, pos, costo_extra)
+
+        for cliente in clienti_rimanenti:
+            opzioni_inserimento = [] # Lista di tuple: (costo_extra, rotta_idx, pos)
+
+            # Valutiamo tutte le possibili rotte e posizioni per il cliente attuale
+            for r_idx, rotta in enumerate(percorsi_totali):
+                costo_attuale = valida_rotta(rotta, v_cap, dati_nodi, costi)[1]
+                for pos in range(1, len(rotta)):
+                    nuova_rotta = rotta[:pos] + [cliente] + rotta[pos:]
+                    check, nuovo_costo = valida_rotta(nuova_rotta, v_cap, dati_nodi, costi)
+                    if check:
+                        opzioni_inserimento.append((nuovo_costo - costo_attuale, r_idx, pos))
+
+            if not opzioni_inserimento:
+                # Il cliente non può entrare in nessuna rotta esistente
+                continue
+
+            # Ordiniamo le opzioni per questo cliente dalla più economica alla più costosa
+            opzioni_inserimento.sort(key=lambda x: x[0])
+
+            # Calcolo del REGRET: Differenza di costo tra la 2° migliore opzione e la 1° migliore
+            if len(opzioni_inserimento) >= 2:
+                regret = opzioni_inserimento[1][0] - opzioni_inserimento[0][0]
+            else:
+                # Se c'è una sola opzione rimasta per questo cliente, il regret è elevatissimo:
+                # se non lo inseriamo ora, rischiamo di non poterlo inserire mai più altrove!
+                regret = float('inf')
+
+            # Selezioniamo il cliente che ha il REGRET MASSIMO (priorità a chi rischia di rimanere escluso)
+            if regret > miglior_regret:
+                miglior_regret = regret
+                miglior_scelta = (cliente, opzioni_inserimento[0][1], opzioni_inserimento[0][2], opzioni_inserimento[0][0])
+
+        if miglior_scelta is not None:
+            cliente, r_idx, pos, costo_extra = miglior_scelta
+            percorsi_totali[r_idx].insert(pos, cliente)
+            costo_totale_global += costo_extra
+            clienti_rimanenti.remove(cliente)
         else:
             for c in clienti_rimanenti:
                 print(f"Cliente {int(dati_nodi[c, 0])} non inseribile in nessuna rotta esistente.")

@@ -6,9 +6,9 @@ from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_
 def main():
      # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
     np.set_printoptions(suppress=True, precision=2)
-
-    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
-    path_file = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto'
+    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    path_file = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto'
     folders = ['n25', 'n50', 'n100']
 
     # Definisco il percorso del file .txt in cui salvare l'output completo

@@ -674,58 +674,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 1 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 7 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 26 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 33 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 41 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 48 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 38, 0]
-Veicolo 2: [0, 2, 0]
-Veicolo 3: [0, 40, 0]
-Veicolo 4: [0, 19, 0]
-Veicolo 5: [0, 28, 0]
-Veicolo 6: [0, 12, 0]
+Veicolo 1: [0, 33, 37, 38, 0]
+Veicolo 2: [0, 3, 4, 2, 1, 0]
+Veicolo 3: [0, 41, 40, 0]
+Veicolo 4: [0, 17, 19, 0]
+Veicolo 5: [0, 28, 26, 0]
+Veicolo 6: [0, 11, 12, 0]
 Veicolo 7: [0, 31, 0]
 Veicolo 8: [0, 10, 0]
 Veicolo 9: [0, 34, 0]
-Veicolo 10: [0, 50, 0]
+Veicolo 10: [0, 46, 48, 50, 49, 0]
 Veicolo 11: [0, 13, 0]
 Veicolo 12: [0, 20, 0]
 Veicolo 13: [0, 5, 0]
-Veicolo 14: [0, 29, 0]
+Veicolo 14: [0, 29, 22, 21, 0]
 Veicolo 15: [0, 43, 0]
-Veicolo 16: [0, 9, 0]
+Veicolo 16: [0, 7, 8, 9, 6, 0]
 Veicolo 17: [0, 15, 0]
-Veicolo 18: [0, 16, 0]
+Veicolo 18: [0, 16, 14, 0]
 Veicolo 19: [0, 18, 0]
 Veicolo 20: [0, 23, 0]
 Veicolo 21: [0, 24, 0]
 Veicolo 22: [0, 32, 0]
 Veicolo 23: [0, 35, 0]
-Veicolo 24: [0, 39, 0]
-Veicolo 25: [0, 45, 0]
-Costo Totale della Soluzione: 1333.2
-Costo Totale della Soluzione controllato in seguito: 1333.2
+Veicolo 24: [0, 25, 27, 30, 39, 36, 0]
+Veicolo 25: [0, 42, 44, 45, 47, 0]
+Costo Totale della Soluzione: 1347.0
+Costo Totale della Soluzione controllato in seguito: 1347.0
 
 ==================================================
 Elaborazione: n50 / C104.txt
@@ -736,38 +711,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 38, 0]
-Veicolo 2: [0, 1, 2, 3, 7, 0]
+Veicolo 1: [0, 33, 37, 38, 0]
+Veicolo 2: [0, 1, 2, 4, 3, 0]
 Veicolo 3: [0, 41, 40, 0]
 Veicolo 4: [0, 17, 19, 0]
 Veicolo 5: [0, 21, 22, 28, 26, 0]
-Veicolo 6: [0, 6, 12, 0]
+Veicolo 6: [0, 11, 12, 0]
 Veicolo 7: [0, 31, 0]
 Veicolo 8: [0, 10, 0]
 Veicolo 9: [0, 34, 0]
-Veicolo 10: [0, 49, 50, 47, 0]
+Veicolo 10: [0, 47, 50, 49, 0]
 Veicolo 11: [0, 13, 0]
 Veicolo 12: [0, 20, 0]
 Veicolo 13: [0, 5, 0]
-Veicolo 14: [0, 27, 29, 0]
+Veicolo 14: [0, 25, 27, 29, 0]
 Veicolo 15: [0, 43, 0]
-Veicolo 16: [0, 9, 0]
+Veicolo 16: [0, 8, 9, 6, 7, 0]
 Veicolo 17: [0, 15, 0]
 Veicolo 18: [0, 14, 16, 0]
 Veicolo 19: [0, 18, 0]
 Veicolo 20: [0, 23, 0]
 Veicolo 21: [0, 24, 0]
 Veicolo 22: [0, 32, 0]
-Veicolo 23: [0, 33, 37, 35, 0]
-Veicolo 24: [0, 36, 39, 30, 0]
-Veicolo 25: [0, 46, 48, 45, 42, 0]
-Costo Totale della Soluzione: 1354.3
-Costo Totale della Soluzione controllato in seguito: 1354.3
+Veicolo 23: [0, 35, 0]
+Veicolo 24: [0, 30, 39, 36, 0]
+Veicolo 25: [0, 42, 44, 45, 48, 46, 0]
+Costo Totale della Soluzione: 1345.4
+Costo Totale della Soluzione controllato in seguito: 1345.4
 
 ==================================================
 Elaborazione: n50 / C108.txt
@@ -778,39 +748,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 1 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 38, 0]
-Veicolo 2: [0, 2, 0]
-Veicolo 3: [0, 42, 41, 40, 0]
-Veicolo 4: [0, 19, 44, 0]
-Veicolo 5: [0, 30, 28, 0]
-Veicolo 6: [0, 12, 4, 0]
+Veicolo 1: [0, 33, 37, 38, 0]
+Veicolo 2: [0, 3, 4, 2, 1, 0]
+Veicolo 3: [0, 41, 40, 0]
+Veicolo 4: [0, 17, 19, 0]
+Veicolo 5: [0, 26, 28, 22, 21, 0]
+Veicolo 6: [0, 11, 12, 0]
 Veicolo 7: [0, 31, 0]
-Veicolo 8: [0, 10, 11, 0]
-Veicolo 9: [0, 34, 22, 0]
-Veicolo 10: [0, 50, 47, 0]
-Veicolo 11: [0, 13, 8, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 34, 0]
+Veicolo 10: [0, 48, 50, 49, 0]
+Veicolo 11: [0, 13, 0]
 Veicolo 12: [0, 20, 0]
-Veicolo 13: [0, 3, 5, 0]
-Veicolo 14: [0, 27, 29, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 29, 0]
 Veicolo 15: [0, 43, 0]
-Veicolo 16: [0, 6, 9, 0]
+Veicolo 16: [0, 7, 8, 9, 6, 0]
 Veicolo 17: [0, 15, 0]
-Veicolo 18: [0, 16, 0]
-Veicolo 19: [0, 18, 7, 0]
-Veicolo 20: [0, 48, 23, 0]
-Veicolo 21: [0, 25, 24, 0]
-Veicolo 22: [0, 33, 32, 0]
-Veicolo 23: [0, 35, 37, 0]
-Veicolo 24: [0, 39, 26, 0]
-Veicolo 25: [0, 46, 45, 0]
-Costo Totale della Soluzione: 1454.9
-Costo Totale della Soluzione controllato in seguito: 1454.9
+Veicolo 18: [0, 14, 16, 0]
+Veicolo 19: [0, 18, 0]
+Veicolo 20: [0, 23, 0]
+Veicolo 21: [0, 24, 0]
+Veicolo 22: [0, 32, 0]
+Veicolo 23: [0, 35, 0]
+Veicolo 24: [0, 25, 27, 30, 39, 36, 0]
+Veicolo 25: [0, 42, 44, 45, 46, 47, 0]
+Costo Totale della Soluzione: 1346.9
+Costo Totale della Soluzione controllato in seguito: 1346.9
 
 ==================================================
 Elaborazione: n50 / C201.txt
@@ -821,58 +785,33 @@ Veichle capacity: 700.0
 Number of clients: 50
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 7 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 12 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 19 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 24 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 33 non inseribile in nessuna rotta esistente.
-Cliente 35 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Cliente 41 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 43 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 50 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 38, 0]
-Veicolo 2: [0, 3, 0]
+Veicolo 1: [0, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 2: [0, 7, 3, 4, 0]
 Veicolo 3: [0, 49, 0]
-Veicolo 4: [0, 16, 0]
+Veicolo 4: [0, 19, 16, 14, 12, 15, 0]
 Veicolo 5: [0, 20, 0]
 Veicolo 6: [0, 26, 0]
-Veicolo 7: [0, 45, 0]
-Veicolo 8: [0, 11, 0]
+Veicolo 7: [0, 45, 50, 47, 0]
+Veicolo 8: [0, 11, 10, 0]
 Veicolo 9: [0, 6, 0]
 Veicolo 10: [0, 25, 0]
-Veicolo 11: [0, 40, 0]
+Veicolo 11: [0, 40, 44, 43, 0]
 Veicolo 12: [0, 1, 0]
 Veicolo 13: [0, 48, 0]
-Veicolo 14: [0, 18, 0]
-Veicolo 15: [0, 30, 0]
+Veicolo 14: [0, 18, 17, 0]
+Veicolo 15: [0, 22, 30, 0]
 Veicolo 16: [0, 31, 0]
 Veicolo 17: [0, 8, 0]
 Veicolo 18: [0, 2, 0]
-Veicolo 19: [0, 34, 0]
-Veicolo 20: [0, 28, 0]
-Veicolo 21: [0, 23, 0]
+Veicolo 19: [0, 24, 29, 34, 0]
+Veicolo 20: [0, 27, 28, 0]
+Veicolo 21: [0, 23, 21, 0]
 Veicolo 22: [0, 9, 0]
 Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 46, 0]
+Veicolo 24: [0, 46, 42, 41, 0]
 Veicolo 25: [0, 5, 0]
-Costo Totale della Soluzione: 1325.8
-Costo Totale della Soluzione controllato in seguito: 1325.8
+Costo Totale della Soluzione: 1363.9
+Costo Totale della Soluzione controllato in seguito: 1363.9
 
 ==================================================
 Elaborazione: n50 / C204.txt
@@ -883,17 +822,17 @@ Veichle capacity: 700.0
 Number of clients: 50
 
 Greedy 2
-Veicolo 1: [0, 32, 33, 35, 37, 39, 38, 0]
-Veicolo 2: [0, 7, 3, 4, 0]
+Veicolo 1: [0, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 2: [0, 4, 3, 7, 0]
 Veicolo 3: [0, 49, 0]
 Veicolo 4: [0, 12, 14, 16, 19, 15, 0]
 Veicolo 5: [0, 20, 0]
 Veicolo 6: [0, 26, 0]
-Veicolo 7: [0, 43, 47, 50, 45, 42, 0]
+Veicolo 7: [0, 43, 42, 45, 50, 47, 0]
 Veicolo 8: [0, 10, 11, 0]
 Veicolo 9: [0, 6, 0]
 Veicolo 10: [0, 25, 0]
-Veicolo 11: [0, 40, 44, 0]
+Veicolo 11: [0, 44, 40, 0]
 Veicolo 12: [0, 1, 0]
 Veicolo 13: [0, 48, 0]
 Veicolo 14: [0, 17, 18, 0]
@@ -901,15 +840,15 @@ Veicolo 15: [0, 30, 0]
 Veicolo 16: [0, 31, 0]
 Veicolo 17: [0, 8, 0]
 Veicolo 18: [0, 2, 0]
-Veicolo 19: [0, 24, 29, 36, 34, 0]
-Veicolo 20: [0, 22, 28, 27, 0]
+Veicolo 19: [0, 34, 0]
+Veicolo 20: [0, 22, 27, 28, 29, 24, 0]
 Veicolo 21: [0, 21, 23, 0]
 Veicolo 22: [0, 9, 0]
 Veicolo 23: [0, 13, 0]
 Veicolo 24: [0, 41, 46, 0]
 Veicolo 25: [0, 5, 0]
-Costo Totale della Soluzione: 1370.4
-Costo Totale della Soluzione controllato in seguito: 1370.4
+Costo Totale della Soluzione: 1358.9
+Costo Totale della Soluzione controllato in seguito: 1358.9
 
 ==================================================
 Elaborazione: n50 / C208.txt
@@ -920,33 +859,33 @@ Veichle capacity: 700.0
 Number of clients: 50
 
 Greedy 2
-Veicolo 1: [0, 32, 33, 35, 37, 38, 0]
+Veicolo 1: [0, 32, 33, 35, 37, 38, 39, 36, 0]
 Veicolo 2: [0, 4, 3, 7, 0]
 Veicolo 3: [0, 49, 0]
-Veicolo 4: [0, 12, 15, 16, 14, 0]
+Veicolo 4: [0, 12, 14, 16, 19, 15, 0]
 Veicolo 5: [0, 20, 0]
 Veicolo 6: [0, 26, 0]
-Veicolo 7: [0, 45, 50, 47, 43, 0]
+Veicolo 7: [0, 47, 50, 45, 42, 43, 0]
 Veicolo 8: [0, 10, 11, 0]
-Veicolo 9: [0, 29, 6, 0]
-Veicolo 10: [0, 21, 25, 0]
+Veicolo 9: [0, 6, 0]
+Veicolo 10: [0, 25, 0]
 Veicolo 11: [0, 44, 40, 0]
 Veicolo 12: [0, 1, 0]
-Veicolo 13: [0, 41, 42, 48, 0]
-Veicolo 14: [0, 19, 18, 0]
-Veicolo 15: [0, 22, 24, 27, 30, 0]
+Veicolo 13: [0, 48, 0]
+Veicolo 14: [0, 18, 17, 0]
+Veicolo 15: [0, 22, 30, 0]
 Veicolo 16: [0, 31, 0]
 Veicolo 17: [0, 8, 0]
 Veicolo 18: [0, 2, 0]
-Veicolo 19: [0, 39, 36, 34, 0]
-Veicolo 20: [0, 28, 0]
-Veicolo 21: [0, 23, 0]
+Veicolo 19: [0, 24, 29, 34, 0]
+Veicolo 20: [0, 27, 28, 0]
+Veicolo 21: [0, 23, 21, 0]
 Veicolo 22: [0, 9, 0]
-Veicolo 23: [0, 17, 13, 0]
-Veicolo 24: [0, 46, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 46, 41, 0]
 Veicolo 25: [0, 5, 0]
-Costo Totale della Soluzione: 1410.4
-Costo Totale della Soluzione controllato in seguito: 1410.4
+Costo Totale della Soluzione: 1359.2
+Costo Totale della Soluzione controllato in seguito: 1359.2
 
 ==================================================
 Elaborazione: n50 / R101.txt
@@ -957,58 +896,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 19 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 26 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Cliente 40 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 43 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 48 non inseribile in nessuna rotta esistente.
-Cliente 50 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 49, 0]
-Veicolo 2: [0, 23, 0]
-Veicolo 3: [0, 35, 0]
-Veicolo 4: [0, 38, 0]
+Veicolo 1: [0, 36, 49, 48, 0]
+Veicolo 2: [0, 39, 23, 22, 0]
+Veicolo 3: [0, 9, 35, 0]
+Veicolo 4: [0, 44, 38, 43, 0]
 Veicolo 5: [0, 27, 0]
-Veicolo 6: [0, 24, 0]
-Veicolo 7: [0, 45, 0]
-Veicolo 8: [0, 32, 0]
-Veicolo 9: [0, 15, 0]
+Veicolo 6: [0, 3, 24, 0]
+Veicolo 7: [0, 45, 8, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 42, 15, 0]
 Veicolo 10: [0, 7, 0]
-Veicolo 11: [0, 21, 0]
+Veicolo 11: [0, 21, 40, 0]
 Veicolo 12: [0, 37, 0]
-Veicolo 13: [0, 33, 0]
+Veicolo 13: [0, 33, 50, 0]
 Veicolo 14: [0, 12, 0]
-Veicolo 15: [0, 25, 0]
-Veicolo 16: [0, 11, 0]
-Veicolo 17: [0, 41, 0]
-Veicolo 18: [0, 47, 0]
-Veicolo 19: [0, 5, 0]
+Veicolo 15: [0, 26, 4, 25, 0]
+Veicolo 16: [0, 11, 19, 0]
+Veicolo 17: [0, 2, 41, 0]
+Veicolo 18: [0, 47, 46, 17, 0]
+Veicolo 19: [0, 5, 18, 0]
 Veicolo 20: [0, 13, 0]
-Veicolo 21: [0, 14, 0]
+Veicolo 21: [0, 14, 16, 6, 0]
 Veicolo 22: [0, 31, 0]
-Veicolo 23: [0, 20, 0]
+Veicolo 23: [0, 30, 20, 0]
 Veicolo 24: [0, 1, 0]
-Veicolo 25: [0, 34, 0]
-Costo Totale della Soluzione: 1371.6
-Costo Totale della Soluzione controllato in seguito: 1371.6
+Veicolo 25: [0, 28, 29, 34, 0]
+Costo Totale della Soluzione: 1469.1
+Costo Totale della Soluzione controllato in seguito: 1469.1
 
 ==================================================
 Elaborazione: n50 / R104.txt
@@ -1019,37 +933,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
 Veicolo 1: [0, 19, 49, 36, 46, 0]
-Veicolo 2: [0, 23, 0]
-Veicolo 3: [0, 50, 35, 0]
-Veicolo 4: [0, 38, 0]
+Veicolo 2: [0, 40, 22, 23, 39, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 6, 16, 44, 38, 43, 42, 0]
 Veicolo 5: [0, 27, 0]
-Veicolo 6: [0, 28, 29, 24, 26, 0]
-Veicolo 7: [0, 18, 45, 17, 0]
+Veicolo 6: [0, 29, 24, 0]
+Veicolo 7: [0, 18, 8, 45, 17, 0]
 Veicolo 8: [0, 10, 32, 0]
-Veicolo 9: [0, 15, 0]
+Veicolo 9: [0, 2, 15, 0]
 Veicolo 10: [0, 7, 0]
-Veicolo 11: [0, 40, 21, 0]
+Veicolo 11: [0, 21, 0]
 Veicolo 12: [0, 37, 0]
 Veicolo 13: [0, 33, 0]
 Veicolo 14: [0, 12, 0]
-Veicolo 15: [0, 25, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
 Veicolo 16: [0, 11, 0]
-Veicolo 17: [0, 2, 41, 22, 39, 0]
+Veicolo 17: [0, 41, 0]
 Veicolo 18: [0, 48, 47, 0]
-Veicolo 19: [0, 6, 5, 0]
+Veicolo 19: [0, 5, 0]
 Veicolo 20: [0, 13, 0]
-Veicolo 21: [0, 42, 43, 14, 16, 0]
+Veicolo 21: [0, 14, 0]
 Veicolo 22: [0, 31, 0]
 Veicolo 23: [0, 30, 20, 0]
 Veicolo 24: [0, 1, 0]
-Veicolo 25: [0, 3, 34, 0]
-Costo Totale della Soluzione: 1453.0
-Costo Totale della Soluzione controllato in seguito: 1453.0
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.0
+Costo Totale della Soluzione controllato in seguito: 1431.0
 
 ==================================================
 Elaborazione: n50 / R108.txt
@@ -1060,37 +970,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
 Veicolo 1: [0, 19, 49, 36, 46, 0]
-Veicolo 2: [0, 23, 0]
-Veicolo 3: [0, 50, 35, 0]
-Veicolo 4: [0, 38, 0]
+Veicolo 2: [0, 40, 22, 23, 39, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 6, 16, 44, 38, 43, 42, 0]
 Veicolo 5: [0, 27, 0]
-Veicolo 6: [0, 28, 29, 24, 26, 0]
-Veicolo 7: [0, 18, 45, 17, 0]
+Veicolo 6: [0, 29, 24, 0]
+Veicolo 7: [0, 18, 8, 45, 17, 0]
 Veicolo 8: [0, 10, 32, 0]
-Veicolo 9: [0, 15, 0]
+Veicolo 9: [0, 2, 15, 0]
 Veicolo 10: [0, 7, 0]
-Veicolo 11: [0, 40, 21, 0]
+Veicolo 11: [0, 21, 0]
 Veicolo 12: [0, 37, 0]
 Veicolo 13: [0, 33, 0]
 Veicolo 14: [0, 12, 0]
-Veicolo 15: [0, 25, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
 Veicolo 16: [0, 11, 0]
-Veicolo 17: [0, 2, 41, 22, 39, 0]
+Veicolo 17: [0, 41, 0]
 Veicolo 18: [0, 48, 47, 0]
-Veicolo 19: [0, 6, 5, 0]
+Veicolo 19: [0, 5, 0]
 Veicolo 20: [0, 13, 0]
-Veicolo 21: [0, 42, 43, 14, 16, 0]
+Veicolo 21: [0, 14, 0]
 Veicolo 22: [0, 31, 0]
 Veicolo 23: [0, 30, 20, 0]
 Veicolo 24: [0, 1, 0]
-Veicolo 25: [0, 3, 34, 0]
-Costo Totale della Soluzione: 1453.0
-Costo Totale della Soluzione controllato in seguito: 1453.0
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.0
+Costo Totale della Soluzione controllato in seguito: 1431.0
 
 ==================================================
 Elaborazione: n50 / R201.txt
@@ -1101,39 +1007,33 @@ Veichle capacity: 1000.0
 Number of clients: 50
 
 Greedy 2
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 49, 0]
-Veicolo 2: [0, 23, 30, 0]
-Veicolo 3: [0, 35, 48, 0]
-Veicolo 4: [0, 16, 38, 0]
+Veicolo 1: [0, 36, 49, 46, 48, 0]
+Veicolo 2: [0, 39, 23, 22, 40, 0]
+Veicolo 3: [0, 9, 35, 0]
+Veicolo 4: [0, 16, 44, 38, 43, 0]
 Veicolo 5: [0, 27, 0]
-Veicolo 6: [0, 4, 24, 0]
-Veicolo 7: [0, 45, 0]
-Veicolo 8: [0, 32, 0]
-Veicolo 9: [0, 2, 15, 44, 0]
-Veicolo 10: [0, 7, 18, 0]
+Veicolo 6: [0, 28, 29, 24, 0]
+Veicolo 7: [0, 45, 17, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 2, 15, 0]
+Veicolo 10: [0, 7, 0]
 Veicolo 11: [0, 21, 0]
-Veicolo 12: [0, 43, 37, 0]
-Veicolo 13: [0, 33, 0]
-Veicolo 14: [0, 28, 29, 12, 0]
-Veicolo 15: [0, 25, 0]
-Veicolo 16: [0, 11, 19, 0]
-Veicolo 17: [0, 40, 41, 0]
-Veicolo 18: [0, 36, 47, 0]
-Veicolo 19: [0, 5, 0]
-Veicolo 20: [0, 17, 13, 0]
-Veicolo 21: [0, 39, 42, 14, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 50, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 26, 4, 25, 0]
+Veicolo 16: [0, 19, 11, 0]
+Veicolo 17: [0, 41, 0]
+Veicolo 18: [0, 47, 8, 18, 0]
+Veicolo 19: [0, 5, 6, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 42, 14, 0]
 Veicolo 22: [0, 31, 0]
-Veicolo 23: [0, 46, 20, 0]
+Veicolo 23: [0, 30, 20, 0]
 Veicolo 24: [0, 1, 0]
-Veicolo 25: [0, 34, 50, 26, 0]
-Costo Totale della Soluzione: 1733.9
-Costo Totale della Soluzione controllato in seguito: 1733.9
+Veicolo 25: [0, 3, 34, 0]
+Costo Totale della Soluzione: 1451.0
+Costo Totale della Soluzione controllato in seguito: 1451.0
 
 ==================================================
 Elaborazione: n50 / R204.txt
@@ -1146,10 +1046,10 @@ Number of clients: 50
 Greedy 2
 Veicolo 1: [0, 19, 49, 36, 46, 0]
 Veicolo 2: [0, 40, 22, 23, 39, 0]
-Veicolo 3: [0, 50, 35, 9, 0]
-Veicolo 4: [0, 16, 38, 43, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 16, 44, 38, 43, 42, 0]
 Veicolo 5: [0, 27, 0]
-Veicolo 6: [0, 28, 29, 24, 4, 0]
+Veicolo 6: [0, 29, 24, 0]
 Veicolo 7: [0, 18, 8, 45, 17, 0]
 Veicolo 8: [0, 10, 32, 0]
 Veicolo 9: [0, 2, 15, 0]
@@ -1158,19 +1058,19 @@ Veicolo 11: [0, 21, 0]
 Veicolo 12: [0, 37, 0]
 Veicolo 13: [0, 33, 0]
 Veicolo 14: [0, 12, 0]
-Veicolo 15: [0, 26, 25, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
 Veicolo 16: [0, 11, 0]
 Veicolo 17: [0, 41, 0]
 Veicolo 18: [0, 48, 47, 0]
 Veicolo 19: [0, 6, 5, 0]
 Veicolo 20: [0, 13, 0]
-Veicolo 21: [0, 42, 14, 44, 0]
+Veicolo 21: [0, 14, 0]
 Veicolo 22: [0, 31, 0]
 Veicolo 23: [0, 30, 20, 0]
 Veicolo 24: [0, 1, 0]
-Veicolo 25: [0, 3, 34, 0]
-Costo Totale della Soluzione: 1449.6
-Costo Totale della Soluzione controllato in seguito: 1449.6
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.5
+Costo Totale della Soluzione controllato in seguito: 1431.5
 
 ==================================================
 Elaborazione: n50 / R208.txt
@@ -1183,10 +1083,10 @@ Number of clients: 50
 Greedy 2
 Veicolo 1: [0, 19, 49, 36, 46, 0]
 Veicolo 2: [0, 40, 22, 23, 39, 0]
-Veicolo 3: [0, 50, 35, 9, 0]
-Veicolo 4: [0, 6, 44, 38, 16, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 16, 44, 38, 43, 42, 0]
 Veicolo 5: [0, 27, 0]
-Veicolo 6: [0, 28, 29, 24, 0]
+Veicolo 6: [0, 29, 24, 0]
 Veicolo 7: [0, 18, 8, 45, 17, 0]
 Veicolo 8: [0, 10, 32, 0]
 Veicolo 9: [0, 2, 15, 0]
@@ -1195,19 +1095,19 @@ Veicolo 11: [0, 21, 0]
 Veicolo 12: [0, 37, 0]
 Veicolo 13: [0, 33, 0]
 Veicolo 14: [0, 12, 0]
-Veicolo 15: [0, 26, 25, 4, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
 Veicolo 16: [0, 11, 0]
 Veicolo 17: [0, 41, 0]
 Veicolo 18: [0, 48, 47, 0]
-Veicolo 19: [0, 5, 0]
+Veicolo 19: [0, 6, 5, 0]
 Veicolo 20: [0, 13, 0]
-Veicolo 21: [0, 42, 43, 14, 0]
+Veicolo 21: [0, 14, 0]
 Veicolo 22: [0, 31, 0]
 Veicolo 23: [0, 30, 20, 0]
 Veicolo 24: [0, 1, 0]
-Veicolo 25: [0, 3, 34, 0]
-Costo Totale della Soluzione: 1433.5
-Costo Totale della Soluzione controllato in seguito: 1433.5
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.5
+Costo Totale della Soluzione controllato in seguito: 1431.5
 
 ==================================================
 Elaborazione: n50 / RC101.txt
@@ -1218,58 +1118,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 20 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 31 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Cliente 40 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 26, 0]
-Veicolo 2: [0, 17, 0]
-Veicolo 3: [0, 43, 0]
-Veicolo 4: [0, 48, 0]
-Veicolo 5: [0, 8, 0]
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 42, 44, 40, 43, 0]
+Veicolo 4: [0, 22, 18, 48, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
 Veicolo 6: [0, 50, 0]
 Veicolo 7: [0, 9, 0]
-Veicolo 8: [0, 35, 0]
-Veicolo 9: [0, 1, 0]
+Veicolo 8: [0, 39, 36, 35, 37, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
 Veicolo 10: [0, 33, 0]
 Veicolo 11: [0, 24, 0]
 Veicolo 12: [0, 41, 0]
 Veicolo 13: [0, 34, 0]
 Veicolo 14: [0, 2, 0]
 Veicolo 15: [0, 12, 0]
-Veicolo 16: [0, 25, 0]
+Veicolo 16: [0, 21, 23, 25, 0]
 Veicolo 17: [0, 38, 0]
-Veicolo 18: [0, 30, 0]
-Veicolo 19: [0, 15, 0]
-Veicolo 20: [0, 45, 0]
+Veicolo 18: [0, 30, 32, 0]
+Veicolo 19: [0, 11, 15, 16, 0]
+Veicolo 20: [0, 45, 4, 0]
 Veicolo 21: [0, 7, 0]
 Veicolo 22: [0, 10, 0]
 Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 19, 0]
-Veicolo 25: [0, 27, 0]
-Costo Totale della Soluzione: 2025.4
-Costo Totale della Soluzione controllato in seguito: 2025.4
+Veicolo 24: [0, 19, 49, 20, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2055.6
+Costo Totale della Soluzione controllato in seguito: 2055.6
 
 ==================================================
 Elaborazione: n50 / RC104.txt
@@ -1280,18 +1155,14 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
 Veicolo 1: [0, 28, 26, 0]
-Veicolo 2: [0, 14, 47, 17, 16, 0]
-Veicolo 3: [0, 42, 43, 0]
-Veicolo 4: [0, 20, 49, 18, 48, 21, 22, 0]
-Veicolo 5: [0, 8, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 20, 18, 48, 49, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
 Veicolo 6: [0, 50, 0]
 Veicolo 7: [0, 9, 0]
-Veicolo 8: [0, 37, 35, 36, 40, 39, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
 Veicolo 9: [0, 5, 3, 1, 0]
 Veicolo 10: [0, 33, 0]
 Veicolo 11: [0, 24, 0]
@@ -1299,18 +1170,18 @@ Veicolo 12: [0, 41, 0]
 Veicolo 13: [0, 34, 0]
 Veicolo 14: [0, 2, 0]
 Veicolo 15: [0, 12, 0]
-Veicolo 16: [0, 25, 0]
+Veicolo 16: [0, 22, 21, 23, 25, 0]
 Veicolo 17: [0, 38, 0]
 Veicolo 18: [0, 32, 30, 0]
-Veicolo 19: [0, 15, 0]
-Veicolo 20: [0, 46, 45, 0]
-Veicolo 21: [0, 6, 7, 0]
+Veicolo 19: [0, 11, 15, 16, 0]
+Veicolo 20: [0, 4, 45, 0]
+Veicolo 21: [0, 7, 0]
 Veicolo 22: [0, 10, 0]
 Veicolo 23: [0, 13, 0]
 Veicolo 24: [0, 19, 0]
 Veicolo 25: [0, 31, 29, 27, 0]
-Costo Totale della Soluzione: 2050.8
-Costo Totale della Soluzione controllato in seguito: 2050.8
+Costo Totale della Soluzione: 2050.2
+Costo Totale della Soluzione controllato in seguito: 2050.2
 
 ==================================================
 Elaborazione: n50 / RC108.txt
@@ -1321,34 +1192,33 @@ Veichle capacity: 200.0
 Number of clients: 50
 
 Greedy 2
-Cliente 49 non inseribile in nessuna rotta esistente.
 Veicolo 1: [0, 28, 26, 0]
 Veicolo 2: [0, 14, 47, 17, 0]
-Veicolo 3: [0, 42, 43, 0]
-Veicolo 4: [0, 20, 48, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 18, 48, 21, 23, 22, 0]
 Veicolo 5: [0, 6, 8, 46, 0]
 Veicolo 6: [0, 50, 0]
 Veicolo 7: [0, 9, 0]
-Veicolo 8: [0, 36, 37, 35, 39, 0]
-Veicolo 9: [0, 1, 5, 3, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
 Veicolo 10: [0, 33, 0]
-Veicolo 11: [0, 24, 18, 0]
+Veicolo 11: [0, 24, 0]
 Veicolo 12: [0, 41, 0]
 Veicolo 13: [0, 34, 0]
 Veicolo 14: [0, 2, 0]
 Veicolo 15: [0, 12, 0]
-Veicolo 16: [0, 21, 23, 25, 0]
-Veicolo 17: [0, 44, 40, 38, 0]
+Veicolo 16: [0, 25, 0]
+Veicolo 17: [0, 38, 0]
 Veicolo 18: [0, 32, 30, 0]
 Veicolo 19: [0, 11, 16, 15, 0]
 Veicolo 20: [0, 4, 45, 0]
 Veicolo 21: [0, 7, 0]
 Veicolo 22: [0, 10, 0]
 Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 22, 19, 0]
+Veicolo 24: [0, 20, 49, 19, 0]
 Veicolo 25: [0, 31, 29, 27, 0]
-Costo Totale della Soluzione: 2082.3
-Costo Totale della Soluzione controllato in seguito: 2082.3
+Costo Totale della Soluzione: 2049.5
+Costo Totale della Soluzione controllato in seguito: 2049.5
 
 ==================================================
 Elaborazione: n50 / RC201.txt
@@ -1359,37 +1229,33 @@ Veichle capacity: 1000.0
 Number of clients: 50
 
 Greedy 2
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 26, 20, 0]
-Veicolo 2: [0, 17, 0]
-Veicolo 3: [0, 37, 43, 0]
-Veicolo 4: [0, 48, 0]
-Veicolo 5: [0, 6, 8, 0]
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 42, 44, 40, 43, 0]
+Veicolo 4: [0, 22, 18, 48, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
 Veicolo 6: [0, 50, 0]
-Veicolo 7: [0, 22, 9, 0]
-Veicolo 8: [0, 35, 0]
-Veicolo 9: [0, 4, 1, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 39, 36, 35, 37, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
 Veicolo 10: [0, 33, 0]
-Veicolo 11: [0, 32, 24, 0]
-Veicolo 12: [0, 40, 41, 0]
-Veicolo 13: [0, 49, 34, 0]
-Veicolo 14: [0, 47, 2, 0]
-Veicolo 15: [0, 16, 12, 0]
-Veicolo 16: [0, 25, 0]
-Veicolo 17: [0, 44, 38, 0]
-Veicolo 18: [0, 30, 0]
-Veicolo 19: [0, 11, 15, 0]
-Veicolo 20: [0, 42, 5, 45, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 21, 23, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 30, 32, 0]
+Veicolo 19: [0, 11, 16, 15, 0]
+Veicolo 20: [0, 45, 4, 0]
 Veicolo 21: [0, 7, 0]
-Veicolo 22: [0, 3, 46, 10, 0]
+Veicolo 22: [0, 10, 0]
 Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 23, 21, 19, 0]
-Veicolo 25: [0, 28, 31, 27, 29, 0]
-Costo Totale della Soluzione: 2419.5
-Costo Totale della Soluzione controllato in seguito: 2419.5
+Veicolo 24: [0, 19, 49, 20, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2055.6
+Costo Totale della Soluzione controllato in seguito: 2055.6
 
 ==================================================
 Elaborazione: n50 / RC204.txt
@@ -1402,12 +1268,49 @@ Number of clients: 50
 Greedy 2
 Veicolo 1: [0, 28, 26, 0]
 Veicolo 2: [0, 14, 47, 17, 0]
-Veicolo 3: [0, 42, 44, 43, 0]
-Veicolo 4: [0, 20, 49, 18, 48, 21, 23, 22, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 20, 18, 48, 49, 0]
 Veicolo 5: [0, 6, 8, 46, 0]
 Veicolo 6: [0, 50, 0]
 Veicolo 7: [0, 9, 0]
-Veicolo 8: [0, 37, 35, 36, 40, 39, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 22, 21, 23, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 32, 30, 0]
+Veicolo 19: [0, 11, 16, 15, 0]
+Veicolo 20: [0, 4, 45, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 19, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2050.2
+Costo Totale della Soluzione controllato in seguito: 2050.2
+
+==================================================
+Elaborazione: n50 / RC208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 20, 18, 48, 21, 23, 22, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
 Veicolo 9: [0, 5, 3, 1, 0]
 Veicolo 10: [0, 33, 0]
 Veicolo 11: [0, 24, 0]
@@ -1423,47 +1326,10 @@ Veicolo 20: [0, 4, 45, 0]
 Veicolo 21: [0, 7, 0]
 Veicolo 22: [0, 10, 0]
 Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 19, 0]
+Veicolo 24: [0, 49, 19, 0]
 Veicolo 25: [0, 31, 29, 27, 0]
-Costo Totale della Soluzione: 2049.6
-Costo Totale della Soluzione controllato in seguito: 2049.6
-
-==================================================
-Elaborazione: n50 / RC208.txt
-==================================================
-Veichle info
-Veichle quantity: 25
-Veichle capacity: 1000.0
-Number of clients: 50
-
-Greedy 2
-Veicolo 1: [0, 28, 26, 0]
-Veicolo 2: [0, 14, 47, 17, 0]
-Veicolo 3: [0, 42, 44, 43, 0]
-Veicolo 4: [0, 20, 49, 48, 21, 23, 22, 0]
-Veicolo 5: [0, 6, 8, 46, 0]
-Veicolo 6: [0, 50, 0]
-Veicolo 7: [0, 9, 0]
-Veicolo 8: [0, 37, 35, 36, 40, 39, 0]
-Veicolo 9: [0, 5, 3, 1, 0]
-Veicolo 10: [0, 33, 0]
-Veicolo 11: [0, 24, 0]
-Veicolo 12: [0, 41, 0]
-Veicolo 13: [0, 34, 0]
-Veicolo 14: [0, 2, 0]
-Veicolo 15: [0, 12, 0]
-Veicolo 16: [0, 18, 25, 0]
-Veicolo 17: [0, 38, 0]
-Veicolo 18: [0, 32, 30, 0]
-Veicolo 19: [0, 11, 16, 15, 0]
-Veicolo 20: [0, 4, 45, 0]
-Veicolo 21: [0, 7, 0]
-Veicolo 22: [0, 10, 0]
-Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 19, 0]
-Veicolo 25: [0, 31, 29, 27, 0]
-Costo Totale della Soluzione: 2056.3
-Costo Totale della Soluzione controllato in seguito: 2056.3
+Costo Totale della Soluzione: 2049.5
+Costo Totale della Soluzione controllato in seguito: 2049.5
 
 ==================================================
 Elaborazione: n100 / 1.txt
@@ -1474,22 +1340,29 @@ Veichle capacity: 200.0
 Number of clients: 120
 
 Greedy 2
-Cliente 34 non inseribile in nessuna rotta esistente.
-Cliente 45 non inseribile in nessuna rotta esistente.
-Cliente 51 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 102, 101, 100, 116, 98, 53, 55, 66, 64, 54, 0]
-Veicolo 2: [0, 88, 112, 117, 113, 83, 5, 4, 3, 2, 1, 81, 82, 0]
-Veicolo 3: [0, 92, 91, 21, 20, 23, 26, 32, 35, 36, 29, 0]
-Veicolo 4: [0, 107, 67, 71, 63, 60, 56, 75, 72, 70, 69, 0]
-Veicolo 5: [0, 41, 48, 50, 47, 49, 46, 44, 37, 119, 120, 0]
-Veicolo 6: [0, 95, 96, 97, 115, 40, 43, 42, 39, 38, 94, 93, 0]
-Veicolo 7: [0, 15, 14, 22, 24, 27, 33, 30, 31, 28, 109, 0]
-Veicolo 8: [0, 86, 85, 8, 12, 13, 11, 10, 9, 7, 6, 84, 111, 0]
-Veicolo 9: [0, 104, 103, 76, 77, 79, 80, 78, 74, 73, 106, 105, 0]
-Veicolo 10: [0, 87, 89, 18, 118, 108, 16, 25, 19, 17, 114, 90, 0]
-Veicolo 11: [0, 99, 68, 52, 57, 58, 62, 61, 65, 59, 110, 0]
-Costo Totale della Soluzione: 1861.3
-Costo Totale della Soluzione controllato in seguito: 1861.3
+Cliente 71 non inseribile in nessuna rotta esistente.
+Cliente 75 non inseribile in nessuna rotta esistente.
+Cliente 91 non inseribile in nessuna rotta esistente.
+Cliente 92 non inseribile in nessuna rotta esistente.
+Cliente 93 non inseribile in nessuna rotta esistente.
+Cliente 95 non inseribile in nessuna rotta esistente.
+Cliente 96 non inseribile in nessuna rotta esistente.
+Cliente 99 non inseribile in nessuna rotta esistente.
+Cliente 100 non inseribile in nessuna rotta esistente.
+Cliente 102 non inseribile in nessuna rotta esistente.
+Veicolo 1: [0, 21, 46, 50, 51, 45, 65, 66, 60, 56, 0]
+Veicolo 2: [0, 119, 81, 2, 1, 3, 4, 10, 5, 6, 83, 117, 82, 0]
+Veicolo 3: [0, 88, 111, 84, 18, 118, 108, 24, 31, 29, 114, 0]
+Veicolo 4: [0, 110, 38, 62, 55, 79, 78, 74, 69, 107, 0]
+Veicolo 5: [0, 87, 89, 94, 97, 115, 76, 67, 104, 101, 105, 120, 0]
+Veicolo 6: [0, 20, 27, 35, 37, 41, 49, 48, 43, 40, 0]
+Veicolo 7: [0, 106, 103, 116, 98, 70, 72, 68, 39, 109, 90, 0]
+Veicolo 8: [0, 112, 113, 7, 9, 11, 15, 14, 13, 12, 8, 85, 86, 0]
+Veicolo 9: [0, 26, 47, 61, 64, 58, 53, 80, 77, 73, 0]
+Veicolo 10: [0, 17, 19, 25, 28, 32, 36, 34, 33, 22, 16, 0]
+Veicolo 11: [0, 23, 30, 44, 42, 59, 63, 57, 54, 52, 0]
+Costo Totale della Soluzione: 2179.4
+Costo Totale della Soluzione controllato in seguito: 2179.4
 
 ==================================================
 Elaborazione: n100 / 2.txt
@@ -1500,12 +1373,10 @@ Veichle capacity: 1000.0
 Number of clients: 29
 
 Greedy 2
-Cliente 1 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 14, 15, 12, 27, 10, 8, 9, 13, 11, 22, 20, 28, 0]
-Veicolo 2: [0, 21, 26, 17, 2, 5, 18, 4, 7, 3, 6, 25, 23, 24, 19, 29, 0]
-Costo Totale della Soluzione: 356.2
-Costo Totale della Soluzione controllato in seguito: 356.2
+Veicolo 1: [0, 15, 17, 16, 13, 9, 8, 10, 11, 12, 14, 22, 20, 27, 28, 0]
+Veicolo 2: [0, 21, 29, 26, 2, 1, 3, 4, 18, 7, 5, 6, 25, 23, 24, 19, 0]
+Costo Totale della Soluzione: 248.3
+Costo Totale della Soluzione controllato in seguito: 248.3
 
 ==================================================
 Elaborazione: n100 / C101.txt
@@ -1516,108 +1387,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 1 non inseribile in nessuna rotta esistente.
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 7 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 20 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 24 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 33 non inseribile in nessuna rotta esistente.
-Cliente 35 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 40 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 43 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 45 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 48 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Cliente 50 non inseribile in nessuna rotta esistente.
-Cliente 52 non inseribile in nessuna rotta esistente.
-Cliente 54 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 56 non inseribile in nessuna rotta esistente.
-Cliente 57 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 61 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 64 non inseribile in nessuna rotta esistente.
-Cliente 65 non inseribile in nessuna rotta esistente.
-Cliente 66 non inseribile in nessuna rotta esistente.
-Cliente 67 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 73 non inseribile in nessuna rotta esistente.
-Cliente 74 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 78 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 83 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 85 non inseribile in nessuna rotta esistente.
-Cliente 86 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 88 non inseribile in nessuna rotta esistente.
-Cliente 89 non inseribile in nessuna rotta esistente.
-Cliente 90 non inseribile in nessuna rotta esistente.
-Cliente 93 non inseribile in nessuna rotta esistente.
-Cliente 94 non inseribile in nessuna rotta esistente.
-Cliente 95 non inseribile in nessuna rotta esistente.
-Cliente 96 non inseribile in nessuna rotta esistente.
-Cliente 97 non inseribile in nessuna rotta esistente.
-Cliente 99 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 70, 0]
-Veicolo 2: [0, 39, 0]
-Veicolo 3: [0, 100, 0]
-Veicolo 4: [0, 53, 0]
-Veicolo 5: [0, 19, 0]
+Veicolo 1: [0, 78, 76, 71, 70, 73, 77, 79, 0]
+Veicolo 2: [0, 32, 33, 35, 37, 38, 39, 36, 22, 21, 0]
+Veicolo 3: [0, 5, 3, 100, 2, 1, 0]
+Veicolo 4: [0, 57, 55, 54, 53, 0]
+Veicolo 5: [0, 17, 18, 19, 0]
 Veicolo 6: [0, 63, 0]
-Veicolo 7: [0, 82, 0]
-Veicolo 8: [0, 26, 0]
-Veicolo 9: [0, 51, 0]
+Veicolo 7: [0, 90, 87, 86, 83, 82, 84, 85, 88, 89, 0]
+Veicolo 8: [0, 20, 24, 30, 28, 26, 23, 0]
+Veicolo 9: [0, 43, 46, 45, 48, 51, 50, 52, 49, 47, 0]
 Veicolo 10: [0, 75, 0]
 Veicolo 11: [0, 91, 0]
 Veicolo 12: [0, 31, 0]
-Veicolo 13: [0, 92, 0]
-Veicolo 14: [0, 59, 0]
-Veicolo 15: [0, 12, 0]
-Veicolo 16: [0, 68, 0]
-Veicolo 17: [0, 80, 0]
-Veicolo 18: [0, 11, 0]
+Veicolo 13: [0, 96, 95, 94, 92, 93, 97, 99, 0]
+Veicolo 14: [0, 42, 44, 59, 0]
+Veicolo 15: [0, 15, 16, 14, 12, 0]
+Veicolo 16: [0, 68, 69, 0]
+Veicolo 17: [0, 65, 74, 80, 0]
+Veicolo 18: [0, 7, 8, 11, 9, 6, 4, 0]
 Veicolo 19: [0, 98, 0]
 Veicolo 20: [0, 41, 0]
 Veicolo 21: [0, 81, 0]
-Veicolo 22: [0, 60, 0]
-Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 34, 0]
-Veicolo 25: [0, 72, 0]
-Costo Totale della Soluzione: 1640.8
-Costo Totale della Soluzione controllato in seguito: 1640.8
+Veicolo 22: [0, 40, 56, 58, 60, 0]
+Veicolo 23: [0, 13, 10, 0]
+Veicolo 24: [0, 25, 27, 29, 34, 0]
+Veicolo 25: [0, 67, 62, 72, 61, 64, 66, 0]
+Costo Totale della Soluzione: 1721.9
+Costo Totale della Soluzione controllato in seguito: 1721.9
 
 ==================================================
 Elaborazione: n100 / C104.txt
@@ -1628,53 +1424,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 67 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 74 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 99 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 73, 70, 71, 78, 0]
-Veicolo 2: [0, 20, 27, 28, 30, 36, 39, 37, 29, 24, 0]
-Veicolo 3: [0, 100, 0]
-Veicolo 4: [0, 53, 0]
-Veicolo 5: [0, 17, 19, 18, 0]
+Veicolo 1: [0, 78, 76, 71, 70, 73, 77, 79, 0]
+Veicolo 2: [0, 20, 32, 33, 35, 37, 38, 39, 36, 30, 28, 0]
+Veicolo 3: [0, 5, 3, 1, 2, 100, 4, 6, 7, 0]
+Veicolo 4: [0, 55, 56, 53, 58, 54, 57, 64, 66, 0]
+Veicolo 5: [0, 15, 19, 18, 17, 0]
 Veicolo 6: [0, 63, 0]
-Veicolo 7: [0, 90, 86, 83, 82, 85, 88, 89, 0]
-Veicolo 8: [0, 21, 22, 26, 0]
+Veicolo 7: [0, 90, 87, 86, 83, 82, 84, 85, 88, 89, 0]
+Veicolo 8: [0, 21, 22, 25, 26, 23, 0]
 Veicolo 9: [0, 47, 46, 45, 48, 51, 50, 52, 49, 0]
 Veicolo 10: [0, 75, 0]
 Veicolo 11: [0, 91, 0]
-Veicolo 12: [0, 32, 33, 35, 31, 0]
-Veicolo 13: [0, 92, 0]
+Veicolo 12: [0, 31, 0]
+Veicolo 13: [0, 96, 95, 94, 92, 93, 97, 99, 0]
 Veicolo 14: [0, 59, 0]
-Veicolo 15: [0, 10, 16, 14, 12, 6, 7, 3, 5, 0]
-Veicolo 16: [0, 68, 0]
-Veicolo 17: [0, 80, 0]
-Veicolo 18: [0, 11, 0]
-Veicolo 19: [0, 1, 2, 96, 97, 93, 94, 95, 98, 0]
+Veicolo 15: [0, 8, 9, 12, 14, 16, 0]
+Veicolo 16: [0, 69, 68, 0]
+Veicolo 17: [0, 62, 80, 0]
+Veicolo 18: [0, 10, 11, 0]
+Veicolo 19: [0, 98, 0]
 Veicolo 20: [0, 41, 0]
 Veicolo 21: [0, 81, 0]
-Veicolo 22: [0, 43, 42, 40, 60, 56, 54, 57, 0]
+Veicolo 22: [0, 40, 60, 44, 42, 43, 0]
 Veicolo 23: [0, 13, 0]
-Veicolo 24: [0, 34, 0]
-Veicolo 25: [0, 65, 72, 61, 64, 66, 0]
-Costo Totale della Soluzione: 1732.1
-Costo Totale della Soluzione controllato in seguito: 1732.1
+Veicolo 24: [0, 24, 29, 34, 27, 0]
+Veicolo 25: [0, 67, 61, 72, 74, 65, 0]
+Costo Totale della Soluzione: 1722.0
+Costo Totale della Soluzione controllato in seguito: 1722.0
 
 ==================================================
 Elaborazione: n100 / C108.txt
@@ -1685,83 +1461,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 7 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 20 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 33 non inseribile in nessuna rotta esistente.
-Cliente 35 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 40 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 45 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 48 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Cliente 52 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 56 non inseribile in nessuna rotta esistente.
-Cliente 57 non inseribile in nessuna rotta esistente.
-Cliente 67 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 78 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 85 non inseribile in nessuna rotta esistente.
-Cliente 86 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 88 non inseribile in nessuna rotta esistente.
-Cliente 90 non inseribile in nessuna rotta esistente.
-Cliente 94 non inseribile in nessuna rotta esistente.
-Cliente 95 non inseribile in nessuna rotta esistente.
-Cliente 96 non inseribile in nessuna rotta esistente.
-Cliente 97 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 70, 73, 0]
-Veicolo 2: [0, 61, 39, 0]
-Veicolo 3: [0, 100, 99, 0]
-Veicolo 4: [0, 54, 53, 0]
-Veicolo 5: [0, 18, 19, 0]
-Veicolo 6: [0, 65, 63, 0]
-Veicolo 7: [0, 83, 82, 0]
-Veicolo 8: [0, 6, 26, 23, 0]
-Veicolo 9: [0, 51, 50, 0]
-Veicolo 10: [0, 1, 75, 0]
-Veicolo 11: [0, 89, 91, 0]
-Veicolo 12: [0, 24, 31, 0]
-Veicolo 13: [0, 92, 93, 0]
-Veicolo 14: [0, 59, 66, 0]
-Veicolo 15: [0, 9, 12, 0]
-Veicolo 16: [0, 64, 68, 0]
+Veicolo 1: [0, 78, 76, 71, 70, 73, 77, 79, 0]
+Veicolo 2: [0, 24, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 3: [0, 5, 3, 4, 100, 2, 1, 0]
+Veicolo 4: [0, 57, 55, 54, 56, 53, 61, 64, 66, 0]
+Veicolo 5: [0, 17, 18, 19, 16, 15, 28, 0]
+Veicolo 6: [0, 63, 0]
+Veicolo 7: [0, 90, 87, 86, 83, 82, 84, 85, 88, 89, 0]
+Veicolo 8: [0, 23, 26, 22, 21, 0]
+Veicolo 9: [0, 43, 46, 45, 48, 51, 50, 52, 49, 47, 0]
+Veicolo 10: [0, 75, 0]
+Veicolo 11: [0, 91, 0]
+Veicolo 12: [0, 31, 0]
+Veicolo 13: [0, 96, 95, 94, 92, 93, 97, 99, 0]
+Veicolo 14: [0, 40, 59, 0]
+Veicolo 15: [0, 7, 8, 9, 12, 14, 6, 0]
+Veicolo 16: [0, 68, 69, 0]
 Veicolo 17: [0, 80, 0]
 Veicolo 18: [0, 10, 11, 0]
-Veicolo 19: [0, 3, 98, 0]
-Veicolo 20: [0, 43, 41, 0]
-Veicolo 21: [0, 81, 62, 0]
-Veicolo 22: [0, 58, 60, 0]
-Veicolo 23: [0, 13, 8, 0]
-Veicolo 24: [0, 34, 22, 0]
-Veicolo 25: [0, 74, 72, 0]
-Costo Totale della Soluzione: 1746.0
-Costo Totale della Soluzione controllato in seguito: 1746.0
+Veicolo 19: [0, 98, 0]
+Veicolo 20: [0, 41, 0]
+Veicolo 21: [0, 81, 0]
+Veicolo 22: [0, 42, 44, 60, 58, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 20, 25, 27, 30, 29, 34, 0]
+Veicolo 25: [0, 67, 65, 62, 72, 74, 0]
+Costo Totale della Soluzione: 1728.1
+Costo Totale della Soluzione controllato in seguito: 1728.1
 
 ==================================================
 Elaborazione: n100 / C201.txt
@@ -1772,108 +1498,33 @@ Veichle capacity: 700.0
 Number of clients: 100
 
 Greedy 2
-Cliente 1 non inseribile in nessuna rotta esistente.
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 7 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 13 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 20 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 24 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 33 non inseribile in nessuna rotta esistente.
-Cliente 34 non inseribile in nessuna rotta esistente.
-Cliente 35 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 40 non inseribile in nessuna rotta esistente.
-Cliente 41 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 43 non inseribile in nessuna rotta esistente.
-Cliente 45 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 51 non inseribile in nessuna rotta esistente.
-Cliente 52 non inseribile in nessuna rotta esistente.
-Cliente 54 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 56 non inseribile in nessuna rotta esistente.
-Cliente 57 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 59 non inseribile in nessuna rotta esistente.
-Cliente 60 non inseribile in nessuna rotta esistente.
-Cliente 61 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 63 non inseribile in nessuna rotta esistente.
-Cliente 64 non inseribile in nessuna rotta esistente.
-Cliente 65 non inseribile in nessuna rotta esistente.
-Cliente 66 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 73 non inseribile in nessuna rotta esistente.
-Cliente 74 non inseribile in nessuna rotta esistente.
-Cliente 75 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 78 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 81 non inseribile in nessuna rotta esistente.
-Cliente 82 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 86 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 88 non inseribile in nessuna rotta esistente.
-Cliente 90 non inseribile in nessuna rotta esistente.
-Cliente 91 non inseribile in nessuna rotta esistente.
-Cliente 93 non inseribile in nessuna rotta esistente.
-Cliente 94 non inseribile in nessuna rotta esistente.
-Cliente 95 non inseribile in nessuna rotta esistente.
-Cliente 97 non inseribile in nessuna rotta esistente.
-Cliente 98 non inseribile in nessuna rotta esistente.
-Cliente 99 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 70, 0]
-Veicolo 2: [0, 39, 0]
-Veicolo 3: [0, 100, 0]
-Veicolo 4: [0, 53, 0]
-Veicolo 5: [0, 19, 0]
+Veicolo 1: [0, 76, 71, 70, 73, 79, 81, 78, 0]
+Veicolo 2: [0, 6, 32, 33, 35, 37, 38, 39, 36, 34, 0]
+Veicolo 3: [0, 5, 2, 100, 0]
+Veicolo 4: [0, 69, 65, 55, 54, 53, 56, 58, 60, 59, 57, 40, 46, 42, 41, 0]
+Veicolo 5: [0, 18, 19, 15, 17, 13, 9, 8, 0]
 Veicolo 6: [0, 48, 0]
-Veicolo 7: [0, 83, 0]
+Veicolo 7: [0, 91, 88, 84, 83, 90, 0]
 Veicolo 8: [0, 10, 0]
-Veicolo 9: [0, 72, 0]
-Veicolo 10: [0, 44, 0]
-Veicolo 11: [0, 29, 0]
+Veicolo 9: [0, 62, 72, 61, 66, 0]
+Veicolo 10: [0, 44, 45, 43, 0]
+Veicolo 11: [0, 20, 24, 29, 0]
 Veicolo 12: [0, 89, 0]
-Veicolo 13: [0, 26, 0]
-Veicolo 14: [0, 85, 0]
-Veicolo 15: [0, 31, 0]
+Veicolo 13: [0, 22, 27, 30, 28, 26, 23, 0]
+Veicolo 14: [0, 86, 82, 85, 77, 87, 0]
+Veicolo 15: [0, 31, 52, 0]
 Veicolo 16: [0, 96, 0]
 Veicolo 17: [0, 25, 0]
-Veicolo 18: [0, 50, 0]
-Veicolo 19: [0, 92, 0]
-Veicolo 20: [0, 12, 0]
+Veicolo 18: [0, 51, 50, 47, 0]
+Veicolo 19: [0, 93, 75, 1, 99, 97, 92, 94, 95, 98, 7, 3, 4, 0]
+Veicolo 20: [0, 16, 14, 12, 11, 0]
 Veicolo 21: [0, 21, 0]
-Veicolo 22: [0, 49, 0]
-Veicolo 23: [0, 80, 0]
+Veicolo 22: [0, 64, 49, 0]
+Veicolo 23: [0, 63, 74, 80, 0]
 Veicolo 24: [0, 67, 0]
 Veicolo 25: [0, 68, 0]
-Costo Totale della Soluzione: 1539.2
-Costo Totale della Soluzione controllato in seguito: 1539.2
+Costo Totale della Soluzione: 1634.4
+Costo Totale della Soluzione controllato in seguito: 1634.4
 
 ==================================================
 Elaborazione: n100 / C204.txt
@@ -1884,33 +1535,33 @@ Veichle capacity: 700.0
 Number of clients: 100
 
 Greedy 2
-Veicolo 1: [0, 78, 81, 71, 70, 73, 79, 0]
-Veicolo 2: [0, 34, 36, 39, 37, 38, 0]
-Veicolo 3: [0, 93, 5, 75, 2, 1, 100, 0]
-Veicolo 4: [0, 65, 40, 57, 59, 54, 60, 56, 53, 0]
-Veicolo 5: [0, 17, 19, 18, 8, 0]
-Veicolo 6: [0, 48, 99, 0]
-Veicolo 7: [0, 90, 86, 83, 84, 0]
-Veicolo 8: [0, 10, 9, 0]
-Veicolo 9: [0, 72, 62, 0]
-Veicolo 10: [0, 41, 42, 46, 44, 0]
-Veicolo 11: [0, 20, 24, 29, 27, 22, 15, 0]
-Veicolo 12: [0, 89, 4, 0]
-Veicolo 13: [0, 30, 28, 26, 23, 0]
-Veicolo 14: [0, 91, 88, 82, 85, 77, 0]
-Veicolo 15: [0, 6, 32, 33, 35, 31, 52, 58, 0]
-Veicolo 16: [0, 96, 74, 0]
+Veicolo 1: [0, 78, 81, 76, 71, 70, 73, 79, 87, 0]
+Veicolo 2: [0, 28, 39, 38, 37, 36, 34, 0]
+Veicolo 3: [0, 93, 75, 1, 99, 100, 2, 5, 0]
+Veicolo 4: [0, 65, 55, 54, 53, 56, 58, 60, 59, 57, 40, 0]
+Veicolo 5: [0, 8, 17, 19, 18, 0]
+Veicolo 6: [0, 48, 0]
+Veicolo 7: [0, 90, 84, 83, 86, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 62, 72, 74, 63, 0]
+Veicolo 10: [0, 41, 46, 44, 45, 42, 43, 0]
+Veicolo 11: [0, 20, 24, 29, 27, 22, 0]
+Veicolo 12: [0, 89, 0]
+Veicolo 13: [0, 23, 26, 30, 0]
+Veicolo 14: [0, 77, 85, 82, 88, 0]
+Veicolo 15: [0, 6, 32, 33, 35, 31, 0]
+Veicolo 16: [0, 96, 0]
 Veicolo 17: [0, 25, 0]
-Veicolo 18: [0, 47, 50, 51, 45, 43, 76, 0]
-Veicolo 19: [0, 3, 7, 98, 95, 97, 94, 92, 0]
-Veicolo 20: [0, 16, 14, 12, 11, 0]
-Veicolo 21: [0, 21, 13, 0]
-Veicolo 22: [0, 66, 64, 49, 61, 69, 0]
-Veicolo 23: [0, 63, 80, 87, 0]
+Veicolo 18: [0, 47, 50, 51, 52, 0]
+Veicolo 19: [0, 7, 98, 97, 92, 94, 95, 3, 4, 91, 0]
+Veicolo 20: [0, 14, 16, 15, 13, 9, 12, 11, 0]
+Veicolo 21: [0, 21, 0]
+Veicolo 22: [0, 66, 61, 49, 64, 69, 0]
+Veicolo 23: [0, 80, 0]
 Veicolo 24: [0, 67, 0]
-Veicolo 25: [0, 68, 55, 0]
-Costo Totale della Soluzione: 2022.2
-Costo Totale della Soluzione controllato in seguito: 2022.2
+Veicolo 25: [0, 68, 0]
+Costo Totale della Soluzione: 1657.0
+Costo Totale della Soluzione controllato in seguito: 1657.0
 
 ==================================================
 Elaborazione: n100 / C208.txt
@@ -1921,34 +1572,33 @@ Veichle capacity: 700.0
 Number of clients: 100
 
 Greedy 2
-Cliente 57 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 73, 79, 81, 70, 0]
-Veicolo 2: [0, 34, 36, 39, 28, 0]
-Veicolo 3: [0, 2, 1, 99, 100, 75, 93, 0]
-Veicolo 4: [0, 55, 54, 53, 65, 0]
-Veicolo 5: [0, 40, 14, 16, 19, 17, 0]
-Veicolo 6: [0, 41, 48, 0]
-Veicolo 7: [0, 59, 86, 83, 84, 88, 0]
-Veicolo 8: [0, 8, 10, 11, 0]
-Veicolo 9: [0, 63, 62, 74, 72, 61, 66, 0]
-Veicolo 10: [0, 46, 44, 45, 51, 52, 0]
-Veicolo 11: [0, 20, 24, 29, 30, 27, 22, 0]
-Veicolo 12: [0, 3, 56, 91, 4, 89, 0]
-Veicolo 13: [0, 58, 60, 18, 23, 26, 0]
-Veicolo 14: [0, 82, 85, 71, 76, 0]
-Veicolo 15: [0, 6, 32, 33, 35, 31, 0]
-Veicolo 16: [0, 90, 77, 78, 96, 0]
+Veicolo 1: [0, 76, 71, 70, 73, 79, 81, 78, 0]
+Veicolo 2: [0, 6, 32, 33, 35, 37, 38, 39, 36, 34, 28, 0]
+Veicolo 3: [0, 5, 2, 1, 100, 99, 7, 0]
+Veicolo 4: [0, 65, 55, 54, 53, 56, 58, 60, 59, 57, 40, 46, 41, 0]
+Veicolo 5: [0, 18, 19, 15, 13, 9, 8, 0]
+Veicolo 6: [0, 48, 0]
+Veicolo 7: [0, 83, 86, 90, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 62, 72, 74, 63, 0]
+Veicolo 10: [0, 45, 44, 42, 43, 0]
+Veicolo 11: [0, 20, 24, 29, 27, 0]
+Veicolo 12: [0, 89, 0]
+Veicolo 13: [0, 22, 30, 26, 23, 0]
+Veicolo 14: [0, 91, 88, 84, 82, 85, 77, 87, 0]
+Veicolo 15: [0, 31, 0]
+Veicolo 16: [0, 96, 0]
 Veicolo 17: [0, 25, 0]
-Veicolo 18: [0, 47, 50, 42, 43, 0]
-Veicolo 19: [0, 94, 92, 95, 98, 7, 0]
-Veicolo 20: [0, 12, 15, 13, 9, 0]
+Veicolo 18: [0, 47, 50, 51, 52, 0]
+Veicolo 19: [0, 93, 75, 98, 97, 92, 94, 95, 3, 4, 0]
+Veicolo 20: [0, 17, 16, 14, 12, 11, 0]
 Veicolo 21: [0, 21, 0]
-Veicolo 22: [0, 69, 64, 49, 0]
-Veicolo 23: [0, 87, 80, 0]
-Veicolo 24: [0, 5, 97, 67, 0]
-Veicolo 25: [0, 37, 38, 68, 0]
-Costo Totale della Soluzione: 2229.0
-Costo Totale della Soluzione controllato in seguito: 2229.0
+Veicolo 22: [0, 66, 61, 49, 64, 69, 0]
+Veicolo 23: [0, 80, 0]
+Veicolo 24: [0, 67, 0]
+Veicolo 25: [0, 68, 0]
+Costo Totale della Soluzione: 1635.0
+Costo Totale della Soluzione controllato in seguito: 1635.0
 
 ==================================================
 Elaborazione: n100 / R101.txt
@@ -1959,108 +1609,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 7 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 12 non inseribile in nessuna rotta esistente.
-Cliente 13 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 19 non inseribile in nessuna rotta esistente.
-Cliente 20 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 26 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 31 non inseribile in nessuna rotta esistente.
-Cliente 33 non inseribile in nessuna rotta esistente.
-Cliente 34 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Cliente 41 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 50 non inseribile in nessuna rotta esistente.
-Cliente 52 non inseribile in nessuna rotta esistente.
-Cliente 53 non inseribile in nessuna rotta esistente.
-Cliente 54 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 56 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 59 non inseribile in nessuna rotta esistente.
-Cliente 60 non inseribile in nessuna rotta esistente.
-Cliente 61 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 63 non inseribile in nessuna rotta esistente.
-Cliente 68 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 70 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 72 non inseribile in nessuna rotta esistente.
-Cliente 73 non inseribile in nessuna rotta esistente.
-Cliente 74 non inseribile in nessuna rotta esistente.
-Cliente 75 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 80 non inseribile in nessuna rotta esistente.
-Cliente 81 non inseribile in nessuna rotta esistente.
-Cliente 82 non inseribile in nessuna rotta esistente.
-Cliente 83 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 90 non inseribile in nessuna rotta esistente.
-Cliente 91 non inseribile in nessuna rotta esistente.
-Cliente 92 non inseribile in nessuna rotta esistente.
-Cliente 93 non inseribile in nessuna rotta esistente.
-Cliente 94 non inseribile in nessuna rotta esistente.
-Cliente 95 non inseribile in nessuna rotta esistente.
-Cliente 96 non inseribile in nessuna rotta esistente.
-Cliente 97 non inseribile in nessuna rotta esistente.
-Cliente 98 non inseribile in nessuna rotta esistente.
-Cliente 99 non inseribile in nessuna rotta esistente.
-Cliente 100 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 65, 0]
-Veicolo 2: [0, 38, 0]
-Veicolo 3: [0, 67, 0]
-Veicolo 4: [0, 49, 0]
-Veicolo 5: [0, 28, 0]
-Veicolo 6: [0, 45, 0]
-Veicolo 7: [0, 32, 0]
-Veicolo 8: [0, 57, 0]
-Veicolo 9: [0, 78, 0]
-Veicolo 10: [0, 4, 0]
-Veicolo 11: [0, 88, 0]
-Veicolo 12: [0, 85, 0]
-Veicolo 13: [0, 24, 0]
-Veicolo 14: [0, 89, 0]
-Veicolo 15: [0, 11, 0]
-Veicolo 16: [0, 66, 0]
-Veicolo 17: [0, 51, 0]
-Veicolo 18: [0, 22, 0]
-Veicolo 19: [0, 48, 0]
-Veicolo 20: [0, 43, 0]
-Veicolo 21: [0, 64, 0]
-Veicolo 22: [0, 86, 0]
-Veicolo 23: [0, 1, 0]
-Veicolo 24: [0, 35, 0]
-Veicolo 25: [0, 40, 0]
-Costo Totale della Soluzione: 1496.8
-Costo Totale della Soluzione controllato in seguito: 1496.8
+Veicolo 1: [0, 65, 71, 9, 20, 0]
+Veicolo 2: [0, 14, 44, 38, 91, 100, 0]
+Veicolo 3: [0, 39, 23, 67, 55, 25, 0]
+Veicolo 4: [0, 82, 19, 49, 0]
+Veicolo 5: [0, 28, 94, 0]
+Veicolo 6: [0, 45, 83, 61, 84, 96, 0]
+Veicolo 7: [0, 63, 90, 32, 70, 0]
+Veicolo 8: [0, 2, 87, 57, 97, 0]
+Veicolo 9: [0, 29, 78, 3, 68, 0]
+Veicolo 10: [0, 21, 73, 41, 56, 4, 0]
+Veicolo 11: [0, 31, 88, 8, 60, 0]
+Veicolo 12: [0, 5, 99, 85, 37, 93, 0]
+Veicolo 13: [0, 12, 54, 24, 80, 0]
+Veicolo 14: [0, 6, 89, 0]
+Veicolo 15: [0, 47, 11, 0]
+Veicolo 16: [0, 33, 81, 66, 0]
+Veicolo 17: [0, 27, 69, 30, 51, 50, 0]
+Veicolo 18: [0, 72, 75, 22, 74, 58, 0]
+Veicolo 19: [0, 52, 18, 46, 48, 0]
+Veicolo 20: [0, 59, 42, 15, 43, 13, 0]
+Veicolo 21: [0, 36, 64, 10, 0]
+Veicolo 22: [0, 92, 95, 98, 16, 86, 17, 0]
+Veicolo 23: [0, 62, 7, 1, 0]
+Veicolo 24: [0, 76, 79, 34, 35, 77, 0]
+Veicolo 25: [0, 40, 53, 26, 0]
+Costo Totale della Soluzione: 1885.8
+Costo Totale della Soluzione controllato in seguito: 1885.8
 
 ==================================================
 Elaborazione: n100 / R104.txt
@@ -2071,54 +1646,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 13 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 53 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 74 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 92 non inseribile in nessuna rotta esistente.
-Cliente 99 non inseribile in nessuna rotta esistente.
-Cliente 100 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 71, 65, 0]
-Veicolo 2: [0, 38, 0]
-Veicolo 3: [0, 67, 0]
-Veicolo 4: [0, 52, 7, 47, 36, 49, 19, 0]
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 92, 37, 91, 44, 38, 14, 100, 95, 0]
+Veicolo 3: [0, 72, 75, 56, 23, 67, 39, 55, 25, 54, 0]
+Veicolo 4: [0, 52, 7, 47, 49, 36, 46, 18, 0]
 Veicolo 5: [0, 28, 0]
-Veicolo 6: [0, 83, 46, 45, 17, 60, 0]
-Veicolo 7: [0, 27, 32, 70, 0]
-Veicolo 8: [0, 2, 57, 0]
-Veicolo 9: [0, 3, 78, 0]
-Veicolo 10: [0, 4, 0]
+Veicolo 6: [0, 8, 45, 83, 60, 0]
+Veicolo 7: [0, 27, 69, 70, 32, 90, 10, 31, 0]
+Veicolo 8: [0, 87, 57, 58, 0]
+Veicolo 9: [0, 76, 79, 78, 3, 77, 0]
+Veicolo 10: [0, 26, 4, 0]
 Veicolo 11: [0, 88, 0]
-Veicolo 12: [0, 96, 93, 85, 59, 94, 0]
-Veicolo 13: [0, 12, 68, 29, 24, 54, 80, 0]
+Veicolo 12: [0, 94, 59, 98, 85, 93, 99, 96, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
 Veicolo 14: [0, 89, 0]
-Veicolo 15: [0, 11, 0]
+Veicolo 15: [0, 62, 11, 0]
 Veicolo 16: [0, 30, 20, 66, 0]
 Veicolo 17: [0, 51, 0]
-Veicolo 18: [0, 21, 73, 41, 22, 75, 56, 39, 72, 26, 0]
-Veicolo 19: [0, 18, 82, 48, 0]
-Veicolo 20: [0, 95, 97, 42, 43, 14, 0]
-Veicolo 21: [0, 31, 10, 90, 63, 64, 0]
-Veicolo 22: [0, 6, 5, 61, 86, 16, 91, 98, 37, 0]
+Veicolo 18: [0, 53, 21, 73, 74, 22, 41, 0]
+Veicolo 19: [0, 82, 48, 0]
+Veicolo 20: [0, 2, 15, 43, 42, 97, 13, 0]
+Veicolo 21: [0, 19, 64, 63, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
 Veicolo 23: [0, 1, 0]
-Veicolo 24: [0, 50, 34, 35, 81, 33, 0]
+Veicolo 24: [0, 50, 33, 81, 35, 34, 0]
 Veicolo 25: [0, 40, 0]
-Costo Totale della Soluzione: 1614.4
-Costo Totale della Soluzione controllato in seguito: 1614.4
+Costo Totale della Soluzione: 1591.2
+Costo Totale della Soluzione controllato in seguito: 1591.2
 
 ==================================================
 Elaborazione: n100 / R108.txt
@@ -2129,46 +1683,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 55 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 74 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 92 non inseribile in nessuna rotta esistente.
-Cliente 100 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 71, 65, 0]
-Veicolo 2: [0, 38, 0]
-Veicolo 3: [0, 67, 0]
-Veicolo 4: [0, 52, 7, 47, 36, 49, 19, 0]
-Veicolo 5: [0, 28, 77, 0]
-Veicolo 6: [0, 83, 46, 45, 17, 16, 61, 5, 60, 0]
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 95, 92, 98, 91, 44, 38, 14, 100, 37, 97, 0]
+Veicolo 3: [0, 21, 72, 75, 56, 23, 67, 39, 55, 25, 54, 0]
+Veicolo 4: [0, 7, 49, 36, 46, 8, 18, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 60, 45, 83, 0]
 Veicolo 7: [0, 27, 32, 70, 0]
-Veicolo 8: [0, 2, 41, 57, 87, 0]
-Veicolo 9: [0, 78, 3, 76, 0]
-Veicolo 10: [0, 4, 0]
+Veicolo 8: [0, 87, 42, 57, 2, 58, 0]
+Veicolo 9: [0, 76, 79, 78, 3, 77, 0]
+Veicolo 10: [0, 26, 4, 0]
 Veicolo 11: [0, 88, 0]
-Veicolo 12: [0, 96, 93, 85, 91, 98, 37, 59, 94, 75, 0]
-Veicolo 13: [0, 26, 12, 68, 29, 24, 54, 80, 0]
+Veicolo 12: [0, 94, 59, 85, 93, 99, 96, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
 Veicolo 14: [0, 89, 0]
-Veicolo 15: [0, 11, 0]
-Veicolo 16: [0, 30, 20, 66, 0]
-Veicolo 17: [0, 56, 39, 51, 0]
-Veicolo 18: [0, 21, 73, 22, 72, 53, 0]
-Veicolo 19: [0, 18, 82, 48, 0]
-Veicolo 20: [0, 95, 97, 42, 43, 14, 13, 0]
-Veicolo 21: [0, 31, 10, 90, 63, 64, 0]
-Veicolo 22: [0, 6, 86, 99, 0]
-Veicolo 23: [0, 1, 69, 0]
-Veicolo 24: [0, 50, 34, 35, 81, 33, 0]
-Veicolo 25: [0, 40, 58, 0]
-Costo Totale della Soluzione: 1751.3
-Costo Totale della Soluzione controllato in seguito: 1751.3
+Veicolo 15: [0, 62, 11, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 15, 41, 22, 74, 73, 0]
+Veicolo 19: [0, 52, 48, 0]
+Veicolo 20: [0, 13, 43, 0]
+Veicolo 21: [0, 31, 10, 90, 63, 64, 19, 47, 82, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 50, 33, 81, 35, 34, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1608.5
+Costo Totale della Soluzione controllato in seguito: 1608.5
 
 ==================================================
 Elaborazione: n100 / R201.txt
@@ -2179,65 +1720,33 @@ Veichle capacity: 1000.0
 Number of clients: 100
 
 Greedy 2
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 15 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 25 non inseribile in nessuna rotta esistente.
-Cliente 26 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 34 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 50 non inseribile in nessuna rotta esistente.
-Cliente 56 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 72 non inseribile in nessuna rotta esistente.
-Cliente 75 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 77 non inseribile in nessuna rotta esistente.
-Cliente 80 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 90 non inseribile in nessuna rotta esistente.
-Cliente 92 non inseribile in nessuna rotta esistente.
-Cliente 95 non inseribile in nessuna rotta esistente.
-Cliente 96 non inseribile in nessuna rotta esistente.
-Cliente 97 non inseribile in nessuna rotta esistente.
-Cliente 98 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 33, 65, 63, 69, 0]
-Veicolo 2: [0, 16, 38, 61, 0]
-Veicolo 3: [0, 73, 67, 0]
-Veicolo 4: [0, 49, 0]
-Veicolo 5: [0, 2, 52, 28, 12, 0]
-Veicolo 6: [0, 14, 83, 45, 5, 59, 0]
-Veicolo 7: [0, 32, 91, 0]
-Veicolo 8: [0, 41, 57, 84, 0]
-Veicolo 9: [0, 79, 78, 0]
-Veicolo 10: [0, 54, 55, 4, 74, 0]
-Veicolo 11: [0, 19, 7, 88, 0]
-Veicolo 12: [0, 99, 85, 18, 0]
-Veicolo 13: [0, 68, 24, 0]
-Veicolo 14: [0, 100, 58, 93, 89, 0]
-Veicolo 15: [0, 47, 27, 82, 62, 11, 0]
-Veicolo 16: [0, 20, 66, 0]
-Veicolo 17: [0, 51, 81, 0]
-Veicolo 18: [0, 53, 22, 0]
-Veicolo 19: [0, 13, 60, 17, 48, 0]
-Veicolo 20: [0, 37, 43, 0]
-Veicolo 21: [0, 31, 64, 0]
-Veicolo 22: [0, 86, 6, 94, 0]
-Veicolo 23: [0, 70, 1, 0]
-Veicolo 24: [0, 35, 0]
-Veicolo 25: [0, 40, 0]
-Costo Totale della Soluzione: 2014.1
-Costo Totale della Soluzione controllato in seguito: 2014.1
+Veicolo 1: [0, 33, 65, 71, 9, 81, 50, 0]
+Veicolo 2: [0, 95, 59, 92, 98, 14, 38, 44, 91, 100, 93, 0]
+Veicolo 3: [0, 72, 39, 23, 67, 56, 55, 25, 0]
+Veicolo 4: [0, 82, 47, 36, 49, 46, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 5, 83, 45, 8, 18, 0]
+Veicolo 7: [0, 27, 90, 32, 70, 0]
+Veicolo 8: [0, 2, 57, 87, 13, 0]
+Veicolo 9: [0, 76, 79, 78, 3, 77, 0]
+Veicolo 10: [0, 26, 4, 0]
+Veicolo 11: [0, 88, 0]
+Veicolo 12: [0, 6, 94, 85, 37, 96, 0]
+Veicolo 13: [0, 12, 54, 24, 68, 80, 0]
+Veicolo 14: [0, 89, 0]
+Veicolo 15: [0, 62, 11, 10, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 21, 73, 75, 41, 22, 74, 58, 0]
+Veicolo 19: [0, 52, 48, 0]
+Veicolo 20: [0, 42, 15, 43, 97, 0]
+Veicolo 21: [0, 31, 63, 64, 19, 7, 0]
+Veicolo 22: [0, 99, 61, 16, 86, 84, 17, 60, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 29, 34, 35, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1656.8
+Costo Totale della Soluzione controllato in seguito: 1656.8
 
 ==================================================
 Elaborazione: n100 / R204.txt
@@ -2248,34 +1757,33 @@ Veichle capacity: 1000.0
 Number of clients: 100
 
 Greedy 2
-Cliente 87 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 71, 65, 9, 0]
-Veicolo 2: [0, 95, 98, 91, 38, 14, 37, 94, 0]
-Veicolo 3: [0, 41, 75, 39, 67, 56, 72, 73, 21, 0]
-Veicolo 4: [0, 52, 7, 47, 36, 49, 19, 15, 44, 0]
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 94, 95, 92, 98, 91, 44, 38, 14, 100, 37, 97, 0]
+Veicolo 3: [0, 21, 72, 75, 56, 23, 67, 39, 55, 25, 54, 0]
+Veicolo 4: [0, 52, 7, 47, 49, 36, 46, 8, 18, 0]
 Veicolo 5: [0, 28, 0]
-Veicolo 6: [0, 83, 45, 17, 84, 60, 0]
-Veicolo 7: [0, 27, 32, 70, 69, 0]
-Veicolo 8: [0, 58, 2, 57, 100, 0]
-Veicolo 9: [0, 3, 79, 78, 0]
-Veicolo 10: [0, 26, 55, 4, 54, 0]
+Veicolo 6: [0, 60, 45, 83, 0]
+Veicolo 7: [0, 27, 32, 70, 0]
+Veicolo 8: [0, 58, 2, 57, 0]
+Veicolo 9: [0, 76, 77, 3, 78, 0]
+Veicolo 10: [0, 26, 4, 0]
 Veicolo 11: [0, 88, 0]
-Veicolo 12: [0, 96, 93, 85, 59, 92, 0]
-Veicolo 13: [0, 12, 68, 29, 24, 25, 80, 77, 0]
+Veicolo 12: [0, 96, 99, 59, 93, 85, 87, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
 Veicolo 14: [0, 89, 0]
 Veicolo 15: [0, 62, 11, 0]
-Veicolo 16: [0, 30, 20, 66, 0]
-Veicolo 17: [0, 23, 51, 0]
-Veicolo 18: [0, 53, 22, 0]
-Veicolo 19: [0, 18, 82, 48, 46, 8, 0]
-Veicolo 20: [0, 13, 97, 42, 43, 0]
-Veicolo 21: [0, 31, 10, 90, 63, 64, 0]
-Veicolo 22: [0, 6, 5, 61, 86, 16, 99, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 15, 41, 22, 74, 73, 0]
+Veicolo 19: [0, 82, 48, 0]
+Veicolo 20: [0, 13, 42, 43, 0]
+Veicolo 21: [0, 31, 10, 90, 63, 64, 19, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
 Veicolo 23: [0, 1, 0]
-Veicolo 24: [0, 50, 34, 35, 81, 33, 76, 0]
-Veicolo 25: [0, 74, 40, 0]
-Costo Totale della Soluzione: 1816.5
-Costo Totale della Soluzione controllato in seguito: 1816.5
+Veicolo 24: [0, 50, 33, 81, 35, 34, 79, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1601.5
+Costo Totale della Soluzione controllato in seguito: 1601.5
 
 ==================================================
 Elaborazione: n100 / R208.txt
@@ -2286,33 +1794,33 @@ Veichle capacity: 1000.0
 Number of clients: 100
 
 Greedy 2
-Veicolo 1: [0, 71, 65, 9, 0]
-Veicolo 2: [0, 95, 98, 91, 15, 14, 38, 44, 37, 94, 0]
-Veicolo 3: [0, 54, 39, 67, 23, 56, 75, 72, 21, 0]
-Veicolo 4: [0, 52, 7, 47, 36, 49, 19, 0]
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 95, 92, 98, 91, 44, 38, 14, 100, 37, 97, 0]
+Veicolo 3: [0, 21, 72, 75, 56, 23, 67, 39, 25, 55, 54, 0]
+Veicolo 4: [0, 52, 7, 47, 49, 36, 46, 8, 18, 0]
 Veicolo 5: [0, 28, 0]
-Veicolo 6: [0, 83, 8, 46, 45, 17, 84, 60, 0]
-Veicolo 7: [0, 27, 32, 70, 69, 0]
+Veicolo 6: [0, 60, 45, 83, 0]
+Veicolo 7: [0, 27, 32, 70, 0]
 Veicolo 8: [0, 58, 2, 57, 0]
-Veicolo 9: [0, 76, 3, 79, 78, 0]
-Veicolo 10: [0, 26, 55, 25, 4, 74, 0]
+Veicolo 9: [0, 76, 77, 3, 78, 0]
+Veicolo 10: [0, 26, 4, 0]
 Veicolo 11: [0, 88, 0]
-Veicolo 12: [0, 96, 93, 85, 59, 92, 0]
-Veicolo 13: [0, 12, 68, 29, 24, 80, 0]
+Veicolo 12: [0, 94, 59, 85, 93, 99, 96, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
 Veicolo 14: [0, 89, 0]
 Veicolo 15: [0, 62, 11, 0]
-Veicolo 16: [0, 30, 20, 66, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
 Veicolo 17: [0, 51, 0]
-Veicolo 18: [0, 53, 73, 22, 41, 87, 0]
-Veicolo 19: [0, 18, 82, 48, 0]
-Veicolo 20: [0, 13, 97, 42, 43, 100, 0]
-Veicolo 21: [0, 31, 10, 90, 63, 64, 0]
-Veicolo 22: [0, 6, 5, 61, 86, 16, 99, 0]
+Veicolo 18: [0, 87, 15, 41, 22, 74, 73, 0]
+Veicolo 19: [0, 82, 48, 0]
+Veicolo 20: [0, 13, 42, 43, 0]
+Veicolo 21: [0, 31, 10, 90, 63, 64, 19, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
 Veicolo 23: [0, 1, 0]
-Veicolo 24: [0, 50, 34, 35, 81, 33, 77, 0]
-Veicolo 25: [0, 40, 0]
-Costo Totale della Soluzione: 1659.3
-Costo Totale della Soluzione controllato in seguito: 1659.3
+Veicolo 24: [0, 50, 33, 81, 35, 34, 79, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1586.4
+Costo Totale della Soluzione controllato in seguito: 1586.4
 
 ==================================================
 Elaborazione: n100 / RC101.txt
@@ -2323,108 +1831,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 10 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 12 non inseribile in nessuna rotta esistente.
-Cliente 13 non inseribile in nessuna rotta esistente.
-Cliente 14 non inseribile in nessuna rotta esistente.
-Cliente 16 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 19 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 22 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 24 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 31 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 34 non inseribile in nessuna rotta esistente.
-Cliente 35 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 37 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 39 non inseribile in nessuna rotta esistente.
-Cliente 41 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 43 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 45 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 47 non inseribile in nessuna rotta esistente.
-Cliente 48 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Cliente 52 non inseribile in nessuna rotta esistente.
-Cliente 54 non inseribile in nessuna rotta esistente.
-Cliente 56 non inseribile in nessuna rotta esistente.
-Cliente 57 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 59 non inseribile in nessuna rotta esistente.
-Cliente 60 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 63 non inseribile in nessuna rotta esistente.
-Cliente 65 non inseribile in nessuna rotta esistente.
-Cliente 66 non inseribile in nessuna rotta esistente.
-Cliente 67 non inseribile in nessuna rotta esistente.
-Cliente 68 non inseribile in nessuna rotta esistente.
-Cliente 69 non inseribile in nessuna rotta esistente.
-Cliente 70 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 78 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 80 non inseribile in nessuna rotta esistente.
-Cliente 81 non inseribile in nessuna rotta esistente.
-Cliente 82 non inseribile in nessuna rotta esistente.
-Cliente 83 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 85 non inseribile in nessuna rotta esistente.
-Cliente 86 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Cliente 88 non inseribile in nessuna rotta esistente.
-Cliente 91 non inseribile in nessuna rotta esistente.
-Cliente 94 non inseribile in nessuna rotta esistente.
-Cliente 95 non inseribile in nessuna rotta esistente.
-Cliente 96 non inseribile in nessuna rotta esistente.
-Cliente 98 non inseribile in nessuna rotta esistente.
-Cliente 100 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 26, 0]
-Veicolo 2: [0, 73, 0]
-Veicolo 3: [0, 25, 0]
-Veicolo 4: [0, 40, 0]
+Veicolo 1: [0, 31, 27, 30, 26, 32, 80, 0]
+Veicolo 2: [0, 88, 73, 78, 60, 0]
+Veicolo 3: [0, 23, 19, 21, 18, 48, 25, 0]
+Veicolo 4: [0, 42, 39, 36, 44, 40, 43, 37, 35, 0]
 Veicolo 5: [0, 92, 0]
-Veicolo 6: [0, 1, 0]
-Veicolo 7: [0, 97, 0]
-Veicolo 8: [0, 89, 0]
+Veicolo 6: [0, 45, 5, 6, 46, 3, 1, 4, 100, 70, 0]
+Veicolo 7: [0, 82, 12, 9, 87, 97, 13, 0]
+Veicolo 8: [0, 63, 76, 89, 91, 0]
 Veicolo 9: [0, 99, 0]
-Veicolo 10: [0, 55, 0]
-Veicolo 11: [0, 50, 0]
-Veicolo 12: [0, 72, 0]
-Veicolo 13: [0, 15, 0]
-Veicolo 14: [0, 51, 0]
-Veicolo 15: [0, 74, 0]
-Veicolo 16: [0, 61, 0]
+Veicolo 10: [0, 68, 55, 0]
+Veicolo 11: [0, 95, 62, 29, 34, 50, 0]
+Veicolo 12: [0, 72, 38, 41, 54, 96, 0]
+Veicolo 13: [0, 14, 47, 15, 11, 16, 10, 17, 0]
+Veicolo 14: [0, 28, 51, 56, 0]
+Veicolo 15: [0, 65, 52, 86, 74, 0]
+Veicolo 16: [0, 61, 81, 0]
 Veicolo 17: [0, 90, 0]
-Veicolo 18: [0, 7, 0]
-Veicolo 19: [0, 53, 0]
-Veicolo 20: [0, 64, 0]
-Veicolo 21: [0, 75, 0]
-Veicolo 22: [0, 20, 0]
-Veicolo 23: [0, 77, 0]
-Veicolo 24: [0, 93, 0]
-Veicolo 25: [0, 33, 0]
-Costo Totale della Soluzione: 1705.2
-Costo Totale della Soluzione controllato in seguito: 1705.2
+Veicolo 18: [0, 2, 7, 8, 79, 0]
+Veicolo 19: [0, 69, 98, 53, 0]
+Veicolo 20: [0, 64, 66, 0]
+Veicolo 21: [0, 59, 75, 58, 0]
+Veicolo 22: [0, 84, 85, 20, 0]
+Veicolo 23: [0, 83, 57, 22, 49, 24, 77, 0]
+Veicolo 24: [0, 71, 93, 0]
+Veicolo 25: [0, 33, 67, 94, 0]
+Costo Totale della Soluzione: 2123.1
+Costo Totale della Soluzione controllato in seguito: 2123.1
 
 ==================================================
 Elaborazione: n100 / RC104.txt
@@ -2435,48 +1868,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 4 non inseribile in nessuna rotta esistente.
-Cliente 8 non inseribile in nessuna rotta esistente.
-Cliente 9 non inseribile in nessuna rotta esistente.
-Cliente 11 non inseribile in nessuna rotta esistente.
-Cliente 13 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 58 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 67 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 79 non inseribile in nessuna rotta esistente.
-Cliente 84 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 80, 34, 26, 28, 30, 0]
-Veicolo 2: [0, 98, 47, 17, 78, 73, 60, 88, 0]
-Veicolo 3: [0, 25, 0]
-Veicolo 4: [0, 42, 43, 40, 36, 35, 37, 39, 41, 0]
+Veicolo 1: [0, 67, 32, 26, 27, 29, 71, 0]
+Veicolo 2: [0, 69, 78, 73, 79, 60, 88, 0]
+Veicolo 3: [0, 49, 19, 18, 21, 23, 25, 48, 24, 0]
+Veicolo 4: [0, 41, 42, 44, 39, 38, 37, 35, 36, 40, 43, 0]
 Veicolo 5: [0, 92, 0]
-Veicolo 6: [0, 68, 70, 1, 3, 5, 45, 46, 0]
-Veicolo 7: [0, 82, 12, 14, 10, 97, 59, 0]
-Veicolo 8: [0, 56, 18, 89, 63, 85, 0]
+Veicolo 6: [0, 68, 70, 1, 3, 5, 45, 8, 46, 4, 2, 100, 0]
+Veicolo 7: [0, 9, 87, 97, 59, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 85, 0]
 Veicolo 9: [0, 99, 0]
 Veicolo 10: [0, 55, 0]
-Veicolo 11: [0, 94, 27, 50, 0]
+Veicolo 11: [0, 80, 50, 0]
 Veicolo 12: [0, 54, 72, 81, 0]
-Veicolo 13: [0, 15, 0]
-Veicolo 14: [0, 21, 51, 0]
+Veicolo 13: [0, 12, 14, 11, 15, 47, 17, 16, 13, 10, 82, 0]
+Veicolo 14: [0, 84, 51, 0]
 Veicolo 15: [0, 74, 0]
-Veicolo 16: [0, 61, 69, 0]
-Veicolo 17: [0, 90, 100, 0]
-Veicolo 18: [0, 2, 6, 7, 0]
-Veicolo 19: [0, 16, 53, 0]
+Veicolo 16: [0, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 6, 7, 0]
+Veicolo 19: [0, 98, 53, 0]
 Veicolo 20: [0, 64, 0]
-Veicolo 21: [0, 52, 86, 75, 57, 65, 0]
-Veicolo 22: [0, 66, 20, 49, 19, 48, 22, 24, 83, 0]
-Veicolo 23: [0, 77, 0]
-Veicolo 24: [0, 96, 71, 93, 0]
-Veicolo 25: [0, 91, 95, 33, 32, 29, 31, 0]
-Costo Totale della Soluzione: 2013.2
-Costo Totale della Soluzione controllato in seguito: 2013.2
+Veicolo 21: [0, 52, 86, 75, 58, 65, 0]
+Veicolo 22: [0, 83, 22, 20, 66, 0]
+Veicolo 23: [0, 57, 77, 0]
+Veicolo 24: [0, 96, 93, 0]
+Veicolo 25: [0, 91, 95, 62, 33, 30, 28, 31, 34, 94, 0]
+Costo Totale della Soluzione: 1841.7
+Costo Totale della Soluzione controllato in seguito: 1841.7
 
 ==================================================
 Elaborazione: n100 / RC108.txt
@@ -2487,43 +1905,33 @@ Veichle capacity: 200.0
 Number of clients: 100
 
 Greedy 2
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 18 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 34 non inseribile in nessuna rotta esistente.
-Cliente 43 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Cliente 87 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 32, 28, 26, 80, 0]
-Veicolo 2: [0, 69, 88, 73, 78, 98, 0]
-Veicolo 3: [0, 83, 25, 23, 24, 22, 0]
-Veicolo 4: [0, 42, 44, 40, 39, 41, 0]
-Veicolo 5: [0, 31, 94, 92, 0]
-Veicolo 6: [0, 100, 4, 45, 5, 1, 70, 68, 0]
-Veicolo 7: [0, 47, 13, 59, 97, 0]
-Veicolo 8: [0, 89, 63, 84, 56, 0]
-Veicolo 9: [0, 82, 16, 9, 99, 0]
-Veicolo 10: [0, 46, 8, 55, 0]
-Veicolo 11: [0, 71, 67, 50, 0]
-Veicolo 12: [0, 36, 35, 54, 72, 0]
-Veicolo 13: [0, 12, 14, 11, 15, 10, 0]
-Veicolo 14: [0, 19, 85, 51, 0]
-Veicolo 15: [0, 86, 74, 0]
-Veicolo 16: [0, 38, 81, 61, 0]
-Veicolo 17: [0, 17, 90, 0]
-Veicolo 18: [0, 2, 6, 7, 0]
-Veicolo 19: [0, 79, 60, 53, 0]
-Veicolo 20: [0, 76, 64, 0]
-Veicolo 21: [0, 52, 75, 58, 0]
-Veicolo 22: [0, 48, 66, 20, 0]
-Veicolo 23: [0, 65, 57, 77, 0]
-Veicolo 24: [0, 37, 96, 93, 0]
-Veicolo 25: [0, 62, 33, 95, 91, 0]
-Costo Totale della Soluzione: 2378.4
-Costo Totale della Soluzione controllato in seguito: 2378.4
+Veicolo 1: [0, 71, 31, 29, 27, 26, 28, 30, 32, 34, 80, 0]
+Veicolo 2: [0, 88, 60, 79, 73, 78, 0]
+Veicolo 3: [0, 24, 22, 49, 19, 18, 48, 21, 23, 25, 0]
+Veicolo 4: [0, 41, 38, 35, 37, 40, 43, 44, 42, 36, 39, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 100, 5, 3, 1, 70, 68, 0]
+Veicolo 7: [0, 82, 87, 97, 13, 9, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 94, 67, 50, 0]
+Veicolo 12: [0, 81, 54, 72, 0]
+Veicolo 13: [0, 47, 17, 16, 11, 10, 15, 12, 14, 0]
+Veicolo 14: [0, 51, 0]
+Veicolo 15: [0, 74, 0]
+Veicolo 16: [0, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 4, 45, 46, 8, 7, 6, 0]
+Veicolo 19: [0, 69, 98, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 52, 86, 58, 75, 59, 0]
+Veicolo 22: [0, 66, 20, 0]
+Veicolo 23: [0, 65, 57, 77, 83, 0]
+Veicolo 24: [0, 96, 93, 0]
+Veicolo 25: [0, 95, 62, 33, 85, 84, 0]
+Costo Totale della Soluzione: 1852.2
+Costo Totale della Soluzione controllato in seguito: 1852.2
 
 ==================================================
 Elaborazione: n100 / RC201.txt
@@ -2534,65 +1942,33 @@ Veichle capacity: 1000.0
 Number of clients: 100
 
 Greedy 2
-Cliente 2 non inseribile in nessuna rotta esistente.
-Cliente 3 non inseribile in nessuna rotta esistente.
-Cliente 5 non inseribile in nessuna rotta esistente.
-Cliente 6 non inseribile in nessuna rotta esistente.
-Cliente 13 non inseribile in nessuna rotta esistente.
-Cliente 17 non inseribile in nessuna rotta esistente.
-Cliente 19 non inseribile in nessuna rotta esistente.
-Cliente 21 non inseribile in nessuna rotta esistente.
-Cliente 23 non inseribile in nessuna rotta esistente.
-Cliente 27 non inseribile in nessuna rotta esistente.
-Cliente 28 non inseribile in nessuna rotta esistente.
-Cliente 29 non inseribile in nessuna rotta esistente.
-Cliente 30 non inseribile in nessuna rotta esistente.
-Cliente 31 non inseribile in nessuna rotta esistente.
-Cliente 32 non inseribile in nessuna rotta esistente.
-Cliente 35 non inseribile in nessuna rotta esistente.
-Cliente 36 non inseribile in nessuna rotta esistente.
-Cliente 38 non inseribile in nessuna rotta esistente.
-Cliente 42 non inseribile in nessuna rotta esistente.
-Cliente 44 non inseribile in nessuna rotta esistente.
-Cliente 45 non inseribile in nessuna rotta esistente.
-Cliente 46 non inseribile in nessuna rotta esistente.
-Cliente 49 non inseribile in nessuna rotta esistente.
-Cliente 52 non inseribile in nessuna rotta esistente.
-Cliente 57 non inseribile in nessuna rotta esistente.
-Cliente 59 non inseribile in nessuna rotta esistente.
-Cliente 60 non inseribile in nessuna rotta esistente.
-Cliente 62 non inseribile in nessuna rotta esistente.
-Cliente 71 non inseribile in nessuna rotta esistente.
-Cliente 76 non inseribile in nessuna rotta esistente.
-Cliente 98 non inseribile in nessuna rotta esistente.
-Cliente 100 non inseribile in nessuna rotta esistente.
-Veicolo 1: [0, 34, 26, 0]
-Veicolo 2: [0, 88, 73, 0]
-Veicolo 3: [0, 48, 25, 0]
-Veicolo 4: [0, 41, 40, 0]
-Veicolo 5: [0, 14, 65, 92, 0]
-Veicolo 6: [0, 68, 4, 1, 0]
-Veicolo 7: [0, 10, 97, 0]
-Veicolo 8: [0, 91, 89, 0]
-Veicolo 9: [0, 86, 87, 99, 0]
-Veicolo 10: [0, 37, 43, 54, 55, 0]
-Veicolo 11: [0, 50, 56, 96, 0]
-Veicolo 12: [0, 72, 39, 69, 0]
-Veicolo 13: [0, 82, 11, 15, 12, 0]
-Veicolo 14: [0, 18, 51, 85, 84, 0]
-Veicolo 15: [0, 24, 74, 0]
-Veicolo 16: [0, 67, 61, 81, 0]
-Veicolo 17: [0, 22, 94, 90, 0]
-Veicolo 18: [0, 7, 8, 0]
-Veicolo 19: [0, 79, 78, 9, 53, 0]
-Veicolo 20: [0, 47, 83, 64, 0]
-Veicolo 21: [0, 75, 16, 0]
-Veicolo 22: [0, 66, 20, 0]
-Veicolo 23: [0, 58, 77, 0]
-Veicolo 24: [0, 80, 93, 70, 0]
-Veicolo 25: [0, 63, 33, 95, 0]
-Costo Totale della Soluzione: 2380.7
-Costo Totale della Soluzione controllato in seguito: 2380.7
+Veicolo 1: [0, 31, 29, 27, 28, 26, 34, 80, 0]
+Veicolo 2: [0, 88, 78, 73, 79, 60, 0]
+Veicolo 3: [0, 19, 23, 21, 18, 48, 25, 0]
+Veicolo 4: [0, 42, 39, 36, 44, 41, 38, 40, 35, 37, 43, 68, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 45, 5, 3, 1, 70, 0]
+Veicolo 7: [0, 82, 9, 87, 97, 10, 0]
+Veicolo 8: [0, 63, 85, 76, 89, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 67, 50, 0]
+Veicolo 12: [0, 72, 71, 54, 96, 0]
+Veicolo 13: [0, 47, 14, 12, 11, 15, 16, 17, 13, 0]
+Veicolo 14: [0, 51, 84, 56, 0]
+Veicolo 15: [0, 52, 86, 74, 0]
+Veicolo 16: [0, 81, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 6, 7, 8, 46, 4, 100, 0]
+Veicolo 19: [0, 69, 98, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 59, 75, 58, 0]
+Veicolo 22: [0, 83, 22, 49, 20, 66, 0]
+Veicolo 23: [0, 65, 57, 77, 24, 0]
+Veicolo 24: [0, 94, 93, 0]
+Veicolo 25: [0, 95, 62, 33, 30, 32, 0]
+Costo Totale della Soluzione: 1919.6
+Costo Totale della Soluzione controllato in seguito: 1919.6
 
 ==================================================
 Elaborazione: n100 / RC204.txt
@@ -2603,33 +1979,33 @@ Veichle capacity: 1000.0
 Number of clients: 100
 
 Greedy 2
-Veicolo 1: [0, 94, 67, 26, 0]
-Veicolo 2: [0, 69, 73, 78, 98, 0]
-Veicolo 3: [0, 83, 22, 49, 19, 18, 48, 21, 25, 24, 0]
-Veicolo 4: [0, 37, 35, 36, 42, 44, 43, 40, 39, 38, 41, 0]
+Veicolo 1: [0, 96, 71, 34, 31, 29, 27, 26, 28, 30, 32, 67, 94, 0]
+Veicolo 2: [0, 88, 60, 79, 73, 78, 98, 0]
+Veicolo 3: [0, 66, 22, 49, 19, 18, 48, 21, 23, 25, 24, 83, 0]
+Veicolo 4: [0, 41, 39, 36, 37, 38, 35, 40, 44, 43, 42, 0]
 Veicolo 5: [0, 92, 0]
-Veicolo 6: [0, 100, 1, 70, 68, 0]
-Veicolo 7: [0, 87, 97, 59, 9, 0]
-Veicolo 8: [0, 56, 85, 63, 89, 76, 0]
+Veicolo 6: [0, 4, 1, 70, 68, 0]
+Veicolo 7: [0, 9, 97, 59, 87, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 85, 84, 91, 0]
 Veicolo 9: [0, 99, 0]
 Veicolo 10: [0, 55, 0]
-Veicolo 11: [0, 80, 30, 28, 27, 29, 31, 34, 50, 0]
+Veicolo 11: [0, 80, 50, 0]
 Veicolo 12: [0, 54, 72, 81, 0]
-Veicolo 13: [0, 82, 10, 47, 17, 16, 11, 15, 14, 12, 0]
-Veicolo 14: [0, 84, 51, 0]
-Veicolo 15: [0, 13, 74, 0]
+Veicolo 13: [0, 10, 11, 12, 14, 47, 17, 16, 15, 13, 82, 0]
+Veicolo 14: [0, 51, 0]
+Veicolo 15: [0, 74, 0]
 Veicolo 16: [0, 61, 0]
 Veicolo 17: [0, 90, 0]
-Veicolo 18: [0, 2, 3, 5, 45, 4, 46, 6, 7, 60, 88, 0]
-Veicolo 19: [0, 8, 79, 53, 0]
+Veicolo 18: [0, 2, 45, 3, 5, 46, 8, 7, 6, 100, 0]
+Veicolo 19: [0, 69, 53, 0]
 Veicolo 20: [0, 64, 0]
-Veicolo 21: [0, 52, 86, 75, 58, 0]
-Veicolo 22: [0, 66, 20, 23, 0]
-Veicolo 23: [0, 65, 57, 77, 0]
-Veicolo 24: [0, 96, 71, 93, 0]
-Veicolo 25: [0, 91, 95, 62, 33, 32, 0]
-Costo Totale della Soluzione: 1981.5
-Costo Totale della Soluzione controllato in seguito: 1981.5
+Veicolo 21: [0, 52, 86, 75, 58, 65, 0]
+Veicolo 22: [0, 20, 0]
+Veicolo 23: [0, 57, 77, 0]
+Veicolo 24: [0, 93, 0]
+Veicolo 25: [0, 62, 33, 95, 0]
+Costo Totale della Soluzione: 1824.3
+Costo Totale della Soluzione controllato in seguito: 1824.3
 
 ==================================================
 Elaborazione: n100 / RC208.txt
@@ -2640,30 +2016,30 @@ Veichle capacity: 1000.0
 Number of clients: 100
 
 Greedy 2
-Veicolo 1: [0, 94, 67, 34, 31, 29, 27, 26, 28, 30, 32, 80, 0]
-Veicolo 2: [0, 69, 88, 60, 73, 78, 98, 0]
-Veicolo 3: [0, 83, 22, 49, 19, 18, 48, 21, 23, 25, 24, 0]
-Veicolo 4: [0, 42, 44, 40, 36, 37, 38, 39, 41, 0]
+Veicolo 1: [0, 71, 34, 31, 29, 27, 26, 28, 30, 32, 67, 94, 0]
+Veicolo 2: [0, 88, 60, 79, 73, 78, 98, 69, 0]
+Veicolo 3: [0, 22, 49, 19, 18, 48, 21, 23, 25, 24, 83, 0]
+Veicolo 4: [0, 41, 39, 38, 37, 35, 36, 40, 43, 44, 42, 0]
 Veicolo 5: [0, 92, 0]
-Veicolo 6: [0, 100, 4, 46, 8, 45, 5, 3, 1, 70, 68, 0]
-Veicolo 7: [0, 87, 97, 59, 13, 17, 9, 0]
-Veicolo 8: [0, 56, 84, 85, 89, 76, 0]
+Veicolo 6: [0, 68, 70, 1, 100, 0]
+Veicolo 7: [0, 82, 9, 13, 97, 59, 87, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 85, 84, 91, 0]
 Veicolo 9: [0, 99, 0]
 Veicolo 10: [0, 55, 0]
-Veicolo 11: [0, 50, 0]
-Veicolo 12: [0, 54, 72, 35, 43, 81, 0]
-Veicolo 13: [0, 82, 47, 16, 10, 11, 15, 14, 12, 0]
+Veicolo 11: [0, 80, 50, 0]
+Veicolo 12: [0, 54, 72, 81, 0]
+Veicolo 13: [0, 10, 11, 15, 16, 17, 47, 14, 12, 0]
 Veicolo 14: [0, 51, 0]
 Veicolo 15: [0, 74, 0]
 Veicolo 16: [0, 61, 0]
 Veicolo 17: [0, 90, 0]
-Veicolo 18: [0, 2, 6, 7, 79, 0]
+Veicolo 18: [0, 2, 4, 45, 3, 5, 46, 8, 7, 6, 0]
 Veicolo 19: [0, 53, 0]
 Veicolo 20: [0, 64, 0]
-Veicolo 21: [0, 52, 86, 75, 58, 0]
+Veicolo 21: [0, 52, 86, 75, 58, 65, 0]
 Veicolo 22: [0, 66, 20, 0]
-Veicolo 23: [0, 65, 57, 77, 0]
-Veicolo 24: [0, 96, 71, 93, 0]
-Veicolo 25: [0, 62, 33, 63, 95, 91, 0]
-Costo Totale della Soluzione: 1892.3
-Costo Totale della Soluzione controllato in seguito: 1892.3
+Veicolo 23: [0, 57, 77, 0]
+Veicolo 24: [0, 96, 93, 0]
+Veicolo 25: [0, 62, 33, 95, 0]
+Costo Totale della Soluzione: 1797.0
+Costo Totale della Soluzione controllato in seguito: 1797.0
