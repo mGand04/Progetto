@@ -186,7 +186,7 @@ def controllo_costo(path, veichle_capacity, data, dist_matrix):
     
     return check_costo
 
-def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
+'''def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
     visitati = np.zeros(n_clienti+1, dtype=bool)
     visitati[0] = True # Il deposito è il punto di partenza
@@ -252,6 +252,109 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             percorsi_totali.append([0, 0])
     costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] 
                   for r in percorsi_totali)
+    return percorsi_totali, costo_reale'''
+def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
+    visitati = np.zeros(n_clienti + 1, dtype=bool)
+    visitati[0] = True  # Il deposito è il punto di partenza
+
+    percorsi_totali = []
+    costo_totale_global = 0
+    clienti_serviti = 0
+
+    while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
+        percorso_attuale = [0]
+        nodo_corrente = 0
+        capacita_residua = v_cap
+        tempo_attuale = 0
+
+        while True:
+            miglior_prossimo = None
+            distanza_minima = float('inf')
+            orario_inizio_prossimo = 0
+
+            for i in range(1, n_clienti + 1):
+                if not visitati[i]:
+                    t_ij = costi[nodo_corrente, i]
+                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + t_ij,
+                                 dati_nodi[i, 4])
+                    tempo_rientro_deposito = arrivo + dati_nodi[i, 6] + costi[i, 0]
+
+                    if (capacita_residua >= dati_nodi[i, 3] and
+                            arrivo <= dati_nodi[i, 5] and
+                            tempo_rientro_deposito <= dati_nodi[0, 5]):
+                        if t_ij < distanza_minima:
+                            distanza_minima = t_ij
+                            miglior_prossimo = i
+                            orario_inizio_prossimo = arrivo
+
+            if miglior_prossimo is None:
+                costo_ritorno = costi[nodo_corrente, 0]
+                costo_totale_global += costo_ritorno
+                percorso_attuale.append(0)
+                break
+
+            visitati[miglior_prossimo] = True
+            clienti_serviti += 1
+            capacita_residua -= dati_nodi[miglior_prossimo, 3]
+            tempo_attuale = orario_inizio_prossimo
+            costo_totale_global += distanza_minima
+            percorso_attuale.append(miglior_prossimo)
+            nodo_corrente = miglior_prossimo
+
+        # Se la rotta è rimasta vuota (nessun cliente inserito), aprire altri
+        # veicoli non serve: lo stato si resetta identico e fallirebbe di nuovo.
+        # Fermiamo qui il greedy e passiamo alla fase di repair.
+        if percorso_attuale == [0, 0]:
+            break
+
+        percorsi_totali.append(percorso_attuale)
+
+    # --- FASE DI REPAIR: prova a inserire i clienti rimasti fuori ---
+    clienti_non_serviti = [i for i in range(1, n_clienti + 1) if not visitati[i]]
+
+    for cliente in clienti_non_serviti:
+        migliore_costo_inserimento = float('inf')
+        migliore_rotta_idx = None
+        migliore_rotta_nuova = None
+
+        for idx, rotta in enumerate(percorsi_totali):
+            for k in range(1, len(rotta)):
+                rotta_candidata = rotta[:k] + [cliente] + rotta[k:]
+                feasible, costo_candidato = valida_rotta(
+                    rotta_candidata, v_cap, dati_nodi, costi
+                )
+                if not feasible:
+                    continue
+                _, costo_originale = valida_rotta(rotta, v_cap, dati_nodi, costi)
+                delta = costo_candidato - costo_originale
+                if delta < migliore_costo_inserimento:
+                    migliore_costo_inserimento = delta
+                    migliore_rotta_idx = idx
+                    migliore_rotta_nuova = rotta_candidata
+
+        # Se non c'è posto in nessuna rotta esistente, prova ad aprire
+        # un nuovo veicolo (se ce ne sono ancora disponibili)
+        if migliore_rotta_idx is None and len(percorsi_totali) < veichle_quantity:
+            rotta_nuova = [0, cliente, 0]
+            feasible, costo_nuovo = valida_rotta(rotta_nuova, v_cap, dati_nodi, costi)
+            if feasible:
+                percorsi_totali.append(rotta_nuova)
+                visitati[cliente] = True
+                clienti_serviti += 1
+            continue
+
+        if migliore_rotta_idx is not None:
+            percorsi_totali[migliore_rotta_idx] = migliore_rotta_nuova
+            visitati[cliente] = True
+            clienti_serviti += 1
+
+    # Riempimento di eventuali veicoli inutilizzati
+    while len(percorsi_totali) < veichle_quantity:
+        percorsi_totali.append([0, 0])
+
+    costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1]
+                       for r in percorsi_totali)
+
     return percorsi_totali, costo_reale
 
 # Secondo algoritmo greedy: un veicolo dedicato per ogni nodo (se possibile) + cheapest insertion
@@ -449,7 +552,7 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     return percorsi_totali, round(costo_reale, 1)
 
 #1 Neighborhood: Insertion --> provo a togliere un cliente da un path e lo inserisco in un'altra con FIRST IMPROVMENT
-def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
+'''def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
     #print("\n Neighborhood 1: Insertion")
     iterazione = 0
     costo_attuale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
@@ -478,7 +581,8 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
         for idx, rotta in enumerate(path):
             _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
             costi_rotte[idx] = c
-
+        # r1_idx --> rotta iniziale da cui prelevo
+        # r2_idx --> rotta di destinazione
         # Itero su tutte le rotte
         for r1_idx in range(len(path)):
             rotta_src = path[r1_idx]
@@ -520,8 +624,8 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
                         # Se src e dest sono la stessa, lavoriamo sulla stessa lista già modificata
                         if r1_idx == r2_idx:
                             # Se abbiamo rimosso un elemento prima della posizione di inserimento, l'indice scala
-                            nuova_rotta_dest = nuova_rotta_src[:]
-                            adj_pos = pos - 1 if pos > idx_pos else pos
+                            nuova_rotta_dest = nuova_rotta_src[:] # Creo copia della lista
+                            adj_pos = pos - 1 if pos > idx_pos else pos #Se rimuovo un cliente accorcio la lista perciò metto il -1
                             nuova_rotta_dest.insert(adj_pos, cliente)
                         else:
                             nuova_rotta_dest = rotta_dest[:]
@@ -553,82 +657,166 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot):
                 if miglioramento: break
             if miglioramento: break
         
+    return path, costo_attuale'''
+def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
+    costo_attuale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
+    miglioramento = True
+
+    # fix: se non passato dall'esterno, lo calcolo qui (fallback), ma il modo
+    # corretto d'uso è calcolarlo UNA VOLTA fuori dal GRASP e passarlo come
+    # parametro ad ogni chiamata, così non lo si ricalcola ad ogni iterazione
+    if vicini is None:
+        vicini = calcola_vicini(dist_matrix, k=10)
+
+    client_to_route = {cliente: r_idx
+                        for r_idx, rotta in enumerate(path)
+                        for cliente in rotta}
+
+    capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
+                       for idx, rotta in enumerate(path)}
+
+    while miglioramento:
+        miglioramento = False
+
+        # fix: un solo giro di valida_rotta per rotta, invece di due
+        costi_rotte = {}
+        for idx, rotta in enumerate(path):
+            _, c = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
+            costi_rotte[idx] = c
+
+        costo_reale = sum(costi_rotte.values())
+        assert abs(costo_attuale - costo_reale) < 0.1, \
+            f"DIVERGENZA: costo_attuale={costo_attuale:.1f}, costo_reale={costo_reale:.1f}"
+
+        for r1_idx in range(len(path)):
+            rotta_src = path[r1_idx]
+
+            if len(rotta_src) <= 2:
+                continue
+
+            for idx_pos in range(1, len(rotta_src) - 1):
+                cliente = rotta_src[idx_pos]
+
+                nuova_rotta_src = rotta_src[:]
+                nuova_rotta_src.pop(idx_pos)
+                ok_src, costo_src = valida_rotta(nuova_rotta_src, veichle_capacity, data, dist_matrix)
+                if not ok_src:
+                    continue
+
+                rotte_candidate = set()
+                for vicino in vicini[cliente]:
+                    if vicino in client_to_route:
+                        rotte_candidate.add(client_to_route[vicino])
+                rotte_candidate.add(r1_idx)
+
+                for r2_idx in rotte_candidate:
+                    rotta_dest = path[r2_idx]
+                    domanda_cliente = data[cliente, 3]
+
+                    if r1_idx != r2_idx:
+                        if capacita_rotte[r2_idx] + domanda_cliente > veichle_capacity:
+                            continue
+
+                    for pos in range(1, len(rotta_dest)):
+                        if r1_idx == r2_idx and (pos == idx_pos or pos == idx_pos + 1):
+                            continue
+
+                        if r1_idx == r2_idx:
+                            nuova_rotta_dest = nuova_rotta_src[:]
+                            adj_pos = pos - 1 if pos > idx_pos else pos
+                            nuova_rotta_dest.insert(adj_pos, cliente)
+                        else:
+                            nuova_rotta_dest = rotta_dest[:]
+                            nuova_rotta_dest.insert(pos, cliente)
+
+                        ok_dest, costo_dest = valida_rotta(nuova_rotta_dest, veichle_capacity, data, dist_matrix)
+                        if not ok_dest:
+                            continue
+
+                        if r1_idx == r2_idx:
+                            nuovo_costo_tot = costo_attuale - costi_rotte[r1_idx] + costo_dest
+                        else:
+                            nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx]
+                                                + costo_src + costo_dest)
+
+                        if nuovo_costo_tot < costo_attuale - 0.01:
+                            path[r1_idx] = nuova_rotta_src
+                            path[r2_idx] = nuova_rotta_dest
+                            costo_attuale = nuovo_costo_tot
+                            client_to_route = {c: r_idx
+                                                for r_idx, rotta in enumerate(path)
+                                                for c in rotta}
+                            capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
+                                               for idx, rotta in enumerate(path)}
+                            miglioramento = True
+                            break
+                    if miglioramento:
+                        break
+                if miglioramento:
+                    break
+            if miglioramento:
+                break
+
     return path, costo_attuale
 
 # Or-opt-2: Scambi di segmenti intrarotta
 def neigh_2(path, veichle_capacity, data, dist_matrix, costo_tot):
     miglioramento = True
-    
+
     while miglioramento:
         miglioramento = False
-
         # Itero sulle rotte (solo intrarotta)
         for idx_rotta in range(len(path)):
             rotta_src = path[idx_rotta]
-
-            # Serve una rotta con almeno 5 nodi per spostare 2 clienti: 
+            # Serve una rotta con almeno 5 nodi per spostare 2 clienti:
             # Deposito_Inizio + Cliente1 + Cliente2 + Cliente_Altro + Deposito_Fine
-            if len(rotta_src) < 5: 
+            if len(rotta_src) < 5:
                 continue
+
+            # Il costo della rotta originale non dipende da i o k:
+            # lo calcolo UNA SOLA VOLTA fuori dai due cicli annidati
+            _, costo_iniziale = valida_rotta(rotta_src, veichle_capacity, data, dist_matrix)
 
             # i è l'indice di inizio del blocco di 2 clienti da spostare
             for i in range(1, len(rotta_src) - 2):
                 c1 = rotta_src[i]
                 c2 = rotta_src[i + 1]
-                
-                # Nodi vicini al blocco nella rotta originale
-                prev_node = rotta_src[i-1]
-                next_node = rotta_src[i+2]
 
-                # 1. Calcolo del risparmio togliendo c1-c2 dalla posizione attuale
-                # Togliamo: (prev->c1), (c1->c2), (c2->next)
-                # Aggiungiamo il ponte: (prev->next)
-                '''
-                rimosso = (dist_matrix[prev_node][c1] + 
-                           dist_matrix[c1][c2] + 
-                           dist_matrix[c2][next_node])
-                '''
-                #ponte_estrazione = dist_matrix[prev_node][next_node]
-                
                 # Creiamo la rotta senza i due clienti
-                rotta_ridotta = rotta_src[:i] + rotta_src[i+2:]
-                
-                # 2. Proviamo a inserire il blocco [c1, c2] in ogni posizione k della rotta ridotta
+                rotta_ridotta = rotta_src[:i] + rotta_src[i + 2:]
+
+                # Proviamo a inserire il blocco [c1, c2] in ogni posizione k della rotta ridotta
                 for k in range(1, len(rotta_ridotta)):
-                    n_in_prev = rotta_ridotta[k-1]
-                    n_in_next = rotta_ridotta[k]
-
-                    # Costo dell'inserimento tra n_in_prev e n_in_next
-                    '''
-                    ponte_rotto = dist_matrix[n_in_prev][n_in_next]
-                    nuovo_inserimento = (dist_matrix[n_in_prev][c1] + 
-                                        dist_matrix[c1][c2] + 
-                                        dist_matrix[c2][n_in_next])
-                    '''
-                                        
                     nuova_rotta = rotta_ridotta[:k] + [c1, c2] + rotta_ridotta[k:]
-                    #delta = (ponte_estrazione - rimosso) + (nuovo_inserimento - ponte_rotto)
-                    _, costo_iniziale = valida_rotta(rotta_src, veichle_capacity, data, dist_matrix)
-                    feasible, costo_nuovo = valida_rotta(nuova_rotta, veichle_capacity, data, dist_matrix)
 
-                    if not feasible: continue
+                    feasible, costo_nuovo = valida_rotta(nuova_rotta, veichle_capacity, data, dist_matrix)
+                    if not feasible:
+                        continue
 
                     delta = costo_nuovo - costo_iniziale
-
                     if delta < -1e-6:
-                        # Applichiamo il miglioramento
-                        #nuova_rotta = rotta_ridotta[:k] + [c1, c2] + rotta_ridotta[k:]
-                        #feasible, _ = valida_rotta(nuova_rotta, veichle_capacity, data, dist_matrix)
-                        #if feasible:
                         path[idx_rotta] = nuova_rotta
                         costo_tot += delta
                         miglioramento = True
-                        break 
-                if miglioramento: break
-            if miglioramento: break
-            
-    return path, costo_tot
+                        break
 
+                    # Opzionale: prova anche l'ordine invertito [c2, c1]
+                    # nuova_rotta_rev = rotta_ridotta[:k] + [c2, c1] + rotta_ridotta[k:]
+                    # feasible_rev, costo_nuovo_rev = valida_rotta(nuova_rotta_rev, veichle_capacity, data, dist_matrix)
+                    # if feasible_rev:
+                    #     delta_rev = costo_nuovo_rev - costo_iniziale
+                    #     if delta_rev < -1e-6:
+                    #         path[idx_rotta] = nuova_rotta_rev
+                    #         costo_tot += delta_rev
+                    #         miglioramento = True
+                    #         break
+
+                if miglioramento:
+                    break
+            if miglioramento:
+                break
+
+    return path, costo_tot
 #Swap neighbourhood 
 def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
 
@@ -799,7 +987,7 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
     return s_best, costo_best
 
 # Grasp
-def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti):
+'''def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti):
     I_max = 1000
     alpha = 0.3
     tempo_limite=60 
@@ -888,8 +1076,138 @@ def grasp1(path,costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data
 
         iterazione += 1
 
-    return s_best, costo_best
+    return s_best, costo_best'''
+def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti):
+    I_max = 1000
+    alpha = 0.3
+    tempo_limite = 60
+    max_no_improve = 150
 
+    s_best = copy.deepcopy(path)
+    costo_best = costo_tot
+    tempo_inizio = time.time()
+    no_improve = 0
+    iterazione = 0
+
+    while iterazione < I_max and no_improve < max_no_improve:
+        if time.time() - tempo_inizio > tempo_limite:
+            break
+
+        # --- Costruzione semi-greedy ---
+        visitati = np.zeros(n_clienti + 1, dtype=bool)
+        visitati[0] = True
+        percorsi_totali = []
+        clienti_serviti = 0
+
+        while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
+            percorso_attuale = [0]
+            nodo_corrente = 0
+            capacita_residua = veichle_capacity
+            tempo_attuale = 0
+
+            while True:
+                clienti_feasible = []
+                for i in range(1, n_clienti + 1):
+                    if not visitati[i]:
+                        tij = dist_matrix[nodo_corrente, i]
+                        arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij,
+                                     data[i, 4])
+                        tempo_rientro_deposito = arrivo + data[i, 6] + dist_matrix[i, 0]
+
+                        # fix: aggiunto anche il controllo sul rientro al deposito
+                        if (capacita_residua >= data[i, 3] and
+                                arrivo <= data[i, 5] and
+                                tempo_rientro_deposito <= data[0, 5]):
+                            clienti_feasible.append((i, tij, arrivo))
+
+                if not clienti_feasible:
+                    percorso_attuale.append(0)
+                    break
+
+                dmin = min(c[1] for c in clienti_feasible)
+                dmax = max(c[1] for c in clienti_feasible)
+                soglia = dmin + alpha * (dmax - dmin)
+                best_vicini = [c for c in clienti_feasible if c[1] <= soglia]
+                scelta = rd.choice(best_vicini)
+                miglior_prossimo, distanza_scelta, arrivo_scelto = scelta
+
+                visitati[miglior_prossimo] = True
+                clienti_serviti += 1
+                capacita_residua -= data[miglior_prossimo, 3]
+                tempo_attuale = arrivo_scelto
+                percorso_attuale.append(miglior_prossimo)
+                nodo_corrente = miglior_prossimo
+
+            # Se una rotta appena aperta resta vuota, aprirne altre è inutile:
+            # lo stato riparte identico e fallirebbe di nuovo.
+            if percorso_attuale == [0, 0]:
+                break
+
+            percorsi_totali.append(percorso_attuale)
+
+        # --- FASE DI REPAIR: reinserisco i clienti rimasti fuori ---
+        clienti_non_serviti = [i for i in range(1, n_clienti + 1) if not visitati[i]]
+
+        for cliente in clienti_non_serviti:
+            migliore_delta = float('inf')
+            migliore_idx = None
+            migliore_rotta = None
+
+            for idx, rotta in enumerate(percorsi_totali):
+                _, costo_originale = valida_rotta(rotta, veichle_capacity, data, dist_matrix)
+                for k in range(1, len(rotta)):
+                    rotta_candidata = rotta[:k] + [cliente] + rotta[k:]
+                    feasible, costo_candidato = valida_rotta(
+                        rotta_candidata, veichle_capacity, data, dist_matrix
+                    )
+                    if not feasible:
+                        continue
+                    delta = costo_candidato - costo_originale
+                    if delta < migliore_delta:
+                        migliore_delta = delta
+                        migliore_idx = idx
+                        migliore_rotta = rotta_candidata
+
+            if migliore_idx is None and len(percorsi_totali) < veichle_quantity:
+                rotta_nuova = [0, cliente, 0]
+                feasible, _ = valida_rotta(rotta_nuova, veichle_capacity, data, dist_matrix)
+                if feasible:
+                    percorsi_totali.append(rotta_nuova)
+                    visitati[cliente] = True
+                    clienti_serviti += 1
+                continue
+
+            if migliore_idx is not None:
+                percorsi_totali[migliore_idx] = migliore_rotta
+                visitati[cliente] = True
+                clienti_serviti += 1
+
+        while len(percorsi_totali) < veichle_quantity:
+            percorsi_totali.append([0, 0])
+
+        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1]
+                           for r in percorsi_totali)
+
+        # --- Local search (invariata) ---
+        neigh = rd.randint(1, 3)
+        if neigh == 1:
+            s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+        elif neigh == 2:
+            s_prime, costo_nuovo = neigh_2(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+        else:
+            s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+
+        # --- Aggiornamento record e stagnazione ---
+        if costo_nuovo < costo_best - 1e-9:
+            s_best = copy.deepcopy(s_prime)
+            costo_best = costo_nuovo
+            no_improve = 0
+        else:
+            no_improve += 1
+
+        iterazione += 1
+
+    return s_best, costo_best
 # VNS
 def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
 
