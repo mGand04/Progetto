@@ -206,7 +206,8 @@ def main():
 
         # Grasp 
         print("\nGrasp con local search 1: ")
-        percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_2 , veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti)
+        #percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_2 , veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti)
+        percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_local2, veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti)
         check_costo = controllo_costo(percorsi2_grasp, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi2_grasp):
             print(f"Veicolo {idx+1}: {p}")
@@ -216,7 +217,8 @@ def main():
 
         # Taboo Search con local search 1
         print("\nTaboo Search con il primo local search: ")
-        percorsi2_tab_search, costo2_tab_search = Tabu_Search(copy.deepcopy(percorsi_local2),costo_tot_2, veichle_capacity, data, dist_matrix)
+        #percorsi2_tab_search, costo2_tab_search = Tabu_Search(copy.deepcopy(percorsi_local2),costo_tot_2, veichle_capacity, data, dist_matrix)
+        percorsi2_tab_search, costo2_tab_search = Tabu_Search(copy.deepcopy(percorsi_local2), costo_tot_local2, veichle_capacity, data, dist_matrix)
         check_costo = controllo_costo(percorsi2_tab_search, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi2_tab_search):
             print(f"Veicolo {idx+1}: {p}")
@@ -225,7 +227,8 @@ def main():
 
         # VNS
         print("\nVNS con local search 1: " )
-        percorsi2_vns, costo2_vns = vns(copy.deepcopy(percorsi_local2), costo_tot_2, veichle_capacity, veichle_quantity, dist_matrix, data)
+        #percorsi2_vns, costo2_vns = vns(copy.deepcopy(percorsi_local2), costo_tot_2, veichle_capacity, veichle_quantity, dist_matrix, data)
+        percorsi2_vns, costo2_vns = vns(copy.deepcopy(percorsi_local2), costo_tot_local2, veichle_capacity, veichle_quantity, dist_matrix, data)
         check_costo = controllo_costo(percorsi2_vns, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi2_vns):
             print(f"Veicolo {idx+1}: {p}")
