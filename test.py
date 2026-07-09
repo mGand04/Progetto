@@ -20,7 +20,7 @@ def run_benchmark():
     FOLDERS = ['n25', 'n50', 'n100'] 
 
     # Numero di run per ogni istanza
-    n_run = input("Inserisci il numero di run per ogni istanza: ")
+    n_run = int(input("Inserisci il numero di run per ogni istanza: "))
 
     # Liste per archiviare i dati
     raw_runs_data = []      # Dati generali della run (Tempi totali della run e best costi della run)
@@ -184,69 +184,69 @@ def run_benchmark():
             except Exception as e:
                 print(f"Errore durante l'elaborazione del file {file_name}: {e}")
 
-        if raw_runs_data:
-            df_runs = pd.DataFrame(raw_runs_data)
-            df_methods = pd.DataFrame(raw_methods_data)
+    if raw_runs_data:
+        df_runs = pd.DataFrame(raw_runs_data)
+        df_methods = pd.DataFrame(raw_methods_data)
 
-            final_summary = []
+        final_summary = []
 
-            # Raggruppiamo i dati macro-run e i dati di dettaglio per Istanza
-            grouped_runs = df_runs.groupby(['Cartella', 'Istanza', 'Clienti'])
+        # Raggruppiamo i dati macro-run e i dati di dettaglio per Istanza
+        grouped_runs = df_runs.groupby(['Cartella', 'Istanza', 'Clienti'])
+        
+        for (fold, istanza, clienti), run_group in grouped_runs:
             
-            for (fold, istanza, clienti), run_group in grouped_runs:
-                
-                # Sub-dataset dei metodi relativo unicamente a QUESTA istanza
-                method_sub_group = df_methods[(df_methods['Cartella'] == fold) & (df_methods['Istanza'] == istanza)]
+            # Sub-dataset dei metodi relativo unicamente a QUESTA istanza
+            method_sub_group = df_methods[(df_methods['Cartella'] == fold) & (df_methods['Istanza'] == istanza)]
 
-                # Richiesta 1: Tempo MINIMO di esecuzione di un'intera RUN nelle n run
-                tempo_run_min = run_group['Tempo_Totale_Run'].min()
-                
-                # Richiesta 2: Tempo MEDIO di esecuzione di un'intera RUN nelle n run
-                tempo_run_medio = run_group['Tempo_Totale_Run'].mean()
-                
-                # Richiesta 4: Costo medio calcolato sui migliori risultati di ogni singola run
-                costo_medio_dei_best = run_group['Best_Costo_Della_Run'].mean()
-
-                # Richiesta 3: Best costo trovato in assoluto e da quale metodo
-                idx_best_assoluto = method_sub_group['Costo'].idxmin()
-                best_costo_assoluto = method_sub_group.loc[idx_best_assoluto, 'Costo']
-                best_metodo_assoluto = method_sub_group.loc[idx_best_assoluto, 'Metodo']
-
-                # Dizionario base della riga dell'istanza
-                row_istanza = {
-                    'Cartella': fold,
-                    'Istanza': istanza,
-                    'Clienti': clienti,
-                    'Tempo_Min_Intera_Run': tempo_run_min,
-                    'Tempo_Medio_Intera_Run': tempo_run_medio,
-                    'Best_Costo_Assoluto': best_costo_assoluto,
-                    'Metodo_Best_Costo': best_metodo_assoluto,
-                    'Costo_Medio_dei_Best_delle_Run': costo_medio_dei_best
-                }
-
-                # Richiesta Extra: Tempi medi e Costi migliori per OGNI SINGOLO metodo sulle n run
-                # Calcoliamo medie dei tempi e i minimi (migliori) dei costi per metodo
-                stats_per_metodo = method_sub_group.groupby('Metodo').agg(
-                    Tempo_Medio=('Tempo_Metodo', 'mean'),
-                    Best_Costo=('Costo', 'min')
-                )
-
-                # Inseriamo i dati nel record in modo dinamico sotto forma di colonne dedicate
-                for metodo_nome, stats in stats_per_metodo.iterrows():
-                    row_istanza[f'TempoMedio_{metodo_nome}'] = stats['Tempo_Medio']
-                    row_istanza[f'BestCosto_{metodo_nome}'] = stats['Best_Costo']
-
-                final_summary.append(row_istanza)
-
-            # Creazione del dataframe finale e salvataggio
-            df_final = pd.DataFrame(final_summary)
+            # Richiesta 1: Tempo MINIMO di esecuzione di un'intera RUN nelle n run
+            tempo_run_min = run_group['Tempo_Totale_Run'].min()
             
-            # Riordino le colonne per renderlo visivamente perfetto
-            df_final.to_excel("report_strutturato_istanze.xlsx", index=False)
-            df_final.to_csv("report_strutturato_istanze.csv", index=False, sep=";")
+            # Richiesta 2: Tempo MEDIO di esecuzione di un'intera RUN nelle n run
+            tempo_run_medio = run_group['Tempo_Totale_Run'].mean()
             
-            print("\n[OK] Analisi conclusa con successo!")
-            print(" -> Generato 'report_strutturato_istanze.xlsx' pronto per i grafici.")
+            # Richiesta 4: Costo medio calcolato sui migliori risultati di ogni singola run
+            costo_medio_dei_best = run_group['Best_Costo_Della_Run'].mean()
+
+            # Richiesta 3: Best costo trovato in assoluto e da quale metodo
+            idx_best_assoluto = method_sub_group['Costo'].idxmin()
+            best_costo_assoluto = method_sub_group.loc[idx_best_assoluto, 'Costo']
+            best_metodo_assoluto = method_sub_group.loc[idx_best_assoluto, 'Metodo']
+
+            # Dizionario base della riga dell'istanza
+            row_istanza = {
+                'Cartella': fold,
+                'Istanza': istanza,
+                'Clienti': clienti,
+                'Tempo_Min_Intera_Run': tempo_run_min,
+                'Tempo_Medio_Intera_Run': tempo_run_medio,
+                'Best_Costo_Assoluto': best_costo_assoluto,
+                'Metodo_Best_Costo': best_metodo_assoluto,
+                'Costo_Medio_dei_Best_delle_Run': costo_medio_dei_best
+            }
+
+            # Richiesta Extra: Tempi medi e Costi migliori per OGNI SINGOLO metodo sulle n run
+            # Calcoliamo medie dei tempi e i minimi (migliori) dei costi per metodo
+            stats_per_metodo = method_sub_group.groupby('Metodo').agg(
+                Tempo_Medio=('Tempo_Metodo', 'mean'),
+                Best_Costo=('Costo', 'min')
+            )
+
+            # Inseriamo i dati nel record in modo dinamico sotto forma di colonne dedicate
+            for metodo_nome, stats in stats_per_metodo.iterrows():
+                row_istanza[f'TempoMedio_{metodo_nome}'] = stats['Tempo_Medio']
+                row_istanza[f'BestCosto_{metodo_nome}'] = stats['Best_Costo']
+
+            final_summary.append(row_istanza)
+
+        # Creazione del dataframe finale e salvataggio
+        df_final = pd.DataFrame(final_summary)
+        
+        # Riordino le colonne per renderlo visivamente perfetto
+        df_final.to_excel("report_strutturato_istanze.xlsx", index=False)
+        df_final.to_csv("report_strutturato_istanze.csv", index=False, sep=";")
+        
+        print("\n[OK] Analisi conclusa con successo!")
+        print(" -> Generato 'report_strutturato_istanze.xlsx' pronto per i grafici.")
     else:
         print("\n[ATTENZIONE] Nessun dato estratto. Controlla i percorsi delle istanze.")
 
