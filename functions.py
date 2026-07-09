@@ -1189,13 +1189,14 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                            for r in percorsi_totali)
 
         # --- Local search (invariata) ---
-        neigh = rd.randint(1, 3)
-        if neigh == 1:
+        #neigh = rd.randint(1, 2)
+        s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+        '''if neigh == 1:
             s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
         elif neigh == 2:
-            s_prime, costo_nuovo = neigh_2(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
-        else:
-            s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
+            s_prime, costo_nuovo = neigh_2(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)'''
+        '''else:
+            s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)'''
 
         # --- Aggiornamento record e stagnazione ---
         if costo_nuovo < costo_best - 1e-9:

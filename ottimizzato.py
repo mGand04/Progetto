@@ -204,7 +204,7 @@ def main():
         print(f"Costo Totale della Soluzione: {costo_sim3:.1f}")
         print(f"Costo Totale della Soluzione controllato in seguito: {check_costo:.1f}")
 
-        # Grasp
+        # Grasp 
         print("\nGrasp con local search 1: ")
         percorsi2_grasp, costo2_grasp = grasp1(copy.deepcopy(percorsi_local2), costo_tot_2 , veichle_capacity, veichle_quantity, dist_matrix, data, n_clienti)
         check_costo = controllo_costo(percorsi2_grasp, veichle_capacity, data, dist_matrix)
