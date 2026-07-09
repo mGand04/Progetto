@@ -1,20 +1,22 @@
 import os
 import numpy as np
 import sys
-from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_2
+from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_2, greedy_1
+
 
 def main():
      # Leggo i dati in formatoo int e lascio una precisione di due cifre decimali
     np.set_printoptions(suppress=True, precision=2)
-    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
-    path_file = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto'
+    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    #path_file = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto'
+    path_file = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto'
     folders = ['n25', 'n50', 'n100']
 
     # Definisco il percorso del file .txt in cui salvare l'output completo
-    output_file_path = os.path.join(path_file, "risultati_greedy2.txt")
+    output_file_path = os.path.join(path_file, "risultati_greedy1.txt")
 
-    print("Inizio del ciclo di test per greedy2...\n")
+    print("Inizio del ciclo di test per greedy...\n")
 
     # Salviamo il terminale originale per poterci stampare alla fine
     terminale_originale = sys.stdout
@@ -52,9 +54,11 @@ def main():
                     print(f"Veichle quantity: {veichle_quantity}")
                     print(f"Veichle capacity: {veichle_capacity}")
                     print(f"Number of clients: {n_clienti}")
-                    print("\nGreedy 2")
+                    print("SOMMA DATA:", np.sum(data))
+                    print("SOMMA MATRICE:", np.sum(dist_matrix))
+                    print("\nGreedy")
 
-                    percorsi_2, costo_tot_2 = greedy_2(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
+                    percorsi_2, costo_tot_2 = greedy_1_new(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
                     check_costo = controllo_costo(percorsi_2, veichle_capacity, data, dist_matrix)
                     for idx, p in enumerate(percorsi_2):
                         print(f"Veicolo {idx+1}: {p}")

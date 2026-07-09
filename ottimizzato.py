@@ -1,7 +1,5 @@
 import os
-import pandas as pd
 import numpy as np
-import random as rd
 import time
 import copy
 
@@ -20,8 +18,8 @@ def main():
     file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
     # Percorso del file 
-    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
     path = os.path.join(path_base, fold, file_name)
 
@@ -50,6 +48,9 @@ def main():
         dist_matrix = matrice_distanze(data)
         print("Distanza 0-1:", dist_matrix[0, 1])
         print("Max valore matrice:", np.max(dist_matrix))
+
+        print("SOMMA DATA:", np.sum(data))
+        print("SOMMA MATRICE:", np.sum(dist_matrix))
         # Approccio Greedy numero 1: Nearest Neighborhood
         print("Greedy 1")
         percorsi, costo_tot = greedy_1(n_clienti, veichle_quantity, veichle_capacity, data, dist_matrix)

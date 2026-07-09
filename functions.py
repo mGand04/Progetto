@@ -186,6 +186,14 @@ def controllo_costo(path, veichle_capacity, data, dist_matrix):
     
     return check_costo
 
+def soluzione_completa(percorsi, n_clienti):
+    visti = [c for rotta in percorsi for c in rotta if c!=0]
+    serviti = set(visti)
+    mancanti = sorted(set(range(1, n_clienti + 1)) - serviti)
+    duplicati = sorted({c for c in visti if visti.count(c) > 1})
+    completa = (not mancanti and not duplicati)
+    return completa, mancanti, duplicati
+
 '''def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
     visitati = np.zeros(n_clienti+1, dtype=bool)
@@ -253,6 +261,7 @@ def controllo_costo(path, veichle_capacity, data, dist_matrix):
     costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] 
                   for r in percorsi_totali)
     return percorsi_totali, costo_reale'''
+'''
 def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     visitati = np.zeros(n_clienti + 1, dtype=bool)
     visitati[0] = True  # Il deposito è il punto di partenza
@@ -347,6 +356,12 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             percorsi_totali[migliore_rotta_idx] = migliore_rotta_nuova
             visitati[cliente] = True
             clienti_serviti += 1
+    
+    clienti_rimasti_fuori = [i for i in range(1, n_clienti + 1) if not visitati[i]]
+
+    if clienti_rimasti_fuori:
+        for c in clienti_rimasti_fuori:
+            print(f"Cliente {int(dati_nodi[c, 0])} non inseribile in nessuna rotta esistente.")
 
     # Riempimento di eventuali veicoli inutilizzati
     while len(percorsi_totali) < veichle_quantity:
@@ -354,6 +369,136 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
     costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1]
                        for r in percorsi_totali)
+
+    return percorsi_totali, costo_reale'''
+
+def _miglior_inserimento(rotta, cliente, cap, data, dist):
+    """Migliore posizione feasible per 'cliente' in 'rotta'. (nuova_rotta, delta) o (None, inf)."""
+    _, costo_orig = valida_rotta(rotta, cap, data, dist)
+    best_rotta, best_delta = None, float('inf')
+    for pos in range(1, len(rotta)):
+        cand = rotta[:pos] + [cliente] + rotta[pos:]
+        ok, costo = valida_rotta(cand, cap, data, dist)
+        if ok and (costo - costo_orig) < best_delta:
+            best_delta, best_rotta = costo - costo_orig, cand
+    return best_rotta, best_delta
+
+
+def _inserisci_con_ejection(rotte, c, cap, data, dist):
+    """Toglie una x da una rotta, ci mette c, ricolloca x altrove. Modifica in place."""
+    for i, rotta in enumerate(rotte):
+        for xi in range(1, len(rotta) - 1):
+            x = rotta[xi]
+            senza_x = rotta[:xi] + rotta[xi+1:]
+            cand_c, _ = _miglior_inserimento(senza_x, c, cap, data, dist)
+            if cand_c is None:
+                continue
+            for j in range(len(rotte)):
+                base = cand_c if j == i else rotte[j]
+                cand_x, _ = _miglior_inserimento(base, x, cap, data, dist)
+                if cand_x is not None:
+                    if j == i:
+                        rotte[i] = cand_x
+                    else:
+                        rotte[i], rotte[j] = cand_c, cand_x
+                    return True
+    return False
+
+
+def _elimina_rotta(percorsi, r_idx, cap, data, dist):
+    """Dissolve la rotta r_idx ridistribuendo i suoi clienti. True se riesce (applica)."""
+    clienti = [c for c in percorsi[r_idx] if c != 0]
+    altre = [list(r) for j, r in enumerate(percorsi) if j != r_idx]
+    for c in clienti:
+        best_j, best_rotta, best_delta = None, None, float('inf')
+        for j, rotta in enumerate(altre):
+            cand, delta = _miglior_inserimento(rotta, c, cap, data, dist)
+            if cand is not None and delta < best_delta:
+                best_j, best_rotta, best_delta = j, cand, delta
+        if best_j is not None:
+            altre[best_j] = best_rotta
+        elif not _inserisci_con_ejection(altre, c, cap, data, dist):
+            return False
+    percorsi[:] = altre
+    return True
+
+
+def greedy_1_new(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
+    visitati = np.zeros(n_clienti + 1, dtype=bool)
+    visitati[0] = True
+    percorsi_totali = []
+    clienti_serviti = 0
+
+    # COSTRUZIONE NEAREST-NEIGHBOR
+    while clienti_serviti < n_clienti:
+        percorso_attuale = [0]
+        nodo_corrente = 0
+        capacita_residua = v_cap
+        tempo_attuale = 0
+
+        while True:
+            miglior_prossimo, distanza_minima, orario_inizio = None, float('inf'), 0
+            for i in range(1, n_clienti + 1):
+                if not visitati[i]:
+                    t_ij = costi[nodo_corrente, i]
+                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + t_ij,
+                                 dati_nodi[i, 4])
+                    rientro = arrivo + dati_nodi[i, 6] + costi[i, 0]
+                    if (capacita_residua >= dati_nodi[i, 3] and
+                            arrivo <= dati_nodi[i, 5] and
+                            rientro <= dati_nodi[0, 5]):
+                        if t_ij < distanza_minima:
+                            distanza_minima, miglior_prossimo, orario_inizio = t_ij, i, arrivo
+
+            if miglior_prossimo is None:
+                percorso_attuale.append(0)
+                break
+
+            visitati[miglior_prossimo] = True
+            clienti_serviti += 1
+            capacita_residua -= dati_nodi[miglior_prossimo, 3]
+            tempo_attuale = orario_inizio
+            percorso_attuale.append(miglior_prossimo)
+            nodo_corrente = miglior_prossimo
+
+        # una rotta fresca prende sempre almeno il cliente piu' vicino feasible;
+        # se resta [0,0] con clienti fuori sono infeasible pure da soli -> impossibile su Solomon
+        if percorso_attuale == [0, 0]:
+            break
+        percorsi_totali.append(percorso_attuale)
+
+    # COMPATTAZIONE: rientro nella flotta eliminando le rotte piu' piccole
+    n_rotte_pre = len(percorsi_totali)
+    while len(percorsi_totali) > veichle_quantity:
+        ordinate = sorted(range(len(percorsi_totali)),
+                          key=lambda i: len([c for c in percorsi_totali[i] if c != 0]))
+        eliminata = False
+        for idx in ordinate:
+            if _elimina_rotta(percorsi_totali, idx, v_cap, dati_nodi, costi):
+                eliminata = True
+                break
+        if not eliminata:
+            break
+
+    # DIAGNOSTICA (da tenere nel batch)
+    serviti = {c for r in percorsi_totali for c in r if c != 0}
+    non_serviti = sorted(set(range(1, n_clienti + 1)) - serviti)
+    if non_serviti:
+        print(f"[greedy_1] INCOMPLETA: fuori {len(non_serviti)}: {non_serviti}")
+    elif len(percorsi_totali) > veichle_quantity:
+        print(f"[greedy_1] tutti serviti ma {len(percorsi_totali)} rotte > {veichle_quantity} veicoli")
+    else:
+        print(f"[greedy_1] OK: {n_clienti} clienti in {len(percorsi_totali)} rotte "
+              f"(NN ne aveva aperte {n_rotte_pre})")
+
+    while len(percorsi_totali) < veichle_quantity:
+        percorsi_totali.append([0, 0])
+
+    costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] for r in percorsi_totali)
+
+    # rete di sicurezza per il batch: ferma se una singola istanza sbaglia
+    assert len(serviti) == n_clienti and len([r for r in percorsi_totali if len(r) > 2]) <= veichle_quantity, \
+        f"greedy_1 non valida: mancano {non_serviti}, rotte={len([r for r in percorsi_totali if len(r)>2])}"
 
     return percorsi_totali, costo_reale
 
@@ -1093,7 +1238,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
         if time.time() - tempo_inizio > tempo_limite:
             break
 
-        # --- Costruzione semi-greedy ---
+        # Costruzione semi-greedy
         visitati = np.zeros(n_clienti + 1, dtype=bool)
         visitati[0] = True
         percorsi_totali = []
@@ -1145,7 +1290,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
 
             percorsi_totali.append(percorso_attuale)
 
-        # --- FASE DI REPAIR: reinserisco i clienti rimasti fuori ---
+        # FASE DI REPAIR: reinserisco i clienti rimasti fuori ---
         clienti_non_serviti = [i for i in range(1, n_clienti + 1) if not visitati[i]]
 
         for cliente in clienti_non_serviti:
@@ -1188,7 +1333,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
         costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1]
                            for r in percorsi_totali)
 
-        # --- Local search (invariata) ---
+        # Local search (invariata)
         #neigh = rd.randint(1, 2)
         s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
         '''if neigh == 1:
@@ -1198,7 +1343,14 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
         '''else:
             s_prime, costo_nuovo = neigh_3(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)'''
 
-        # --- Aggiornamento record e stagnazione ---
+        completa, mancanti, duplicati = soluzione_completa(s_prime, n_clienti)
+        if not completa:
+            print(f"[GRASP iter {iterazione}] scartata - mancanti={mancanti} duplicati={duplicati}")
+            no_improve += 1
+            iterazione += 1
+            continue   # <--non tocca s_best, prova un'altra soluzione
+
+        # Aggiornamento
         if costo_nuovo < costo_best - 1e-9:
             s_best = copy.deepcopy(s_prime)
             costo_best = costo_nuovo
