@@ -423,7 +423,7 @@ def _elimina_rotta(percorsi, r_idx, cap, data, dist):
     return True
 
 
-def greedy_1_new(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
+def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     visitati = np.zeros(n_clienti + 1, dtype=bool)
     visitati[0] = True
     percorsi_totali = []

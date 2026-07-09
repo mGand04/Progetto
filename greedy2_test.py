@@ -58,7 +58,7 @@ def main():
                     print("SOMMA MATRICE:", np.sum(dist_matrix))
                     print("\nGreedy")
 
-                    percorsi_2, costo_tot_2 = greedy_1_new(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
+                    percorsi_2, costo_tot_2 = greedy_1(n_clienti, veichle_quantity, veichle_capacity,data, dist_matrix)
                     check_costo = controllo_costo(percorsi_2, veichle_capacity, data, dist_matrix)
                     for idx, p in enumerate(percorsi_2):
                         print(f"Veicolo {idx+1}: {p}")
