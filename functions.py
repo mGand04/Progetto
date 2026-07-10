@@ -1659,22 +1659,20 @@ def crossover_twopoints(parent1, parent2, v_cap, data, dist_matrix):
         costo = costo_soluzione(p1, v_cap, data, dist_matrix)
         return p1, costo
     
-    # 1. Scelgo due punti di taglio distinti sull'indice delle rotte
+    # 1 Scelgo due punti di taglio distinti sull'indice delle rotte
     punto1, punto2 = sorted(rd.sample(range(1, n_rotte), 2))
 
     # 2. Costruisco il figlio
     figlio = copy.deepcopy(p1[: punto1]) + copy.deepcopy(p2[punto1:punto2]) + copy.deepcopy(p1[punto2:])
 
-    # 3. Rimuovo i duplicati: un cliente che compare sia nel segmento "esterno" (da p1)
-    #    sia nel segmento "centrale" (da p2) va tolto da uno dei due -> lo tolgo dagli esterni,
-    #    dando priorità al segmento centrale appena innestato
+    # 3 Rimuovo i duplicati
     clienti_centrale = set()
     for r in figlio[punto1:punto2]:      
         clienti_centrale.update(r[1:-1])
     for idx in list(range(0, punto1)) + list(range(punto2, len(figlio))):
         figlio[idx] = [nodo for nodo in figlio[idx] if nodo == 0 or nodo not in clienti_centrale]
 
-    # 4. Trovo i clienti mancanti 
+    # 4 Trovo i clienti mancanti 
     tutti_i_clienti = set()
     for r in p1:
         tutti_i_clienti.update(r[1:-1])
@@ -1685,7 +1683,7 @@ def crossover_twopoints(parent1, parent2, v_cap, data, dist_matrix):
 
     clienti_mancanti = tutti_i_clienti - clienti_presenti
 
-    # 5. Reinserisco i mancanti con cheapest insertion (stessa logica di greedy_2 fase 2)
+    # 5 Reinserisco i mancanti con cheapest insertion
     for cliente in clienti_mancanti:
         miglior_costo_extra = float('inf')
         miglior_rotta_idx = None
@@ -1767,12 +1765,17 @@ def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix,
     miglior_costo = popolazione[0][1]
 
     for gen in range(generazioni):
+
+        # Il migliore sopravvive intatto
         nuova_popolazione = [copy.deepcopy(popolazione[0])]  
 
+        # Nuova popolazione
         while len(nuova_popolazione) < pop_size:
+            # Selezione dei parent
             p1, _ = selezione_torneo(popolazione, k=3)
             p2, _ = selezione_torneo(popolazione, k=3)
 
+            # Crossover
             figlio, costo_figlio = crossover_twopoints(p1, p2, v_cap, data, dist_matrix)
 
             # Fallback se il crossover non è riuscito a servire tutti i clienti
@@ -1780,11 +1783,14 @@ def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix,
                 figlio = copy.deepcopy(p1)
                 costo_figlio = costo_soluzione(figlio, v_cap, data, dist_matrix)
 
+            # Mutazione
             figlio_mut = mutazione(figlio, v_cap, data, dist_matrix, prob=prob_mutazione)
+            # Controllo feasibility
             if all(valida_rotta(r, v_cap, data, dist_matrix)[0] for r in figlio_mut):
                 figlio = figlio_mut
                 costo_figlio = costo_soluzione(figlio, v_cap, data, dist_matrix)
 
+            # Local search
             if rd.random() < tasso_local_search:
                 neigh_scelto = rd.choice([neigh_1, neigh_2, neigh_3])
                 figlio, costo_figlio = neigh_scelto(figlio, v_cap, data, dist_matrix, costo_figlio)
@@ -1798,6 +1804,7 @@ def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix,
             miglior_costo = popolazione[0][1]
             miglior_soluzione = copy.deepcopy(popolazione[0][0])
 
+        # Log di controllo
         if gen % 10 == 0:
             print(f"Generazione {gen}: miglior costo trovato = {miglior_costo:.1f}")
 
