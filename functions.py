@@ -971,7 +971,7 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
 
         miglioramento = False
 
-        # Itero sulle rotte scambiando veicoli tra rotte diverse
+        # Itero sulle rotte scambiando veicoli nella stessa rotta
 
         for r_idx in range(len(path)):
             
@@ -1467,11 +1467,13 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
 import time
 
 def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
-    # --- 1. Parametri ---
+    # Parametri
     I_max=3000
     tempo_limite=60
-    d = 15
-    tabu_list = {}
+    d = 15                 # numero di mosse vietate
+    coeff_div = 0.5        # intensità della diversificazione long-term
+    tabu_list = {}         # short term memory
+    frequenza = {}         # long-term memory
 
     s = copy.deepcopy(path)
     s_best = copy.deepcopy(s)
@@ -1481,14 +1483,19 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
     # Precalcolo dei vicini spaziali (dipende solo da dist_matrix, invariante durante l'esecuzione)
     vicini = calcola_vicini(dist_matrix, k=10)
 
+    # Scala della penalità: costo medio per cliente
+    n_clienti = sum(len(r) - 2 for r in s)
+    scala = costo_iniziale / max(n_clienti, 1)
+
     tempo_inizio = time.time()
 
     for iterazione in range(I_max):
-        # --- Budget di tempo: interrompe l'esecuzione se supera il limite ---
+        # Budget di tempo: interrompe l'esecuzione se supera il limite
         if time.time() - tempo_inizio > tempo_limite:
             break
 
         best_delta = float('inf')
+        best_delta_valutato = float('inf')
         best_move = None
 
         # Mappa cliente -> indice rotta, ricalcolata una volta per iterazione
@@ -1500,20 +1507,17 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
             if len(route_src) <= 2:
                 continue
 
-            # FIX 1: costo della rotta sorgente non dipende da i, j -> calcolato una sola volta per rotta
             _, old_c1 = valida_rotta(route_src, veichle_capacity, data, dist_matrix)
 
             for i in range(1, len(route_src) - 1):
                 cliente = route_src[i]
 
-                # FIX 2: restringo le rotte destinazione candidate ai vicini spaziali del cliente
                 rotte_candidate = {client_to_route[v] for v in vicini[cliente] if v in client_to_route}
                 rotte_candidate.add(r_src_idx)  # includo sempre la rotta di origine (riposizionamento interno)
 
                 for r_dest_idx in rotte_candidate:
                     route_dest = s[r_dest_idx]
 
-                    # FIX 1: costo della rotta destinazione non dipende da j -> calcolato una sola volta per rotta
                     _, old_c2 = valida_rotta(route_dest, veichle_capacity, data, dist_matrix)
                     range_j = len(route_dest)
 
@@ -1521,11 +1525,11 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
                         if r_src_idx == r_dest_idx and (j == i or j == i + 1):
                             continue
 
-                        # --- SIMULAZIONE ---
+                        # SIMULAZIONE
                         new_src = route_src[:i] + route_src[i+1:]
                         new_dest = route_dest[:j] + [cliente] + route_dest[j:]
 
-                        # --- VALIDAZIONE ---
+                        # VALIDAZIONE
                         f1, c1 = valida_rotta(new_src, veichle_capacity, data, dist_matrix)
                         f2, c2 = valida_rotta(new_dest, veichle_capacity, data, dist_matrix)
 
@@ -1535,13 +1539,21 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
                             mossa_id = (cliente, r_dest_idx)
                             is_tabu = tabu_list.get(mossa_id, 0) > iterazione
 
+                            # LONG-TERM: penalizza solo le mosse NON migliorative proporzionalmente a quante volte sono già state eseguite
+                            if delta >= 0:
+                                penalita = coeff_div * frequenza.get(mossa_id, 0) * scala
+                            else:
+                                penalita = 0.0
+                            delta_valutato = delta + penalita
+
                             # Aspirazione: se batte il record assoluto, ignora il Tabu
                             if not is_tabu or (costo_current + delta < costo_best - 1e-9):
-                                if delta < best_delta:
+                                if delta_valutato < best_delta_valutato:
+                                    best_delta_valutato = delta_valutato
                                     best_delta = delta
                                     best_move = (r_src_idx, i, r_dest_idx, j, mossa_id)
 
-        # --- ESECUZIONE DELLA MOSSA ---
+        # Esecuzione della mossa
         if best_move:
             r_s, pos_i, r_d, pos_j, m_id = best_move
 
@@ -1551,6 +1563,7 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
 
             costo_current += best_delta
             tabu_list[m_id] = iterazione + d
+            frequenza[m_id] = frequenza.get(m_id, 0) + 1 
 
             if costo_current < costo_best - 1e-9:
                 costo_best = costo_current
