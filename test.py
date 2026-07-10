@@ -3,7 +3,6 @@ import time
 import copy
 import numpy as np
 import pandas as pd
-import random as rd
 
 # Importazione delle tue funzioni esistenti
 from functions import (
@@ -187,6 +186,10 @@ def run_benchmark():
     if raw_runs_data:
         df_runs = pd.DataFrame(raw_runs_data)
         df_methods = pd.DataFrame(raw_methods_data)
+
+        df_runs.to_csv("dati_grezzi_run_macro.csv", index=False, sep=";")
+        df_methods.to_csv("dati_grezzi_run_dettaglio_metodi.csv", index=False, sep=";")
+        print("[OK] Salvati i file grezzi per varianza e conteggio vittorie!")
 
         final_summary = []
 
