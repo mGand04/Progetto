@@ -246,7 +246,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
     return percorsi_totali, costo_reale
 
-# Secondo algoritmo greedy: un veicolo dedicato per ogni nodo (se possibile) + cheapest insertion
+# Secondo algoritmo greedy: un veicolo dedicato per ogni nodo (se possibile) + regret insertion
 def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     percorsi_totali = []
     costo_totale_global = 0.0
