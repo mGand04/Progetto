@@ -716,7 +716,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                                      data[i, 4])
                         tempo_rientro_deposito = arrivo + data[i, 6] + dist_matrix[i, 0]
 
-                        # fix: aggiunto anche il controllo sul rientro al deposito
+                        # controllo sul rientro al deposito
                         if (capacita_residua >= data[i, 3] and
                                 arrivo <= data[i, 5] and
                                 tempo_rientro_deposito <= data[0, 5]):

@@ -1,0 +1,2045 @@
+
+==================================================
+Elaborazione: n25 / C101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 16, 0]
+Veicolo 2: [0, 20, 0]
+Veicolo 3: [0, 2, 0]
+Veicolo 4: [0, 18, 0]
+Veicolo 5: [0, 10, 0]
+Veicolo 6: [0, 13, 0]
+Veicolo 7: [0, 5, 0]
+Veicolo 8: [0, 23, 0]
+Veicolo 9: [0, 9, 0]
+Veicolo 10: [0, 12, 0]
+Veicolo 11: [0, 15, 0]
+Veicolo 12: [0, 19, 0]
+Veicolo 13: [0, 24, 0]
+Veicolo 14: [0, 4, 0]
+Veicolo 15: [0, 11, 0]
+Veicolo 16: [0, 17, 0]
+Veicolo 17: [0, 22, 0]
+Veicolo 18: [0, 6, 0]
+Veicolo 19: [0, 7, 0]
+Veicolo 20: [0, 1, 0]
+Veicolo 21: [0, 8, 0]
+Veicolo 22: [0, 14, 0]
+Veicolo 23: [0, 21, 0]
+Veicolo 24: [0, 25, 0]
+Veicolo 25: [0, 3, 0]
+Costo Totale della Soluzione: 1130.4
+Costo Totale della Soluzione controllato in seguito: 1130.4
+
+==================================================
+Elaborazione: n25 / C104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 16, 0]
+Veicolo 2: [0, 20, 0]
+Veicolo 3: [0, 2, 0]
+Veicolo 4: [0, 18, 0]
+Veicolo 5: [0, 10, 0]
+Veicolo 6: [0, 13, 0]
+Veicolo 7: [0, 5, 0]
+Veicolo 8: [0, 23, 0]
+Veicolo 9: [0, 9, 0]
+Veicolo 10: [0, 12, 0]
+Veicolo 11: [0, 15, 0]
+Veicolo 12: [0, 19, 0]
+Veicolo 13: [0, 24, 0]
+Veicolo 14: [0, 4, 0]
+Veicolo 15: [0, 11, 0]
+Veicolo 16: [0, 17, 0]
+Veicolo 17: [0, 22, 0]
+Veicolo 18: [0, 6, 0]
+Veicolo 19: [0, 7, 0]
+Veicolo 20: [0, 1, 0]
+Veicolo 21: [0, 8, 0]
+Veicolo 22: [0, 14, 0]
+Veicolo 23: [0, 21, 0]
+Veicolo 24: [0, 25, 0]
+Veicolo 25: [0, 3, 0]
+Costo Totale della Soluzione: 1130.4
+Costo Totale della Soluzione controllato in seguito: 1130.4
+
+==================================================
+Elaborazione: n25 / C108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 16, 0]
+Veicolo 2: [0, 20, 0]
+Veicolo 3: [0, 2, 0]
+Veicolo 4: [0, 18, 0]
+Veicolo 5: [0, 10, 0]
+Veicolo 6: [0, 13, 0]
+Veicolo 7: [0, 5, 0]
+Veicolo 8: [0, 23, 0]
+Veicolo 9: [0, 9, 0]
+Veicolo 10: [0, 12, 0]
+Veicolo 11: [0, 15, 0]
+Veicolo 12: [0, 19, 0]
+Veicolo 13: [0, 24, 0]
+Veicolo 14: [0, 4, 0]
+Veicolo 15: [0, 11, 0]
+Veicolo 16: [0, 17, 0]
+Veicolo 17: [0, 22, 0]
+Veicolo 18: [0, 6, 0]
+Veicolo 19: [0, 7, 0]
+Veicolo 20: [0, 1, 0]
+Veicolo 21: [0, 8, 0]
+Veicolo 22: [0, 14, 0]
+Veicolo 23: [0, 21, 0]
+Veicolo 24: [0, 25, 0]
+Veicolo 25: [0, 3, 0]
+Costo Totale della Soluzione: 1130.4
+Costo Totale della Soluzione controllato in seguito: 1130.4
+
+==================================================
+Elaborazione: n25 / C201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 16, 0]
+Veicolo 2: [0, 3, 0]
+Veicolo 3: [0, 6, 0]
+Veicolo 4: [0, 8, 0]
+Veicolo 5: [0, 23, 0]
+Veicolo 6: [0, 2, 0]
+Veicolo 7: [0, 24, 0]
+Veicolo 8: [0, 9, 0]
+Veicolo 9: [0, 17, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 25, 0]
+Veicolo 12: [0, 11, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 19, 0]
+Veicolo 15: [0, 21, 0]
+Veicolo 16: [0, 12, 0]
+Veicolo 17: [0, 15, 0]
+Veicolo 18: [0, 20, 0]
+Veicolo 19: [0, 7, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 4, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 18, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 14, 0]
+Costo Totale della Soluzione: 1273.0
+Costo Totale della Soluzione controllato in seguito: 1273.0
+
+==================================================
+Elaborazione: n25 / C204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 16, 0]
+Veicolo 2: [0, 3, 0]
+Veicolo 3: [0, 6, 0]
+Veicolo 4: [0, 8, 0]
+Veicolo 5: [0, 23, 0]
+Veicolo 6: [0, 2, 0]
+Veicolo 7: [0, 24, 0]
+Veicolo 8: [0, 9, 0]
+Veicolo 9: [0, 17, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 25, 0]
+Veicolo 12: [0, 11, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 19, 0]
+Veicolo 15: [0, 21, 0]
+Veicolo 16: [0, 12, 0]
+Veicolo 17: [0, 15, 0]
+Veicolo 18: [0, 20, 0]
+Veicolo 19: [0, 7, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 4, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 18, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 14, 0]
+Costo Totale della Soluzione: 1273.0
+Costo Totale della Soluzione controllato in seguito: 1273.0
+
+==================================================
+Elaborazione: n25 / C208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 16, 0]
+Veicolo 2: [0, 3, 0]
+Veicolo 3: [0, 6, 0]
+Veicolo 4: [0, 8, 0]
+Veicolo 5: [0, 23, 0]
+Veicolo 6: [0, 2, 0]
+Veicolo 7: [0, 24, 0]
+Veicolo 8: [0, 9, 0]
+Veicolo 9: [0, 17, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 25, 0]
+Veicolo 12: [0, 11, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 19, 0]
+Veicolo 15: [0, 21, 0]
+Veicolo 16: [0, 12, 0]
+Veicolo 17: [0, 15, 0]
+Veicolo 18: [0, 20, 0]
+Veicolo 19: [0, 7, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 4, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 18, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 14, 0]
+Costo Totale della Soluzione: 1273.0
+Costo Totale della Soluzione controllato in seguito: 1273.0
+
+==================================================
+Elaborazione: n25 / R101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 23, 0]
+Veicolo 2: [0, 11, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 3, 0]
+Veicolo 5: [0, 15, 0]
+Veicolo 6: [0, 8, 0]
+Veicolo 7: [0, 20, 0]
+Veicolo 8: [0, 13, 0]
+Veicolo 9: [0, 25, 0]
+Veicolo 10: [0, 21, 0]
+Veicolo 11: [0, 1, 0]
+Veicolo 12: [0, 24, 0]
+Veicolo 13: [0, 7, 0]
+Veicolo 14: [0, 5, 0]
+Veicolo 15: [0, 9, 0]
+Veicolo 16: [0, 10, 0]
+Veicolo 17: [0, 12, 0]
+Veicolo 18: [0, 14, 0]
+Veicolo 19: [0, 4, 0]
+Veicolo 20: [0, 17, 0]
+Veicolo 21: [0, 18, 0]
+Veicolo 22: [0, 22, 0]
+Veicolo 23: [0, 2, 0]
+Veicolo 24: [0, 6, 0]
+Veicolo 25: [0, 19, 0]
+Costo Totale della Soluzione: 1244.6
+Costo Totale della Soluzione controllato in seguito: 1244.6
+
+==================================================
+Elaborazione: n25 / R104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 23, 0]
+Veicolo 2: [0, 11, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 3, 0]
+Veicolo 5: [0, 15, 0]
+Veicolo 6: [0, 8, 0]
+Veicolo 7: [0, 20, 0]
+Veicolo 8: [0, 13, 0]
+Veicolo 9: [0, 25, 0]
+Veicolo 10: [0, 21, 0]
+Veicolo 11: [0, 1, 0]
+Veicolo 12: [0, 24, 0]
+Veicolo 13: [0, 7, 0]
+Veicolo 14: [0, 5, 0]
+Veicolo 15: [0, 9, 0]
+Veicolo 16: [0, 10, 0]
+Veicolo 17: [0, 12, 0]
+Veicolo 18: [0, 14, 0]
+Veicolo 19: [0, 4, 0]
+Veicolo 20: [0, 17, 0]
+Veicolo 21: [0, 18, 0]
+Veicolo 22: [0, 22, 0]
+Veicolo 23: [0, 2, 0]
+Veicolo 24: [0, 6, 0]
+Veicolo 25: [0, 19, 0]
+Costo Totale della Soluzione: 1244.6
+Costo Totale della Soluzione controllato in seguito: 1244.6
+
+==================================================
+Elaborazione: n25 / R108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 23, 0]
+Veicolo 2: [0, 11, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 3, 0]
+Veicolo 5: [0, 15, 0]
+Veicolo 6: [0, 8, 0]
+Veicolo 7: [0, 20, 0]
+Veicolo 8: [0, 13, 0]
+Veicolo 9: [0, 25, 0]
+Veicolo 10: [0, 21, 0]
+Veicolo 11: [0, 1, 0]
+Veicolo 12: [0, 24, 0]
+Veicolo 13: [0, 7, 0]
+Veicolo 14: [0, 5, 0]
+Veicolo 15: [0, 9, 0]
+Veicolo 16: [0, 10, 0]
+Veicolo 17: [0, 12, 0]
+Veicolo 18: [0, 14, 0]
+Veicolo 19: [0, 4, 0]
+Veicolo 20: [0, 17, 0]
+Veicolo 21: [0, 18, 0]
+Veicolo 22: [0, 22, 0]
+Veicolo 23: [0, 2, 0]
+Veicolo 24: [0, 6, 0]
+Veicolo 25: [0, 19, 0]
+Costo Totale della Soluzione: 1244.6
+Costo Totale della Soluzione controllato in seguito: 1244.6
+
+==================================================
+Elaborazione: n25 / R201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 23, 0]
+Veicolo 2: [0, 11, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 3, 0]
+Veicolo 5: [0, 15, 0]
+Veicolo 6: [0, 8, 0]
+Veicolo 7: [0, 20, 0]
+Veicolo 8: [0, 13, 0]
+Veicolo 9: [0, 25, 0]
+Veicolo 10: [0, 21, 0]
+Veicolo 11: [0, 1, 0]
+Veicolo 12: [0, 24, 0]
+Veicolo 13: [0, 7, 0]
+Veicolo 14: [0, 5, 0]
+Veicolo 15: [0, 9, 0]
+Veicolo 16: [0, 10, 0]
+Veicolo 17: [0, 12, 0]
+Veicolo 18: [0, 14, 0]
+Veicolo 19: [0, 4, 0]
+Veicolo 20: [0, 17, 0]
+Veicolo 21: [0, 18, 0]
+Veicolo 22: [0, 22, 0]
+Veicolo 23: [0, 2, 0]
+Veicolo 24: [0, 6, 0]
+Veicolo 25: [0, 19, 0]
+Costo Totale della Soluzione: 1244.6
+Costo Totale della Soluzione controllato in seguito: 1244.6
+
+==================================================
+Elaborazione: n25 / R204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 23, 0]
+Veicolo 2: [0, 11, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 3, 0]
+Veicolo 5: [0, 15, 0]
+Veicolo 6: [0, 8, 0]
+Veicolo 7: [0, 20, 0]
+Veicolo 8: [0, 13, 0]
+Veicolo 9: [0, 25, 0]
+Veicolo 10: [0, 21, 0]
+Veicolo 11: [0, 1, 0]
+Veicolo 12: [0, 24, 0]
+Veicolo 13: [0, 7, 0]
+Veicolo 14: [0, 5, 0]
+Veicolo 15: [0, 9, 0]
+Veicolo 16: [0, 10, 0]
+Veicolo 17: [0, 12, 0]
+Veicolo 18: [0, 14, 0]
+Veicolo 19: [0, 4, 0]
+Veicolo 20: [0, 17, 0]
+Veicolo 21: [0, 18, 0]
+Veicolo 22: [0, 22, 0]
+Veicolo 23: [0, 2, 0]
+Veicolo 24: [0, 6, 0]
+Veicolo 25: [0, 19, 0]
+Costo Totale della Soluzione: 1244.6
+Costo Totale della Soluzione controllato in seguito: 1244.6
+
+==================================================
+Elaborazione: n25 / R208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 23, 0]
+Veicolo 2: [0, 11, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 3, 0]
+Veicolo 5: [0, 15, 0]
+Veicolo 6: [0, 8, 0]
+Veicolo 7: [0, 20, 0]
+Veicolo 8: [0, 13, 0]
+Veicolo 9: [0, 25, 0]
+Veicolo 10: [0, 21, 0]
+Veicolo 11: [0, 1, 0]
+Veicolo 12: [0, 24, 0]
+Veicolo 13: [0, 7, 0]
+Veicolo 14: [0, 5, 0]
+Veicolo 15: [0, 9, 0]
+Veicolo 16: [0, 10, 0]
+Veicolo 17: [0, 12, 0]
+Veicolo 18: [0, 14, 0]
+Veicolo 19: [0, 4, 0]
+Veicolo 20: [0, 17, 0]
+Veicolo 21: [0, 18, 0]
+Veicolo 22: [0, 22, 0]
+Veicolo 23: [0, 2, 0]
+Veicolo 24: [0, 6, 0]
+Veicolo 25: [0, 19, 0]
+Costo Totale della Soluzione: 1244.6
+Costo Totale della Soluzione controllato in seguito: 1244.6
+
+==================================================
+Elaborazione: n25 / RC101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 25, 0]
+Veicolo 2: [0, 5, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 20, 0]
+Veicolo 5: [0, 7, 0]
+Veicolo 6: [0, 9, 0]
+Veicolo 7: [0, 12, 0]
+Veicolo 8: [0, 18, 0]
+Veicolo 9: [0, 2, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 4, 0]
+Veicolo 12: [0, 8, 0]
+Veicolo 13: [0, 10, 0]
+Veicolo 14: [0, 13, 0]
+Veicolo 15: [0, 17, 0]
+Veicolo 16: [0, 19, 0]
+Veicolo 17: [0, 21, 0]
+Veicolo 18: [0, 24, 0]
+Veicolo 19: [0, 6, 0]
+Veicolo 20: [0, 14, 0]
+Veicolo 21: [0, 3, 0]
+Veicolo 22: [0, 11, 0]
+Veicolo 23: [0, 15, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 23, 0]
+Costo Totale della Soluzione: 1884.4
+Costo Totale della Soluzione controllato in seguito: 1884.4
+
+==================================================
+Elaborazione: n25 / RC104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 25, 0]
+Veicolo 2: [0, 5, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 20, 0]
+Veicolo 5: [0, 7, 0]
+Veicolo 6: [0, 9, 0]
+Veicolo 7: [0, 12, 0]
+Veicolo 8: [0, 18, 0]
+Veicolo 9: [0, 2, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 4, 0]
+Veicolo 12: [0, 8, 0]
+Veicolo 13: [0, 10, 0]
+Veicolo 14: [0, 13, 0]
+Veicolo 15: [0, 17, 0]
+Veicolo 16: [0, 19, 0]
+Veicolo 17: [0, 21, 0]
+Veicolo 18: [0, 24, 0]
+Veicolo 19: [0, 6, 0]
+Veicolo 20: [0, 14, 0]
+Veicolo 21: [0, 3, 0]
+Veicolo 22: [0, 11, 0]
+Veicolo 23: [0, 15, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 23, 0]
+Costo Totale della Soluzione: 1884.4
+Costo Totale della Soluzione controllato in seguito: 1884.4
+
+==================================================
+Elaborazione: n25 / RC108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 25, 0]
+Veicolo 2: [0, 5, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 20, 0]
+Veicolo 5: [0, 7, 0]
+Veicolo 6: [0, 9, 0]
+Veicolo 7: [0, 12, 0]
+Veicolo 8: [0, 18, 0]
+Veicolo 9: [0, 2, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 4, 0]
+Veicolo 12: [0, 8, 0]
+Veicolo 13: [0, 10, 0]
+Veicolo 14: [0, 13, 0]
+Veicolo 15: [0, 17, 0]
+Veicolo 16: [0, 19, 0]
+Veicolo 17: [0, 21, 0]
+Veicolo 18: [0, 24, 0]
+Veicolo 19: [0, 6, 0]
+Veicolo 20: [0, 14, 0]
+Veicolo 21: [0, 3, 0]
+Veicolo 22: [0, 11, 0]
+Veicolo 23: [0, 15, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 23, 0]
+Costo Totale della Soluzione: 1884.4
+Costo Totale della Soluzione controllato in seguito: 1884.4
+
+==================================================
+Elaborazione: n25 / RC201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 25, 0]
+Veicolo 2: [0, 5, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 20, 0]
+Veicolo 5: [0, 7, 0]
+Veicolo 6: [0, 9, 0]
+Veicolo 7: [0, 12, 0]
+Veicolo 8: [0, 18, 0]
+Veicolo 9: [0, 2, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 4, 0]
+Veicolo 12: [0, 8, 0]
+Veicolo 13: [0, 10, 0]
+Veicolo 14: [0, 13, 0]
+Veicolo 15: [0, 17, 0]
+Veicolo 16: [0, 19, 0]
+Veicolo 17: [0, 21, 0]
+Veicolo 18: [0, 24, 0]
+Veicolo 19: [0, 6, 0]
+Veicolo 20: [0, 14, 0]
+Veicolo 21: [0, 3, 0]
+Veicolo 22: [0, 11, 0]
+Veicolo 23: [0, 15, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 23, 0]
+Costo Totale della Soluzione: 1884.4
+Costo Totale della Soluzione controllato in seguito: 1884.4
+
+==================================================
+Elaborazione: n25 / RC204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 25, 0]
+Veicolo 2: [0, 5, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 20, 0]
+Veicolo 5: [0, 7, 0]
+Veicolo 6: [0, 9, 0]
+Veicolo 7: [0, 12, 0]
+Veicolo 8: [0, 18, 0]
+Veicolo 9: [0, 2, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 4, 0]
+Veicolo 12: [0, 8, 0]
+Veicolo 13: [0, 10, 0]
+Veicolo 14: [0, 13, 0]
+Veicolo 15: [0, 17, 0]
+Veicolo 16: [0, 19, 0]
+Veicolo 17: [0, 21, 0]
+Veicolo 18: [0, 24, 0]
+Veicolo 19: [0, 6, 0]
+Veicolo 20: [0, 14, 0]
+Veicolo 21: [0, 3, 0]
+Veicolo 22: [0, 11, 0]
+Veicolo 23: [0, 15, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 23, 0]
+Costo Totale della Soluzione: 1884.4
+Costo Totale della Soluzione controllato in seguito: 1884.4
+
+==================================================
+Elaborazione: n25 / RC208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 25
+
+Greedy 2
+Veicolo 1: [0, 25, 0]
+Veicolo 2: [0, 5, 0]
+Veicolo 3: [0, 16, 0]
+Veicolo 4: [0, 20, 0]
+Veicolo 5: [0, 7, 0]
+Veicolo 6: [0, 9, 0]
+Veicolo 7: [0, 12, 0]
+Veicolo 8: [0, 18, 0]
+Veicolo 9: [0, 2, 0]
+Veicolo 10: [0, 1, 0]
+Veicolo 11: [0, 4, 0]
+Veicolo 12: [0, 8, 0]
+Veicolo 13: [0, 10, 0]
+Veicolo 14: [0, 13, 0]
+Veicolo 15: [0, 17, 0]
+Veicolo 16: [0, 19, 0]
+Veicolo 17: [0, 21, 0]
+Veicolo 18: [0, 24, 0]
+Veicolo 19: [0, 6, 0]
+Veicolo 20: [0, 14, 0]
+Veicolo 21: [0, 3, 0]
+Veicolo 22: [0, 11, 0]
+Veicolo 23: [0, 15, 0]
+Veicolo 24: [0, 22, 0]
+Veicolo 25: [0, 23, 0]
+Costo Totale della Soluzione: 1884.4
+Costo Totale della Soluzione controllato in seguito: 1884.4
+
+==================================================
+Elaborazione: n50 / C101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 33, 37, 38, 0]
+Veicolo 2: [0, 3, 4, 2, 1, 0]
+Veicolo 3: [0, 41, 40, 0]
+Veicolo 4: [0, 17, 19, 0]
+Veicolo 5: [0, 28, 26, 0]
+Veicolo 6: [0, 11, 12, 0]
+Veicolo 7: [0, 31, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 34, 0]
+Veicolo 10: [0, 46, 48, 50, 49, 0]
+Veicolo 11: [0, 13, 0]
+Veicolo 12: [0, 20, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 29, 22, 21, 0]
+Veicolo 15: [0, 43, 0]
+Veicolo 16: [0, 7, 8, 9, 6, 0]
+Veicolo 17: [0, 15, 0]
+Veicolo 18: [0, 16, 14, 0]
+Veicolo 19: [0, 18, 0]
+Veicolo 20: [0, 23, 0]
+Veicolo 21: [0, 24, 0]
+Veicolo 22: [0, 32, 0]
+Veicolo 23: [0, 35, 0]
+Veicolo 24: [0, 25, 27, 30, 39, 36, 0]
+Veicolo 25: [0, 42, 44, 45, 47, 0]
+Costo Totale della Soluzione: 1347.0
+Costo Totale della Soluzione controllato in seguito: 1347.0
+
+==================================================
+Elaborazione: n50 / C104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 33, 37, 38, 0]
+Veicolo 2: [0, 1, 2, 4, 3, 0]
+Veicolo 3: [0, 41, 40, 0]
+Veicolo 4: [0, 17, 19, 0]
+Veicolo 5: [0, 21, 22, 28, 26, 0]
+Veicolo 6: [0, 11, 12, 0]
+Veicolo 7: [0, 31, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 34, 0]
+Veicolo 10: [0, 47, 50, 49, 0]
+Veicolo 11: [0, 13, 0]
+Veicolo 12: [0, 20, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 25, 27, 29, 0]
+Veicolo 15: [0, 43, 0]
+Veicolo 16: [0, 8, 9, 6, 7, 0]
+Veicolo 17: [0, 15, 0]
+Veicolo 18: [0, 14, 16, 0]
+Veicolo 19: [0, 18, 0]
+Veicolo 20: [0, 23, 0]
+Veicolo 21: [0, 24, 0]
+Veicolo 22: [0, 32, 0]
+Veicolo 23: [0, 35, 0]
+Veicolo 24: [0, 30, 39, 36, 0]
+Veicolo 25: [0, 42, 44, 45, 48, 46, 0]
+Costo Totale della Soluzione: 1345.4
+Costo Totale della Soluzione controllato in seguito: 1345.4
+
+==================================================
+Elaborazione: n50 / C108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 33, 37, 38, 0]
+Veicolo 2: [0, 3, 4, 2, 1, 0]
+Veicolo 3: [0, 41, 40, 0]
+Veicolo 4: [0, 17, 19, 0]
+Veicolo 5: [0, 26, 28, 22, 21, 0]
+Veicolo 6: [0, 11, 12, 0]
+Veicolo 7: [0, 31, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 34, 0]
+Veicolo 10: [0, 48, 50, 49, 0]
+Veicolo 11: [0, 13, 0]
+Veicolo 12: [0, 20, 0]
+Veicolo 13: [0, 5, 0]
+Veicolo 14: [0, 29, 0]
+Veicolo 15: [0, 43, 0]
+Veicolo 16: [0, 7, 8, 9, 6, 0]
+Veicolo 17: [0, 15, 0]
+Veicolo 18: [0, 14, 16, 0]
+Veicolo 19: [0, 18, 0]
+Veicolo 20: [0, 23, 0]
+Veicolo 21: [0, 24, 0]
+Veicolo 22: [0, 32, 0]
+Veicolo 23: [0, 35, 0]
+Veicolo 24: [0, 25, 27, 30, 39, 36, 0]
+Veicolo 25: [0, 42, 44, 45, 46, 47, 0]
+Costo Totale della Soluzione: 1346.9
+Costo Totale della Soluzione controllato in seguito: 1346.9
+
+==================================================
+Elaborazione: n50 / C201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 2: [0, 7, 3, 4, 0]
+Veicolo 3: [0, 49, 0]
+Veicolo 4: [0, 19, 16, 14, 12, 15, 0]
+Veicolo 5: [0, 20, 0]
+Veicolo 6: [0, 26, 0]
+Veicolo 7: [0, 45, 50, 47, 0]
+Veicolo 8: [0, 11, 10, 0]
+Veicolo 9: [0, 6, 0]
+Veicolo 10: [0, 25, 0]
+Veicolo 11: [0, 40, 44, 43, 0]
+Veicolo 12: [0, 1, 0]
+Veicolo 13: [0, 48, 0]
+Veicolo 14: [0, 18, 17, 0]
+Veicolo 15: [0, 22, 30, 0]
+Veicolo 16: [0, 31, 0]
+Veicolo 17: [0, 8, 0]
+Veicolo 18: [0, 2, 0]
+Veicolo 19: [0, 24, 29, 34, 0]
+Veicolo 20: [0, 27, 28, 0]
+Veicolo 21: [0, 23, 21, 0]
+Veicolo 22: [0, 9, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 46, 42, 41, 0]
+Veicolo 25: [0, 5, 0]
+Costo Totale della Soluzione: 1363.9
+Costo Totale della Soluzione controllato in seguito: 1363.9
+
+==================================================
+Elaborazione: n50 / C204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 2: [0, 4, 3, 7, 0]
+Veicolo 3: [0, 49, 0]
+Veicolo 4: [0, 12, 14, 16, 19, 15, 0]
+Veicolo 5: [0, 20, 0]
+Veicolo 6: [0, 26, 0]
+Veicolo 7: [0, 43, 42, 45, 50, 47, 0]
+Veicolo 8: [0, 10, 11, 0]
+Veicolo 9: [0, 6, 0]
+Veicolo 10: [0, 25, 0]
+Veicolo 11: [0, 44, 40, 0]
+Veicolo 12: [0, 1, 0]
+Veicolo 13: [0, 48, 0]
+Veicolo 14: [0, 17, 18, 0]
+Veicolo 15: [0, 30, 0]
+Veicolo 16: [0, 31, 0]
+Veicolo 17: [0, 8, 0]
+Veicolo 18: [0, 2, 0]
+Veicolo 19: [0, 34, 0]
+Veicolo 20: [0, 22, 27, 28, 29, 24, 0]
+Veicolo 21: [0, 21, 23, 0]
+Veicolo 22: [0, 9, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 41, 46, 0]
+Veicolo 25: [0, 5, 0]
+Costo Totale della Soluzione: 1358.9
+Costo Totale della Soluzione controllato in seguito: 1358.9
+
+==================================================
+Elaborazione: n50 / C208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 2: [0, 4, 3, 7, 0]
+Veicolo 3: [0, 49, 0]
+Veicolo 4: [0, 12, 14, 16, 19, 15, 0]
+Veicolo 5: [0, 20, 0]
+Veicolo 6: [0, 26, 0]
+Veicolo 7: [0, 47, 50, 45, 42, 43, 0]
+Veicolo 8: [0, 10, 11, 0]
+Veicolo 9: [0, 6, 0]
+Veicolo 10: [0, 25, 0]
+Veicolo 11: [0, 44, 40, 0]
+Veicolo 12: [0, 1, 0]
+Veicolo 13: [0, 48, 0]
+Veicolo 14: [0, 18, 17, 0]
+Veicolo 15: [0, 22, 30, 0]
+Veicolo 16: [0, 31, 0]
+Veicolo 17: [0, 8, 0]
+Veicolo 18: [0, 2, 0]
+Veicolo 19: [0, 24, 29, 34, 0]
+Veicolo 20: [0, 27, 28, 0]
+Veicolo 21: [0, 23, 21, 0]
+Veicolo 22: [0, 9, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 46, 41, 0]
+Veicolo 25: [0, 5, 0]
+Costo Totale della Soluzione: 1359.2
+Costo Totale della Soluzione controllato in seguito: 1359.2
+
+==================================================
+Elaborazione: n50 / R101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 36, 49, 48, 0]
+Veicolo 2: [0, 39, 23, 22, 0]
+Veicolo 3: [0, 9, 35, 0]
+Veicolo 4: [0, 44, 38, 43, 0]
+Veicolo 5: [0, 27, 0]
+Veicolo 6: [0, 3, 24, 0]
+Veicolo 7: [0, 45, 8, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 42, 15, 0]
+Veicolo 10: [0, 7, 0]
+Veicolo 11: [0, 21, 40, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 50, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 26, 4, 25, 0]
+Veicolo 16: [0, 11, 19, 0]
+Veicolo 17: [0, 2, 41, 0]
+Veicolo 18: [0, 47, 46, 17, 0]
+Veicolo 19: [0, 5, 18, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 14, 16, 6, 0]
+Veicolo 22: [0, 31, 0]
+Veicolo 23: [0, 30, 20, 0]
+Veicolo 24: [0, 1, 0]
+Veicolo 25: [0, 28, 29, 34, 0]
+Costo Totale della Soluzione: 1469.1
+Costo Totale della Soluzione controllato in seguito: 1469.1
+
+==================================================
+Elaborazione: n50 / R104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 19, 49, 36, 46, 0]
+Veicolo 2: [0, 40, 22, 23, 39, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 6, 16, 44, 38, 43, 42, 0]
+Veicolo 5: [0, 27, 0]
+Veicolo 6: [0, 29, 24, 0]
+Veicolo 7: [0, 18, 8, 45, 17, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 2, 15, 0]
+Veicolo 10: [0, 7, 0]
+Veicolo 11: [0, 21, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
+Veicolo 16: [0, 11, 0]
+Veicolo 17: [0, 41, 0]
+Veicolo 18: [0, 48, 47, 0]
+Veicolo 19: [0, 5, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 14, 0]
+Veicolo 22: [0, 31, 0]
+Veicolo 23: [0, 30, 20, 0]
+Veicolo 24: [0, 1, 0]
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.0
+Costo Totale della Soluzione controllato in seguito: 1431.0
+
+==================================================
+Elaborazione: n50 / R108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 19, 49, 36, 46, 0]
+Veicolo 2: [0, 40, 22, 23, 39, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 6, 16, 44, 38, 43, 42, 0]
+Veicolo 5: [0, 27, 0]
+Veicolo 6: [0, 29, 24, 0]
+Veicolo 7: [0, 18, 8, 45, 17, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 2, 15, 0]
+Veicolo 10: [0, 7, 0]
+Veicolo 11: [0, 21, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
+Veicolo 16: [0, 11, 0]
+Veicolo 17: [0, 41, 0]
+Veicolo 18: [0, 48, 47, 0]
+Veicolo 19: [0, 5, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 14, 0]
+Veicolo 22: [0, 31, 0]
+Veicolo 23: [0, 30, 20, 0]
+Veicolo 24: [0, 1, 0]
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.0
+Costo Totale della Soluzione controllato in seguito: 1431.0
+
+==================================================
+Elaborazione: n50 / R201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 36, 49, 46, 48, 0]
+Veicolo 2: [0, 39, 23, 22, 40, 0]
+Veicolo 3: [0, 9, 35, 0]
+Veicolo 4: [0, 16, 44, 38, 43, 0]
+Veicolo 5: [0, 27, 0]
+Veicolo 6: [0, 28, 29, 24, 0]
+Veicolo 7: [0, 45, 17, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 2, 15, 0]
+Veicolo 10: [0, 7, 0]
+Veicolo 11: [0, 21, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 50, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 26, 4, 25, 0]
+Veicolo 16: [0, 19, 11, 0]
+Veicolo 17: [0, 41, 0]
+Veicolo 18: [0, 47, 8, 18, 0]
+Veicolo 19: [0, 5, 6, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 42, 14, 0]
+Veicolo 22: [0, 31, 0]
+Veicolo 23: [0, 30, 20, 0]
+Veicolo 24: [0, 1, 0]
+Veicolo 25: [0, 3, 34, 0]
+Costo Totale della Soluzione: 1451.0
+Costo Totale della Soluzione controllato in seguito: 1451.0
+
+==================================================
+Elaborazione: n50 / R204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 19, 49, 36, 46, 0]
+Veicolo 2: [0, 40, 22, 23, 39, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 16, 44, 38, 43, 42, 0]
+Veicolo 5: [0, 27, 0]
+Veicolo 6: [0, 29, 24, 0]
+Veicolo 7: [0, 18, 8, 45, 17, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 2, 15, 0]
+Veicolo 10: [0, 7, 0]
+Veicolo 11: [0, 21, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
+Veicolo 16: [0, 11, 0]
+Veicolo 17: [0, 41, 0]
+Veicolo 18: [0, 48, 47, 0]
+Veicolo 19: [0, 6, 5, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 14, 0]
+Veicolo 22: [0, 31, 0]
+Veicolo 23: [0, 30, 20, 0]
+Veicolo 24: [0, 1, 0]
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.5
+Costo Totale della Soluzione controllato in seguito: 1431.5
+
+==================================================
+Elaborazione: n50 / R208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 19, 49, 36, 46, 0]
+Veicolo 2: [0, 40, 22, 23, 39, 0]
+Veicolo 3: [0, 9, 35, 50, 0]
+Veicolo 4: [0, 16, 44, 38, 43, 42, 0]
+Veicolo 5: [0, 27, 0]
+Veicolo 6: [0, 29, 24, 0]
+Veicolo 7: [0, 18, 8, 45, 17, 0]
+Veicolo 8: [0, 10, 32, 0]
+Veicolo 9: [0, 2, 15, 0]
+Veicolo 10: [0, 7, 0]
+Veicolo 11: [0, 21, 0]
+Veicolo 12: [0, 37, 0]
+Veicolo 13: [0, 33, 0]
+Veicolo 14: [0, 12, 0]
+Veicolo 15: [0, 4, 25, 26, 0]
+Veicolo 16: [0, 11, 0]
+Veicolo 17: [0, 41, 0]
+Veicolo 18: [0, 48, 47, 0]
+Veicolo 19: [0, 6, 5, 0]
+Veicolo 20: [0, 13, 0]
+Veicolo 21: [0, 14, 0]
+Veicolo 22: [0, 31, 0]
+Veicolo 23: [0, 30, 20, 0]
+Veicolo 24: [0, 1, 0]
+Veicolo 25: [0, 28, 3, 34, 0]
+Costo Totale della Soluzione: 1431.5
+Costo Totale della Soluzione controllato in seguito: 1431.5
+
+==================================================
+Elaborazione: n50 / RC101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 42, 44, 40, 43, 0]
+Veicolo 4: [0, 22, 18, 48, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 39, 36, 35, 37, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 21, 23, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 30, 32, 0]
+Veicolo 19: [0, 11, 15, 16, 0]
+Veicolo 20: [0, 45, 4, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 19, 49, 20, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2055.6
+Costo Totale della Soluzione controllato in seguito: 2055.6
+
+==================================================
+Elaborazione: n50 / RC104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 20, 18, 48, 49, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 22, 21, 23, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 32, 30, 0]
+Veicolo 19: [0, 11, 15, 16, 0]
+Veicolo 20: [0, 4, 45, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 19, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2050.2
+Costo Totale della Soluzione controllato in seguito: 2050.2
+
+==================================================
+Elaborazione: n50 / RC108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 18, 48, 21, 23, 22, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 32, 30, 0]
+Veicolo 19: [0, 11, 16, 15, 0]
+Veicolo 20: [0, 4, 45, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 20, 49, 19, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2049.5
+Costo Totale della Soluzione controllato in seguito: 2049.5
+
+==================================================
+Elaborazione: n50 / RC201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 42, 44, 40, 43, 0]
+Veicolo 4: [0, 22, 18, 48, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 39, 36, 35, 37, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 21, 23, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 30, 32, 0]
+Veicolo 19: [0, 11, 16, 15, 0]
+Veicolo 20: [0, 45, 4, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 19, 49, 20, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2055.6
+Costo Totale della Soluzione controllato in seguito: 2055.6
+
+==================================================
+Elaborazione: n50 / RC204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 20, 18, 48, 49, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 22, 21, 23, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 32, 30, 0]
+Veicolo 19: [0, 11, 16, 15, 0]
+Veicolo 20: [0, 4, 45, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 19, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2050.2
+Costo Totale della Soluzione controllato in seguito: 2050.2
+
+==================================================
+Elaborazione: n50 / RC208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 50
+
+Greedy 2
+Veicolo 1: [0, 28, 26, 0]
+Veicolo 2: [0, 14, 47, 17, 0]
+Veicolo 3: [0, 44, 43, 0]
+Veicolo 4: [0, 20, 18, 48, 21, 23, 22, 0]
+Veicolo 5: [0, 6, 8, 46, 0]
+Veicolo 6: [0, 50, 0]
+Veicolo 7: [0, 9, 0]
+Veicolo 8: [0, 42, 40, 36, 35, 37, 39, 0]
+Veicolo 9: [0, 5, 3, 1, 0]
+Veicolo 10: [0, 33, 0]
+Veicolo 11: [0, 24, 0]
+Veicolo 12: [0, 41, 0]
+Veicolo 13: [0, 34, 0]
+Veicolo 14: [0, 2, 0]
+Veicolo 15: [0, 12, 0]
+Veicolo 16: [0, 25, 0]
+Veicolo 17: [0, 38, 0]
+Veicolo 18: [0, 32, 30, 0]
+Veicolo 19: [0, 11, 16, 15, 0]
+Veicolo 20: [0, 4, 45, 0]
+Veicolo 21: [0, 7, 0]
+Veicolo 22: [0, 10, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 49, 19, 0]
+Veicolo 25: [0, 31, 29, 27, 0]
+Costo Totale della Soluzione: 2049.5
+Costo Totale della Soluzione controllato in seguito: 2049.5
+
+==================================================
+Elaborazione: n100 / 1.txt
+==================================================
+Veichle info
+Veichle quantity: 11
+Veichle capacity: 200.0
+Number of clients: 120
+
+Greedy 2
+Cliente 71 non inseribile in nessuna rotta esistente.
+Cliente 75 non inseribile in nessuna rotta esistente.
+Cliente 91 non inseribile in nessuna rotta esistente.
+Cliente 92 non inseribile in nessuna rotta esistente.
+Cliente 93 non inseribile in nessuna rotta esistente.
+Cliente 95 non inseribile in nessuna rotta esistente.
+Cliente 96 non inseribile in nessuna rotta esistente.
+Cliente 99 non inseribile in nessuna rotta esistente.
+Cliente 100 non inseribile in nessuna rotta esistente.
+Cliente 102 non inseribile in nessuna rotta esistente.
+Veicolo 1: [0, 21, 46, 50, 51, 45, 65, 66, 60, 56, 0]
+Veicolo 2: [0, 119, 81, 2, 1, 3, 4, 10, 5, 6, 83, 117, 82, 0]
+Veicolo 3: [0, 88, 111, 84, 18, 118, 108, 24, 31, 29, 114, 0]
+Veicolo 4: [0, 110, 38, 62, 55, 79, 78, 74, 69, 107, 0]
+Veicolo 5: [0, 87, 89, 94, 97, 115, 76, 67, 104, 101, 105, 120, 0]
+Veicolo 6: [0, 20, 27, 35, 37, 41, 49, 48, 43, 40, 0]
+Veicolo 7: [0, 106, 103, 116, 98, 70, 72, 68, 39, 109, 90, 0]
+Veicolo 8: [0, 112, 113, 7, 9, 11, 15, 14, 13, 12, 8, 85, 86, 0]
+Veicolo 9: [0, 26, 47, 61, 64, 58, 53, 80, 77, 73, 0]
+Veicolo 10: [0, 17, 19, 25, 28, 32, 36, 34, 33, 22, 16, 0]
+Veicolo 11: [0, 23, 30, 44, 42, 59, 63, 57, 54, 52, 0]
+Costo Totale della Soluzione: 2179.4
+Costo Totale della Soluzione controllato in seguito: 2179.4
+
+==================================================
+Elaborazione: n100 / 2.txt
+==================================================
+Veichle info
+Veichle quantity: 2
+Veichle capacity: 1000.0
+Number of clients: 29
+
+Greedy 2
+Veicolo 1: [0, 15, 17, 16, 13, 9, 8, 10, 11, 12, 14, 22, 20, 27, 28, 0]
+Veicolo 2: [0, 21, 29, 26, 2, 1, 3, 4, 18, 7, 5, 6, 25, 23, 24, 19, 0]
+Costo Totale della Soluzione: 248.3
+Costo Totale della Soluzione controllato in seguito: 248.3
+
+==================================================
+Elaborazione: n100 / C101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 78, 76, 71, 70, 73, 77, 79, 0]
+Veicolo 2: [0, 32, 33, 35, 37, 38, 39, 36, 22, 21, 0]
+Veicolo 3: [0, 5, 3, 100, 2, 1, 0]
+Veicolo 4: [0, 57, 55, 54, 53, 0]
+Veicolo 5: [0, 17, 18, 19, 0]
+Veicolo 6: [0, 63, 0]
+Veicolo 7: [0, 90, 87, 86, 83, 82, 84, 85, 88, 89, 0]
+Veicolo 8: [0, 20, 24, 30, 28, 26, 23, 0]
+Veicolo 9: [0, 43, 46, 45, 48, 51, 50, 52, 49, 47, 0]
+Veicolo 10: [0, 75, 0]
+Veicolo 11: [0, 91, 0]
+Veicolo 12: [0, 31, 0]
+Veicolo 13: [0, 96, 95, 94, 92, 93, 97, 99, 0]
+Veicolo 14: [0, 42, 44, 59, 0]
+Veicolo 15: [0, 15, 16, 14, 12, 0]
+Veicolo 16: [0, 68, 69, 0]
+Veicolo 17: [0, 65, 74, 80, 0]
+Veicolo 18: [0, 7, 8, 11, 9, 6, 4, 0]
+Veicolo 19: [0, 98, 0]
+Veicolo 20: [0, 41, 0]
+Veicolo 21: [0, 81, 0]
+Veicolo 22: [0, 40, 56, 58, 60, 0]
+Veicolo 23: [0, 13, 10, 0]
+Veicolo 24: [0, 25, 27, 29, 34, 0]
+Veicolo 25: [0, 67, 62, 72, 61, 64, 66, 0]
+Costo Totale della Soluzione: 1721.9
+Costo Totale della Soluzione controllato in seguito: 1721.9
+
+==================================================
+Elaborazione: n100 / C104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 78, 76, 71, 70, 73, 77, 79, 0]
+Veicolo 2: [0, 20, 32, 33, 35, 37, 38, 39, 36, 30, 28, 0]
+Veicolo 3: [0, 5, 3, 1, 2, 100, 4, 6, 7, 0]
+Veicolo 4: [0, 55, 56, 53, 58, 54, 57, 64, 66, 0]
+Veicolo 5: [0, 15, 19, 18, 17, 0]
+Veicolo 6: [0, 63, 0]
+Veicolo 7: [0, 90, 87, 86, 83, 82, 84, 85, 88, 89, 0]
+Veicolo 8: [0, 21, 22, 25, 26, 23, 0]
+Veicolo 9: [0, 47, 46, 45, 48, 51, 50, 52, 49, 0]
+Veicolo 10: [0, 75, 0]
+Veicolo 11: [0, 91, 0]
+Veicolo 12: [0, 31, 0]
+Veicolo 13: [0, 96, 95, 94, 92, 93, 97, 99, 0]
+Veicolo 14: [0, 59, 0]
+Veicolo 15: [0, 8, 9, 12, 14, 16, 0]
+Veicolo 16: [0, 69, 68, 0]
+Veicolo 17: [0, 62, 80, 0]
+Veicolo 18: [0, 10, 11, 0]
+Veicolo 19: [0, 98, 0]
+Veicolo 20: [0, 41, 0]
+Veicolo 21: [0, 81, 0]
+Veicolo 22: [0, 40, 60, 44, 42, 43, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 24, 29, 34, 27, 0]
+Veicolo 25: [0, 67, 61, 72, 74, 65, 0]
+Costo Totale della Soluzione: 1722.0
+Costo Totale della Soluzione controllato in seguito: 1722.0
+
+==================================================
+Elaborazione: n100 / C108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 78, 76, 71, 70, 73, 77, 79, 0]
+Veicolo 2: [0, 24, 32, 33, 35, 37, 38, 39, 36, 0]
+Veicolo 3: [0, 5, 3, 4, 100, 2, 1, 0]
+Veicolo 4: [0, 57, 55, 54, 56, 53, 61, 64, 66, 0]
+Veicolo 5: [0, 17, 18, 19, 16, 15, 28, 0]
+Veicolo 6: [0, 63, 0]
+Veicolo 7: [0, 90, 87, 86, 83, 82, 84, 85, 88, 89, 0]
+Veicolo 8: [0, 23, 26, 22, 21, 0]
+Veicolo 9: [0, 43, 46, 45, 48, 51, 50, 52, 49, 47, 0]
+Veicolo 10: [0, 75, 0]
+Veicolo 11: [0, 91, 0]
+Veicolo 12: [0, 31, 0]
+Veicolo 13: [0, 96, 95, 94, 92, 93, 97, 99, 0]
+Veicolo 14: [0, 40, 59, 0]
+Veicolo 15: [0, 7, 8, 9, 12, 14, 6, 0]
+Veicolo 16: [0, 68, 69, 0]
+Veicolo 17: [0, 80, 0]
+Veicolo 18: [0, 10, 11, 0]
+Veicolo 19: [0, 98, 0]
+Veicolo 20: [0, 41, 0]
+Veicolo 21: [0, 81, 0]
+Veicolo 22: [0, 42, 44, 60, 58, 0]
+Veicolo 23: [0, 13, 0]
+Veicolo 24: [0, 20, 25, 27, 30, 29, 34, 0]
+Veicolo 25: [0, 67, 65, 62, 72, 74, 0]
+Costo Totale della Soluzione: 1728.1
+Costo Totale della Soluzione controllato in seguito: 1728.1
+
+==================================================
+Elaborazione: n100 / C201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 76, 71, 70, 73, 79, 81, 78, 0]
+Veicolo 2: [0, 6, 32, 33, 35, 37, 38, 39, 36, 34, 0]
+Veicolo 3: [0, 5, 2, 100, 0]
+Veicolo 4: [0, 69, 65, 55, 54, 53, 56, 58, 60, 59, 57, 40, 46, 42, 41, 0]
+Veicolo 5: [0, 18, 19, 15, 17, 13, 9, 8, 0]
+Veicolo 6: [0, 48, 0]
+Veicolo 7: [0, 91, 88, 84, 83, 90, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 62, 72, 61, 66, 0]
+Veicolo 10: [0, 44, 45, 43, 0]
+Veicolo 11: [0, 20, 24, 29, 0]
+Veicolo 12: [0, 89, 0]
+Veicolo 13: [0, 22, 27, 30, 28, 26, 23, 0]
+Veicolo 14: [0, 86, 82, 85, 77, 87, 0]
+Veicolo 15: [0, 31, 52, 0]
+Veicolo 16: [0, 96, 0]
+Veicolo 17: [0, 25, 0]
+Veicolo 18: [0, 51, 50, 47, 0]
+Veicolo 19: [0, 93, 75, 1, 99, 97, 92, 94, 95, 98, 7, 3, 4, 0]
+Veicolo 20: [0, 16, 14, 12, 11, 0]
+Veicolo 21: [0, 21, 0]
+Veicolo 22: [0, 64, 49, 0]
+Veicolo 23: [0, 63, 74, 80, 0]
+Veicolo 24: [0, 67, 0]
+Veicolo 25: [0, 68, 0]
+Costo Totale della Soluzione: 1634.4
+Costo Totale della Soluzione controllato in seguito: 1634.4
+
+==================================================
+Elaborazione: n100 / C204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 78, 81, 76, 71, 70, 73, 79, 87, 0]
+Veicolo 2: [0, 28, 39, 38, 37, 36, 34, 0]
+Veicolo 3: [0, 93, 75, 1, 99, 100, 2, 5, 0]
+Veicolo 4: [0, 65, 55, 54, 53, 56, 58, 60, 59, 57, 40, 0]
+Veicolo 5: [0, 8, 17, 19, 18, 0]
+Veicolo 6: [0, 48, 0]
+Veicolo 7: [0, 90, 84, 83, 86, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 62, 72, 74, 63, 0]
+Veicolo 10: [0, 41, 46, 44, 45, 42, 43, 0]
+Veicolo 11: [0, 20, 24, 29, 27, 22, 0]
+Veicolo 12: [0, 89, 0]
+Veicolo 13: [0, 23, 26, 30, 0]
+Veicolo 14: [0, 77, 85, 82, 88, 0]
+Veicolo 15: [0, 6, 32, 33, 35, 31, 0]
+Veicolo 16: [0, 96, 0]
+Veicolo 17: [0, 25, 0]
+Veicolo 18: [0, 47, 50, 51, 52, 0]
+Veicolo 19: [0, 7, 98, 97, 92, 94, 95, 3, 4, 91, 0]
+Veicolo 20: [0, 14, 16, 15, 13, 9, 12, 11, 0]
+Veicolo 21: [0, 21, 0]
+Veicolo 22: [0, 66, 61, 49, 64, 69, 0]
+Veicolo 23: [0, 80, 0]
+Veicolo 24: [0, 67, 0]
+Veicolo 25: [0, 68, 0]
+Costo Totale della Soluzione: 1657.0
+Costo Totale della Soluzione controllato in seguito: 1657.0
+
+==================================================
+Elaborazione: n100 / C208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 700.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 76, 71, 70, 73, 79, 81, 78, 0]
+Veicolo 2: [0, 6, 32, 33, 35, 37, 38, 39, 36, 34, 28, 0]
+Veicolo 3: [0, 5, 2, 1, 100, 99, 7, 0]
+Veicolo 4: [0, 65, 55, 54, 53, 56, 58, 60, 59, 57, 40, 46, 41, 0]
+Veicolo 5: [0, 18, 19, 15, 13, 9, 8, 0]
+Veicolo 6: [0, 48, 0]
+Veicolo 7: [0, 83, 86, 90, 0]
+Veicolo 8: [0, 10, 0]
+Veicolo 9: [0, 62, 72, 74, 63, 0]
+Veicolo 10: [0, 45, 44, 42, 43, 0]
+Veicolo 11: [0, 20, 24, 29, 27, 0]
+Veicolo 12: [0, 89, 0]
+Veicolo 13: [0, 22, 30, 26, 23, 0]
+Veicolo 14: [0, 91, 88, 84, 82, 85, 77, 87, 0]
+Veicolo 15: [0, 31, 0]
+Veicolo 16: [0, 96, 0]
+Veicolo 17: [0, 25, 0]
+Veicolo 18: [0, 47, 50, 51, 52, 0]
+Veicolo 19: [0, 93, 75, 98, 97, 92, 94, 95, 3, 4, 0]
+Veicolo 20: [0, 17, 16, 14, 12, 11, 0]
+Veicolo 21: [0, 21, 0]
+Veicolo 22: [0, 66, 61, 49, 64, 69, 0]
+Veicolo 23: [0, 80, 0]
+Veicolo 24: [0, 67, 0]
+Veicolo 25: [0, 68, 0]
+Costo Totale della Soluzione: 1635.0
+Costo Totale della Soluzione controllato in seguito: 1635.0
+
+==================================================
+Elaborazione: n100 / R101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 65, 71, 9, 20, 0]
+Veicolo 2: [0, 14, 44, 38, 91, 100, 0]
+Veicolo 3: [0, 39, 23, 67, 55, 25, 0]
+Veicolo 4: [0, 82, 19, 49, 0]
+Veicolo 5: [0, 28, 94, 0]
+Veicolo 6: [0, 45, 83, 61, 84, 96, 0]
+Veicolo 7: [0, 63, 90, 32, 70, 0]
+Veicolo 8: [0, 2, 87, 57, 97, 0]
+Veicolo 9: [0, 29, 78, 3, 68, 0]
+Veicolo 10: [0, 21, 73, 41, 56, 4, 0]
+Veicolo 11: [0, 31, 88, 8, 60, 0]
+Veicolo 12: [0, 5, 99, 85, 37, 93, 0]
+Veicolo 13: [0, 12, 54, 24, 80, 0]
+Veicolo 14: [0, 6, 89, 0]
+Veicolo 15: [0, 47, 11, 0]
+Veicolo 16: [0, 33, 81, 66, 0]
+Veicolo 17: [0, 27, 69, 30, 51, 50, 0]
+Veicolo 18: [0, 72, 75, 22, 74, 58, 0]
+Veicolo 19: [0, 52, 18, 46, 48, 0]
+Veicolo 20: [0, 59, 42, 15, 43, 13, 0]
+Veicolo 21: [0, 36, 64, 10, 0]
+Veicolo 22: [0, 92, 95, 98, 16, 86, 17, 0]
+Veicolo 23: [0, 62, 7, 1, 0]
+Veicolo 24: [0, 76, 79, 34, 35, 77, 0]
+Veicolo 25: [0, 40, 53, 26, 0]
+Costo Totale della Soluzione: 1885.8
+Costo Totale della Soluzione controllato in seguito: 1885.8
+
+==================================================
+Elaborazione: n100 / R104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 92, 37, 91, 44, 38, 14, 100, 95, 0]
+Veicolo 3: [0, 72, 75, 56, 23, 67, 39, 55, 25, 54, 0]
+Veicolo 4: [0, 52, 7, 47, 49, 36, 46, 18, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 8, 45, 83, 60, 0]
+Veicolo 7: [0, 27, 69, 70, 32, 90, 10, 31, 0]
+Veicolo 8: [0, 87, 57, 58, 0]
+Veicolo 9: [0, 76, 79, 78, 3, 77, 0]
+Veicolo 10: [0, 26, 4, 0]
+Veicolo 11: [0, 88, 0]
+Veicolo 12: [0, 94, 59, 98, 85, 93, 99, 96, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
+Veicolo 14: [0, 89, 0]
+Veicolo 15: [0, 62, 11, 0]
+Veicolo 16: [0, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 53, 21, 73, 74, 22, 41, 0]
+Veicolo 19: [0, 82, 48, 0]
+Veicolo 20: [0, 2, 15, 43, 42, 97, 13, 0]
+Veicolo 21: [0, 19, 64, 63, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 50, 33, 81, 35, 34, 0]
+Veicolo 25: [0, 40, 0]
+Costo Totale della Soluzione: 1591.2
+Costo Totale della Soluzione controllato in seguito: 1591.2
+
+==================================================
+Elaborazione: n100 / R108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 95, 92, 98, 91, 44, 38, 14, 100, 37, 97, 0]
+Veicolo 3: [0, 21, 72, 75, 56, 23, 67, 39, 55, 25, 54, 0]
+Veicolo 4: [0, 7, 49, 36, 46, 8, 18, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 60, 45, 83, 0]
+Veicolo 7: [0, 27, 32, 70, 0]
+Veicolo 8: [0, 87, 42, 57, 2, 58, 0]
+Veicolo 9: [0, 76, 79, 78, 3, 77, 0]
+Veicolo 10: [0, 26, 4, 0]
+Veicolo 11: [0, 88, 0]
+Veicolo 12: [0, 94, 59, 85, 93, 99, 96, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
+Veicolo 14: [0, 89, 0]
+Veicolo 15: [0, 62, 11, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 15, 41, 22, 74, 73, 0]
+Veicolo 19: [0, 52, 48, 0]
+Veicolo 20: [0, 13, 43, 0]
+Veicolo 21: [0, 31, 10, 90, 63, 64, 19, 47, 82, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 50, 33, 81, 35, 34, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1608.5
+Costo Totale della Soluzione controllato in seguito: 1608.5
+
+==================================================
+Elaborazione: n100 / R201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 33, 65, 71, 9, 81, 50, 0]
+Veicolo 2: [0, 95, 59, 92, 98, 14, 38, 44, 91, 100, 93, 0]
+Veicolo 3: [0, 72, 39, 23, 67, 56, 55, 25, 0]
+Veicolo 4: [0, 82, 47, 36, 49, 46, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 5, 83, 45, 8, 18, 0]
+Veicolo 7: [0, 27, 90, 32, 70, 0]
+Veicolo 8: [0, 2, 57, 87, 13, 0]
+Veicolo 9: [0, 76, 79, 78, 3, 77, 0]
+Veicolo 10: [0, 26, 4, 0]
+Veicolo 11: [0, 88, 0]
+Veicolo 12: [0, 6, 94, 85, 37, 96, 0]
+Veicolo 13: [0, 12, 54, 24, 68, 80, 0]
+Veicolo 14: [0, 89, 0]
+Veicolo 15: [0, 62, 11, 10, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 21, 73, 75, 41, 22, 74, 58, 0]
+Veicolo 19: [0, 52, 48, 0]
+Veicolo 20: [0, 42, 15, 43, 97, 0]
+Veicolo 21: [0, 31, 63, 64, 19, 7, 0]
+Veicolo 22: [0, 99, 61, 16, 86, 84, 17, 60, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 29, 34, 35, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1656.8
+Costo Totale della Soluzione controllato in seguito: 1656.8
+
+==================================================
+Elaborazione: n100 / R204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 94, 95, 92, 98, 91, 44, 38, 14, 100, 37, 97, 0]
+Veicolo 3: [0, 21, 72, 75, 56, 23, 67, 39, 55, 25, 54, 0]
+Veicolo 4: [0, 52, 7, 47, 49, 36, 46, 8, 18, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 60, 45, 83, 0]
+Veicolo 7: [0, 27, 32, 70, 0]
+Veicolo 8: [0, 58, 2, 57, 0]
+Veicolo 9: [0, 76, 77, 3, 78, 0]
+Veicolo 10: [0, 26, 4, 0]
+Veicolo 11: [0, 88, 0]
+Veicolo 12: [0, 96, 99, 59, 93, 85, 87, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
+Veicolo 14: [0, 89, 0]
+Veicolo 15: [0, 62, 11, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 15, 41, 22, 74, 73, 0]
+Veicolo 19: [0, 82, 48, 0]
+Veicolo 20: [0, 13, 42, 43, 0]
+Veicolo 21: [0, 31, 10, 90, 63, 64, 19, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 50, 33, 81, 35, 34, 79, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1601.5
+Costo Totale della Soluzione controllato in seguito: 1601.5
+
+==================================================
+Elaborazione: n100 / R208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 9, 65, 71, 0]
+Veicolo 2: [0, 95, 92, 98, 91, 44, 38, 14, 100, 37, 97, 0]
+Veicolo 3: [0, 21, 72, 75, 56, 23, 67, 39, 25, 55, 54, 0]
+Veicolo 4: [0, 52, 7, 47, 49, 36, 46, 8, 18, 0]
+Veicolo 5: [0, 28, 0]
+Veicolo 6: [0, 60, 45, 83, 0]
+Veicolo 7: [0, 27, 32, 70, 0]
+Veicolo 8: [0, 58, 2, 57, 0]
+Veicolo 9: [0, 76, 77, 3, 78, 0]
+Veicolo 10: [0, 26, 4, 0]
+Veicolo 11: [0, 88, 0]
+Veicolo 12: [0, 94, 59, 85, 93, 99, 96, 0]
+Veicolo 13: [0, 12, 80, 24, 29, 68, 0]
+Veicolo 14: [0, 89, 0]
+Veicolo 15: [0, 62, 11, 0]
+Veicolo 16: [0, 69, 30, 20, 66, 0]
+Veicolo 17: [0, 51, 0]
+Veicolo 18: [0, 87, 15, 41, 22, 74, 73, 0]
+Veicolo 19: [0, 82, 48, 0]
+Veicolo 20: [0, 13, 42, 43, 0]
+Veicolo 21: [0, 31, 10, 90, 63, 64, 19, 0]
+Veicolo 22: [0, 5, 84, 17, 86, 16, 61, 6, 0]
+Veicolo 23: [0, 1, 0]
+Veicolo 24: [0, 50, 33, 81, 35, 34, 79, 0]
+Veicolo 25: [0, 53, 40, 0]
+Costo Totale della Soluzione: 1586.4
+Costo Totale della Soluzione controllato in seguito: 1586.4
+
+==================================================
+Elaborazione: n100 / RC101.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 31, 27, 30, 26, 32, 80, 0]
+Veicolo 2: [0, 88, 73, 78, 60, 0]
+Veicolo 3: [0, 23, 19, 21, 18, 48, 25, 0]
+Veicolo 4: [0, 42, 39, 36, 44, 40, 43, 37, 35, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 45, 5, 6, 46, 3, 1, 4, 100, 70, 0]
+Veicolo 7: [0, 82, 12, 9, 87, 97, 13, 0]
+Veicolo 8: [0, 63, 76, 89, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 68, 55, 0]
+Veicolo 11: [0, 95, 62, 29, 34, 50, 0]
+Veicolo 12: [0, 72, 38, 41, 54, 96, 0]
+Veicolo 13: [0, 14, 47, 15, 11, 16, 10, 17, 0]
+Veicolo 14: [0, 28, 51, 56, 0]
+Veicolo 15: [0, 65, 52, 86, 74, 0]
+Veicolo 16: [0, 61, 81, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 7, 8, 79, 0]
+Veicolo 19: [0, 69, 98, 53, 0]
+Veicolo 20: [0, 64, 66, 0]
+Veicolo 21: [0, 59, 75, 58, 0]
+Veicolo 22: [0, 84, 85, 20, 0]
+Veicolo 23: [0, 83, 57, 22, 49, 24, 77, 0]
+Veicolo 24: [0, 71, 93, 0]
+Veicolo 25: [0, 33, 67, 94, 0]
+Costo Totale della Soluzione: 2123.1
+Costo Totale della Soluzione controllato in seguito: 2123.1
+
+==================================================
+Elaborazione: n100 / RC104.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 67, 32, 26, 27, 29, 71, 0]
+Veicolo 2: [0, 69, 78, 73, 79, 60, 88, 0]
+Veicolo 3: [0, 49, 19, 18, 21, 23, 25, 48, 24, 0]
+Veicolo 4: [0, 41, 42, 44, 39, 38, 37, 35, 36, 40, 43, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 68, 70, 1, 3, 5, 45, 8, 46, 4, 2, 100, 0]
+Veicolo 7: [0, 9, 87, 97, 59, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 85, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 80, 50, 0]
+Veicolo 12: [0, 54, 72, 81, 0]
+Veicolo 13: [0, 12, 14, 11, 15, 47, 17, 16, 13, 10, 82, 0]
+Veicolo 14: [0, 84, 51, 0]
+Veicolo 15: [0, 74, 0]
+Veicolo 16: [0, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 6, 7, 0]
+Veicolo 19: [0, 98, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 52, 86, 75, 58, 65, 0]
+Veicolo 22: [0, 83, 22, 20, 66, 0]
+Veicolo 23: [0, 57, 77, 0]
+Veicolo 24: [0, 96, 93, 0]
+Veicolo 25: [0, 91, 95, 62, 33, 30, 28, 31, 34, 94, 0]
+Costo Totale della Soluzione: 1841.7
+Costo Totale della Soluzione controllato in seguito: 1841.7
+
+==================================================
+Elaborazione: n100 / RC108.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 200.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 71, 31, 29, 27, 26, 28, 30, 32, 34, 80, 0]
+Veicolo 2: [0, 88, 60, 79, 73, 78, 0]
+Veicolo 3: [0, 24, 22, 49, 19, 18, 48, 21, 23, 25, 0]
+Veicolo 4: [0, 41, 38, 35, 37, 40, 43, 44, 42, 36, 39, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 100, 5, 3, 1, 70, 68, 0]
+Veicolo 7: [0, 82, 87, 97, 13, 9, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 94, 67, 50, 0]
+Veicolo 12: [0, 81, 54, 72, 0]
+Veicolo 13: [0, 47, 17, 16, 11, 10, 15, 12, 14, 0]
+Veicolo 14: [0, 51, 0]
+Veicolo 15: [0, 74, 0]
+Veicolo 16: [0, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 4, 45, 46, 8, 7, 6, 0]
+Veicolo 19: [0, 69, 98, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 52, 86, 58, 75, 59, 0]
+Veicolo 22: [0, 66, 20, 0]
+Veicolo 23: [0, 65, 57, 77, 83, 0]
+Veicolo 24: [0, 96, 93, 0]
+Veicolo 25: [0, 95, 62, 33, 85, 84, 0]
+Costo Totale della Soluzione: 1852.2
+Costo Totale della Soluzione controllato in seguito: 1852.2
+
+==================================================
+Elaborazione: n100 / RC201.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 31, 29, 27, 28, 26, 34, 80, 0]
+Veicolo 2: [0, 88, 78, 73, 79, 60, 0]
+Veicolo 3: [0, 19, 23, 21, 18, 48, 25, 0]
+Veicolo 4: [0, 42, 39, 36, 44, 41, 38, 40, 35, 37, 43, 68, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 45, 5, 3, 1, 70, 0]
+Veicolo 7: [0, 82, 9, 87, 97, 10, 0]
+Veicolo 8: [0, 63, 85, 76, 89, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 67, 50, 0]
+Veicolo 12: [0, 72, 71, 54, 96, 0]
+Veicolo 13: [0, 47, 14, 12, 11, 15, 16, 17, 13, 0]
+Veicolo 14: [0, 51, 84, 56, 0]
+Veicolo 15: [0, 52, 86, 74, 0]
+Veicolo 16: [0, 81, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 6, 7, 8, 46, 4, 100, 0]
+Veicolo 19: [0, 69, 98, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 59, 75, 58, 0]
+Veicolo 22: [0, 83, 22, 49, 20, 66, 0]
+Veicolo 23: [0, 65, 57, 77, 24, 0]
+Veicolo 24: [0, 94, 93, 0]
+Veicolo 25: [0, 95, 62, 33, 30, 32, 0]
+Costo Totale della Soluzione: 1919.6
+Costo Totale della Soluzione controllato in seguito: 1919.6
+
+==================================================
+Elaborazione: n100 / RC204.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 96, 71, 34, 31, 29, 27, 26, 28, 30, 32, 67, 94, 0]
+Veicolo 2: [0, 88, 60, 79, 73, 78, 98, 0]
+Veicolo 3: [0, 66, 22, 49, 19, 18, 48, 21, 23, 25, 24, 83, 0]
+Veicolo 4: [0, 41, 39, 36, 37, 38, 35, 40, 44, 43, 42, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 4, 1, 70, 68, 0]
+Veicolo 7: [0, 9, 97, 59, 87, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 85, 84, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 80, 50, 0]
+Veicolo 12: [0, 54, 72, 81, 0]
+Veicolo 13: [0, 10, 11, 12, 14, 47, 17, 16, 15, 13, 82, 0]
+Veicolo 14: [0, 51, 0]
+Veicolo 15: [0, 74, 0]
+Veicolo 16: [0, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 45, 3, 5, 46, 8, 7, 6, 100, 0]
+Veicolo 19: [0, 69, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 52, 86, 75, 58, 65, 0]
+Veicolo 22: [0, 20, 0]
+Veicolo 23: [0, 57, 77, 0]
+Veicolo 24: [0, 93, 0]
+Veicolo 25: [0, 62, 33, 95, 0]
+Costo Totale della Soluzione: 1824.3
+Costo Totale della Soluzione controllato in seguito: 1824.3
+
+==================================================
+Elaborazione: n100 / RC208.txt
+==================================================
+Veichle info
+Veichle quantity: 25
+Veichle capacity: 1000.0
+Number of clients: 100
+
+Greedy 2
+Veicolo 1: [0, 71, 34, 31, 29, 27, 26, 28, 30, 32, 67, 94, 0]
+Veicolo 2: [0, 88, 60, 79, 73, 78, 98, 69, 0]
+Veicolo 3: [0, 22, 49, 19, 18, 48, 21, 23, 25, 24, 83, 0]
+Veicolo 4: [0, 41, 39, 38, 37, 35, 36, 40, 43, 44, 42, 0]
+Veicolo 5: [0, 92, 0]
+Veicolo 6: [0, 68, 70, 1, 100, 0]
+Veicolo 7: [0, 82, 9, 13, 97, 59, 87, 0]
+Veicolo 8: [0, 56, 76, 89, 63, 85, 84, 91, 0]
+Veicolo 9: [0, 99, 0]
+Veicolo 10: [0, 55, 0]
+Veicolo 11: [0, 80, 50, 0]
+Veicolo 12: [0, 54, 72, 81, 0]
+Veicolo 13: [0, 10, 11, 15, 16, 17, 47, 14, 12, 0]
+Veicolo 14: [0, 51, 0]
+Veicolo 15: [0, 74, 0]
+Veicolo 16: [0, 61, 0]
+Veicolo 17: [0, 90, 0]
+Veicolo 18: [0, 2, 4, 45, 3, 5, 46, 8, 7, 6, 0]
+Veicolo 19: [0, 53, 0]
+Veicolo 20: [0, 64, 0]
+Veicolo 21: [0, 52, 86, 75, 58, 65, 0]
+Veicolo 22: [0, 66, 20, 0]
+Veicolo 23: [0, 57, 77, 0]
+Veicolo 24: [0, 96, 93, 0]
+Veicolo 25: [0, 62, 33, 95, 0]
+Costo Totale della Soluzione: 1797.0
+Costo Totale della Soluzione controllato in seguito: 1797.0
