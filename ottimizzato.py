@@ -3,7 +3,7 @@ import numpy as np
 import time
 import copy
 
-from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
+from functions import matrice_distanze,valida_rotta,calcola_vicini,valida_rotta_senza_vincoli,controllo_costo,greedy_1_new,greedy_2,neigh_1,neigh_2,neigh_3,Sim_Annealing,Tabu_Search, grasp1, vns, Memetic_Algorithm
 
 
 
@@ -18,8 +18,8 @@ def main():
     file_name = input("Inserisci il nome del file(es.C101.txt): ")
 
     # Percorso del file 
-    #path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
-    path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
+    path_base = r'C:\Users\safet\OneDrive\Desktop\Progetto\Progetto\Istanze'
+    #path_base = r'C:\Users\mgand\OneDrive\Desktop\Ottimizzazzione_sr\Progetto\Istanze'
 
     path = os.path.join(path_base, fold, file_name)
 
@@ -53,7 +53,7 @@ def main():
         print("SOMMA MATRICE:", np.sum(dist_matrix))
         # Approccio Greedy numero 1: Nearest Neighborhood
         print("Greedy 1")
-        percorsi, costo_tot = greedy_1(n_clienti, veichle_quantity, veichle_capacity, data, dist_matrix)
+        percorsi, costo_tot = greedy_1_new(n_clienti, veichle_quantity, veichle_capacity, data, dist_matrix)
         for idx, p in enumerate(percorsi):
             print(f"Veicolo {idx+1}: {p}")
         print(f"Costo Totale della Soluzione: {costo_tot:.1f}")
