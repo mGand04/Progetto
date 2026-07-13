@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import numpy as np
 import random as rd
@@ -187,12 +186,9 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             for i in range(1, n_clienti + 1):
                 if not visitati[i]:
                     t_ij = costi[nodo_corrente, i]
-                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + t_ij,
-                                 dati_nodi[i, 4])
+                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + t_ij, dati_nodi[i, 4])
                     rientro = arrivo + dati_nodi[i, 6] + costi[i, 0]
-                    if (capacita_residua >= dati_nodi[i, 3] and
-                            arrivo <= dati_nodi[i, 5] and
-                            rientro <= dati_nodi[0, 5]):
+                    if (capacita_residua >= dati_nodi[i, 3] and arrivo <= dati_nodi[i, 5] and rientro <= dati_nodi[0, 5]):
                         if t_ij < distanza_minima:
                             distanza_minima, miglior_prossimo, orario_inizio = t_ij, i, arrivo
 
@@ -214,8 +210,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     # COMPATTAZIONE: rientro nella flotta eliminando le rotte piu' piccole
     n_rotte_pre = len(percorsi_totali)
     while len(percorsi_totali) > veichle_quantity:
-        ordinate = sorted(range(len(percorsi_totali)),
-                          key=lambda i: len([c for c in percorsi_totali[i] if c != 0]))
+        ordinate = sorted(range(len(percorsi_totali)), key=lambda i: len([c for c in percorsi_totali[i] if c != 0]))
         eliminata = False
         for idx in ordinate:
             if _elimina_rotta(percorsi_totali, idx, v_cap, dati_nodi, costi):
@@ -241,8 +236,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
     costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] for r in percorsi_totali)
 
     # controllo di sicurezza: ferma se una singola istanza sbaglia
-    #assert len(serviti) == n_clienti and len([r for r in percorsi_totali if len(r) > 2]) <= veichle_quantity, \
-    #    f"greedy_1 non valida: mancano {non_serviti}, rotte={len([r for r in percorsi_totali if len(r)>2])}"
+    assert len(serviti) == n_clienti and len([r for r in percorsi_totali if len(r) > 2]) <= veichle_quantity, f"greedy_1 non valida: mancano {non_serviti}, rotte={len([r for r in percorsi_totali if len(r)>2])}"
 
     return percorsi_totali, costo_reale
 
@@ -354,13 +348,17 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
     # Calcolo i vicini dei vari clienti, questo rende l'esecuzione più leggera 
     if vicini is None:
         vicini = calcola_vicini(dist_matrix, k=10)
+<<<<<<< HEAD
     # Questi mi dicono dove si trova ogni cliente e quanto è carico ogni camion
     client_to_route = {cliente: r_idx
                         for r_idx, rotta in enumerate(path)
                         for cliente in rotta}
+=======
 
-    capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
-                       for idx, rotta in enumerate(path)}
+    client_to_route = {cliente: r_idx for r_idx, rotta in enumerate(path) for cliente in rotta}
+>>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
+
+    capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0) for idx, rotta in enumerate(path)}
 
     while miglioramento:
         miglioramento = False
@@ -373,8 +371,7 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
         costo_reale = sum(costi_rotte.values())
 
         # Controllo di sicurezza rispetto al costo passato e quello rialcolato 
-        assert abs(costo_attuale - costo_reale) < 0.1, \
-            f"DIVERGENZA: costo_attuale={costo_attuale:.1f}, costo_reale={costo_reale:.1f}"
+        assert abs(costo_attuale - costo_reale) < 0.1, f"DIVERGENZA: costo_attuale={costo_attuale:.1f}, costo_reale={costo_reale:.1f}"
 
         for r1_idx in range(len(path)):
             rotta_src = path[r1_idx]
@@ -427,18 +424,20 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
                         if r1_idx == r2_idx:
                             nuovo_costo_tot = costo_attuale - costi_rotte[r1_idx] + costo_dest
                         else:
+<<<<<<< HEAD
                             nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx]
                                                 + costo_src + costo_dest)
                         #Se migliora il costo anche di 0.01 (First Improvement)
+=======
+                            nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx] + costo_src + costo_dest)
+
+>>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
                         if nuovo_costo_tot < costo_attuale - 0.01:
                             path[r1_idx] = nuova_rotta_src
                             path[r2_idx] = nuova_rotta_dest
                             costo_attuale = nuovo_costo_tot
-                            client_to_route = {c: r_idx
-                                                for r_idx, rotta in enumerate(path)
-                                                for c in rotta}
-                            capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0)
-                                               for idx, rotta in enumerate(path)}
+                            client_to_route = {c: r_idx for r_idx, rotta in enumerate(path) for c in rotta}
+                            capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0) for idx, rotta in enumerate(path)}
                             miglioramento = True
                             break
                     if miglioramento:
@@ -519,6 +518,7 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
             #Ciclo su tutte le coppie di posizioni interne alla rotta
             for i in range(1, len(rotta_1) - 1):
                 for j in range(i+1, len(rotta_1)-1):
+<<<<<<< HEAD
                     #Clienti candidati allo scambio
                     cliente_1 = rotta_1[i]
                     cliente_2 = rotta_1[j]
@@ -527,6 +527,8 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
                     p1, n1 = rotta_1[i-1], rotta_1[i+1]
                     # Nodi adiacenti a cliente 2
                     p2, n2 = rotta_1[j-1], rotta_1[j+1]
+=======
+>>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
 
                     # Creiamo la rotta potenziale scambiando i nodi
                     nuova_rotta_test = list(rotta_1) # Copia veloce
@@ -552,7 +554,7 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
 # Simulated annealing
 def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
 
-    # Definizione dei parmetri
+    # Definizione dei parametri
     T_init = 1000
     T_end = 0.1
     alpha = 0.99
@@ -596,7 +598,7 @@ def Sim_Annealing(path, costo_tot, veichle_capacity, dist_matrix, data):
         idx_cliente = rd.randint(1, max_idx)
         cliente = rotta_sorgente.pop(idx_cliente)
 
-        # Scegliamo la destinazione sempre ranomd
+        # Scegliamo la destinazione sempre random
         idx_rotta_dest = rd.randint(0,len(s_new)-1)
         rotta_dest = s_new[idx_rotta_dest]
         max_ins = len(rotta_dest) - 1
@@ -681,6 +683,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                 for i in range(1, n_clienti + 1):
                     if not visitati[i]:
                         tij = dist_matrix[nodo_corrente, i]
+<<<<<<< HEAD
                         arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij,
                                      data[i, 4])
                         #Verifica che si può rientrare al deposito entro la chiusura globale
@@ -691,6 +694,13 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                         if (capacita_residua >= data[i, 3] and
                                 arrivo <= data[i, 5] and
                                 tempo_rientro_deposito <= data[0, 5]):
+=======
+                        arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij, data[i, 4])
+                        tempo_rientro_deposito = arrivo + data[i, 6] + dist_matrix[i, 0]
+
+                        # controllo sul rientro al deposito
+                        if (capacita_residua >= data[i, 3] and arrivo <= data[i, 5] and tempo_rientro_deposito <= data[0, 5]):
+>>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
                             clienti_feasible.append((i, tij, arrivo))
 
                 if not clienti_feasible:
@@ -760,8 +770,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
         while len(percorsi_totali) < veichle_quantity:
             percorsi_totali.append([0, 0])
 
-        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1]
-                           for r in percorsi_totali)
+        costo_reale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in percorsi_totali)
 
         # Local search finale solo su neigh_1
         s_prime, costo_nuovo = neigh_1(percorsi_totali, veichle_capacity, data, dist_matrix, costo_reale)
@@ -923,7 +932,6 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
         best_move = None
 
         # Mappa cliente -> indice rotta, ricalcolata una volta per iterazione
-        # (serve per restringere le rotte candidate ai vicini spaziali)
         client_to_route = {c: idx for idx, r in enumerate(s) for c in r[1:-1]}
 
         # Esplorazione intorno di 's'
@@ -1094,8 +1102,7 @@ def crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity, v_cap, data
     while len(popolazione) < pop_size and tentativi < max_tentativi:
         tentativi += 1
         alpha = rd.uniform(0.1, 0.5)
-        risultato = costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap,
-                                             data, dist_matrix, alpha)
+        risultato = costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap, data, dist_matrix, alpha)
         if risultato is not None:
             popolazione.append(risultato)
 
@@ -1169,6 +1176,7 @@ def crossover_twopoints(parent1, parent2, v_cap, data, dist_matrix):
 
 # Mutazione del filgio 
 def mutazione(path, v_cap, data, dist_matrix, prob=0.15):
+
     if rd.random() > prob:
         return path
 
@@ -1205,12 +1213,9 @@ def mutazione(path, v_cap, data, dist_matrix, prob=0.15):
     return figlio
 
 # Struttura generale dell'algoritmo completo
-def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix,
-                       pop_size=30, generazioni=200, prob_mutazione=0.15,
-                       tasso_local_search=1.0):
+def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix, pop_size=30, generazioni=200, prob_mutazione=0.15, tasso_local_search=1.0):
 
-    popolazione = crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity,
-                                             v_cap, data, dist_matrix)
+    popolazione = crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity, v_cap, data, dist_matrix)
 
     # local search anche sulla popolazione iniziale
     for idx in range(len(popolazione)):
@@ -1244,6 +1249,7 @@ def Memetic_Algorithm(n_clienti, veichle_quantity, v_cap, data, dist_matrix,
 
             # Mutazione
             figlio_mut = mutazione(figlio, v_cap, data, dist_matrix, prob=prob_mutazione)
+
             # Controllo feasibility
             if all(valida_rotta(r, v_cap, data, dist_matrix)[0] for r in figlio_mut):
                 figlio = figlio_mut
