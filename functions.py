@@ -72,13 +72,13 @@ def valida_rotta(percorso, veichle_capacity, data, dist_matrix):
 
 # Funzione che permette di trovare i clienti vicini
 def calcola_vicini(dist_matrix, k=10):
-    n = dist_matrix.shape[0]
+    n = dist_matrix.shape[0]  #Numero totale di nodi
     vicini = {}
     for i in range(n):
         # Ordina per distanza, escludi il nodo stesso
         distanze = [(j, dist_matrix[i,j]) for j in range(n) if j != i]
-        distanze.sort(key=lambda x: x[1])
-        vicini[i] = [j for j, _ in distanze[:k]]
+        distanze.sort(key=lambda x: x[1]) #Ordina dal valore più grande
+        vicini[i] = [j for j, _ in distanze[:k]] #Estraggo i primi k più vicini
     return vicini
 
 # Funzione utilizzata per validate rotte senza vincoli
@@ -135,8 +135,8 @@ def _inserisci_con_ejection(rotte, c, cap, data, dist):
     
     for i, rotta in enumerate(rotte):
         for xi in range(1, len(rotta) - 1):
-            x = rotta[xi]
-            senza_x = rotta[:xi] + rotta[xi+1:]
+            x = rotta[xi] #Seleziono un cliente x dalla rotta corrente
+            senza_x = rotta[:xi] + rotta[xi+1:] #Creo una versione senza di questo cliente x
             cand_c, _ = _miglior_inserimento(senza_x, c, cap, data, dist)
             if cand_c is None:
                 continue
@@ -154,7 +154,7 @@ def _inserisci_con_ejection(rotte, c, cap, data, dist):
 # Funzione che elimina una singola rotte ridistribuendo i clienti nelle rotte rimanenti
 def _elimina_rotta(percorsi, r_idx, cap, data, dist):
     clienti = [c for c in percorsi[r_idx] if c != 0]
-    altre = [list(r) for j, r in enumerate(percorsi) if j != r_idx]
+    altre = [list(r) for j, r in enumerate(percorsi) if j != r_idx] #Copia di tutte le rotte rimanenti su cui verranno tentati i reinserimenti
     for c in clienti:
         best_j, best_rotta, best_delta = None, None, float('inf')
         for j, rotta in enumerate(altre):
@@ -197,7 +197,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
                             distanza_minima, miglior_prossimo, orario_inizio = t_ij, i, arrivo
 
             if miglior_prossimo is None:
-                percorso_attuale.append(0)
+                percorso_attuale.append(0) #Aggiungo zero al percorso
                 break
 
             visitati[miglior_prossimo] = True
@@ -236,7 +236,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
               f"(NN ne aveva aperte {n_rotte_pre})")
 
     while len(percorsi_totali) < veichle_quantity:
-        percorsi_totali.append([0, 0])
+        percorsi_totali.append([0, 0])# Se uso meno veicoli aggiungo rotte vuote per coerenza dimensionale
 
     costo_reale = sum(valida_rotta(r, v_cap, dati_nodi, costi)[1] for r in percorsi_totali)
 
@@ -270,7 +270,7 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
     seed_indices = []
     if candidati_seed:
-        primo = max(candidati_seed, key=lambda c: costi[0,c])
+        primo = max(candidati_seed, key=lambda c: costi[0,c])# Scelgo il cliente più lontano dal deposito
         seed_indices.append(primo)
 
         while len(seed_indices) < veichle_quantity and len(seed_indices) < len(candidati_seed):
@@ -278,13 +278,14 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             seed_indices.append(migliore)
     
     seed_set = set(seed_indices)
+    # For che crea le rotte che partono dal deposito, servono e rientrano
     for i in seed_indices:
         costo_andata = costi[0,i]
         costo_ritorno = costi[i, 0]
         percorso_attuale = [0,i,0]
         percorsi_totali.append(percorso_attuale)
         costo_totale_global += (costo_andata + costo_ritorno)
-    
+    # Clienti che devono essere ancora inseriti
     for i in range(1, n_clienti + 1):
         if i not in seed_set:
             clienti_in_attesa.append(i)
@@ -323,6 +324,7 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
             if len(opzioni_inserimento) >= 2:
                 regret = opzioni_inserimento[1][0] - opzioni_inserimento[0][0]
             else:
+                # Regret infinito se ho solo un'opzione valida
                 regret = float('inf')
 
             # Selezioniamo il cliente che ha il REGRET MASSIMO
@@ -352,7 +354,7 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
     # Calcolo i vicini dei vari clienti, questo rende l'esecuzione più leggera 
     if vicini is None:
         vicini = calcola_vicini(dist_matrix, k=10)
-
+    # Questi mi dicono dove si trova ogni cliente e quanto è carico ogni camion
     client_to_route = {cliente: r_idx
                         for r_idx, rotta in enumerate(path)
                         for cliente in rotta}
@@ -385,10 +387,11 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
 
                 nuova_rotta_src = rotta_src[:]
                 nuova_rotta_src.pop(idx_pos)
+                #Controllo se senza quel cliente la rotta è ancora valida
                 ok_src, costo_src = valida_rotta(nuova_rotta_src, veichle_capacity, data, dist_matrix)
                 if not ok_src:
                     continue
-
+                #Allora cerco una nuova rotta di destinazione tra quelle dei suoi vicini
                 rotte_candidate = set()
                 for vicino in vicini[cliente]:
                     if vicino in client_to_route:
@@ -398,7 +401,7 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
                 for r2_idx in rotte_candidate:
                     rotta_dest = path[r2_idx]
                     domanda_cliente = data[cliente, 3]
-
+                    #Rotta diversa da quella sorgente
                     if r1_idx != r2_idx:
                         if capacita_rotte[r2_idx] + domanda_cliente > veichle_capacity:
                             continue
@@ -408,6 +411,8 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
                             continue
 
                         if r1_idx == r2_idx:
+                            #Nuova rotta src ha un elemento in meno e tutti gli indici 
+                            # dopo sono spostati di uno rispetto alla rotta originale
                             nuova_rotta_dest = nuova_rotta_src[:]
                             adj_pos = pos - 1 if pos > idx_pos else pos
                             nuova_rotta_dest.insert(adj_pos, cliente)
@@ -424,7 +429,7 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
                         else:
                             nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx]
                                                 + costo_src + costo_dest)
-
+                        #Se migliora il costo anche di 0.01 (First Improvement)
                         if nuovo_costo_tot < costo_attuale - 0.01:
                             path[r1_idx] = nuova_rotta_src
                             path[r2_idx] = nuova_rotta_dest
@@ -511,9 +516,10 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
             
             # Precalcolo costo originale fuori dai loop su i e j
             _, costo_originale = valida_rotta(rotta_1, veichle_capacity, data, dist_matrix)
-
+            #Ciclo su tutte le coppie di posizioni interne alla rotta
             for i in range(1, len(rotta_1) - 1):
                 for j in range(i+1, len(rotta_1)-1):
+                    #Clienti candidati allo scambio
                     cliente_1 = rotta_1[i]
                     cliente_2 = rotta_1[j]
 
@@ -663,7 +669,7 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
         visitati[0] = True
         percorsi_totali = []
         clienti_serviti = 0
-
+        #Finchè non terminano i clienti oppure i veicoli disponibili
         while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
             percorso_attuale = [0]
             nodo_corrente = 0
@@ -677,9 +683,11 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                         tij = dist_matrix[nodo_corrente, i]
                         arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij,
                                      data[i, 4])
+                        #Verifica che si può rientrare al deposito entro la chiusura globale
                         tempo_rientro_deposito = arrivo + data[i, 6] + dist_matrix[i, 0]
 
                         # controllo sul rientro al deposito
+                        #Evito di costruire rotte che si bloccano
                         if (capacita_residua >= data[i, 3] and
                                 arrivo <= data[i, 5] and
                                 tempo_rientro_deposito <= data[0, 5]):
@@ -690,10 +698,13 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                     break
                 
                 # Scelta dell'inserimento
+                #Creo una lista di clienti candidati la cui distanza è entro una soglia
+                #prop all'intervallo [dmin,dmax]
                 dmin = min(c[1] for c in clienti_feasible)
                 dmax = max(c[1] for c in clienti_feasible)
                 soglia = dmin + alpha * (dmax - dmin)
                 best_vicini = [c for c in clienti_feasible if c[1] <= soglia]
+                #Scelgo casualmente tra i candidati
                 scelta = rd.choice(best_vicini)
                 miglior_prossimo, distanza_scelta, arrivo_scelto = scelta
 
@@ -785,13 +796,9 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
     
     # Soluzione migliore iniziale
     s_best = copy.deepcopy(s)
-    costo_best = costo_attuale
-
-    # Numero di neighborhood
-    p = 3 
-
-    # Massimo numero di iterazioni senza miglioramento
-    max_no_improve = 100
+    costo_best = costo_attuale  
+    p = 3     # Numero di neighborhood
+    max_no_improve = 100  # Massimo numero di iterazioni senza miglioramento
     no_improve = 0
 
     while no_improve < max_no_improve:
@@ -808,6 +815,7 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
                 continue
 
             # Mossa dal primo neighborhood
+            #Prendo un cliente a caso da una rotta e lo metto in un'altra a caso
             if k == 1:
                 
                 idx_src = rd.choice(rotte_attive)
@@ -822,11 +830,12 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
 
             # Mossa dal seconda neighborhood
             if k == 2:
-                
+                #Richiede rotte con almeno 5 elementi
                 rotte_valide = [idx for idx, rotta in enumerate(s_new) if len(rotta)>4]
                 if not rotte_valide:
                     k+=1
                     continue
+                #Estrae una coppia di clienti consecutivi e poi li reinserisce altrove
                 idx_src = rd.choice(rotte_valide)
                 rotta_src = s_new[idx_src]
                 idx_seg = rd.randint(1, len(rotta_src) - 3)
@@ -840,6 +849,8 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
                 costo_nuovo = sum(valida_rotta_senza_vincoli(r, dist_matrix, data) for r in s_new)
 
             # Mossa dal terzo neighborhood
+            #Sceglie due posizioni diverse nella stessa rotta e scambia i clienti
+            # Sempre randomicamente
             if k == 3:
                 rotte_valide = [idx for idx in rotte_attive if len(s_new[idx]) >= 4]
                 if not rotte_valide:
@@ -916,6 +927,7 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
         client_to_route = {c: idx for idx, r in enumerate(s) for c in r[1:-1]}
 
         # Esplorazione intorno di 's'
+        #Considero solo le rotte che contengono i suoi vicini spaziali
         for r_src_idx, route_src in enumerate(s):
             if len(route_src) <= 2:
                 continue
@@ -935,10 +947,11 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
                     range_j = len(route_dest)
 
                     for j in range(1, range_j):
+                        #se la posizione è uguale continua
                         if r_src_idx == r_dest_idx and (j == i or j == i + 1):
                             continue
 
-                        # SIMULAZIONE
+                        # SIMULAZIONE DELLA MOSSA
                         new_src = route_src[:i] + route_src[i+1:]
                         new_dest = route_dest[:j] + [cliente] + route_dest[j:]
 
@@ -948,8 +961,9 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
 
                         if f1 and f2:
                             delta = (c1 + c2) - (old_c1 + old_c2)
-
+                            #Coppia tabu
                             mossa_id = (cliente, r_dest_idx)
+                            #se maggiore di iterazione allora la mossa è ancora vietata
                             is_tabu = tabu_list.get(mossa_id, 0) > iterazione
 
                             # LONG-TERM: penalizza solo le mosse NON migliorative proporzionalmente a quante volte sono già state eseguite
@@ -968,8 +982,9 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
 
         # Esecuzione della mossa
         if best_move:
+            #Estrazione mossa migliore
             r_s, pos_i, r_d, pos_j, m_id = best_move
-
+            #rimuovo il cliente dalla rotta sorgente
             c_estratto = s[r_s].pop(pos_i)
             actual_j = pos_j if (r_s != r_d or pos_i > pos_j) else pos_j - 1
             s[r_d].insert(actual_j, c_estratto)
@@ -996,6 +1011,7 @@ def costo_soluzione(path, veichle_capacity, data, dist_matrix):
     return tot
 
 # Funzione asuliaria che verifica la completezza della soluzione
+#Ovvero verifica che tutti i clienti siano presenti una sola volta
 def verifica_completezza(path, n_clienti):
     clienti_presenti = set()
     for r in path:
@@ -1003,6 +1019,7 @@ def verifica_completezza(path, n_clienti):
     return len(clienti_presenti) == n_clienti
 
 # Funzione ausiliaria per la selezione dei parent che vincono il torneo
+# Vengono ordinati per costo, ritorna il migliore dei tre
 def selezione_torneo(popolazione, k=3):
     torneo = rd.sample(popolazione, k)
     torneo.sort(key=lambda x: x[1])
