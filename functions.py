@@ -193,7 +193,7 @@ def greedy_1(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
                             distanza_minima, miglior_prossimo, orario_inizio = t_ij, i, arrivo
 
             if miglior_prossimo is None:
-                percorso_attuale.append(0) #Aggiungo zero al percorso
+                percorso_attuale.append(0) #Aggiungo deposito finale al percorso
                 break
 
             visitati[miglior_prossimo] = True
@@ -342,6 +342,7 @@ def greedy_2(n_clienti, veichle_quantity, v_cap, dati_nodi, costi):
 
 #1 Neighborhood: Insertion --> provo a togliere un cliente da un path e lo inserisco in un'altra con FIRST IMPROVMENT
 def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
+
     costo_attuale = sum(valida_rotta(r, veichle_capacity, data, dist_matrix)[1] for r in path)
     miglioramento = True
 
@@ -775,8 +776,10 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
 
     while no_improve < max_no_improve:
 
-        # Neighborhood da cui prendo la mossa
+        # Inizializzo il primo neighborhood per la mossa
         k=1
+
+        # Inizio del ciclo
         while k <= p:
 
             s_new = copy.deepcopy(s)
@@ -824,6 +827,7 @@ def vns(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, data):
             #Sceglie due posizioni diverse nella stessa rotta e scambia i clienti
             # Sempre randomicamente
             if k == 3:
+                # Richiede rotte con almeno 4 elementi (2 depositi + 2 clienti)
                 rotte_valide = [idx for idx in rotte_attive if len(s_new[idx]) >= 4]
                 if not rotte_valide:
                     k += 1
@@ -908,6 +912,7 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
             for i in range(1, len(route_src) - 1):
                 cliente = route_src[i]
 
+                # Lista contenente le rotte candidate per la ricerca
                 rotte_candidate = {client_to_route[v] for v in vicini[cliente] if v in client_to_route}
                 rotte_candidate.add(r_src_idx)  # includo sempre la rotta di origine (riposizionamento interno)
 
@@ -955,11 +960,13 @@ def Tabu_Search(path, costo_iniziale, veichle_capacity, data, dist_matrix):
         if best_move:
             #Estrazione mossa migliore
             r_s, pos_i, r_d, pos_j, m_id = best_move
-            #rimuovo il cliente dalla rotta sorgente
+            # Rimuovo il cliente dalla rotta sorgente
             c_estratto = s[r_s].pop(pos_i)
             actual_j = pos_j if (r_s != r_d or pos_i > pos_j) else pos_j - 1
+            # Inserisco nella rotta di destinazione
             s[r_d].insert(actual_j, c_estratto)
 
+            # Aggiorno
             costo_current += best_delta
             tabu_list[m_id] = iterazione + d
             frequenza[m_id] = frequenza.get(m_id, 0) + 1 
@@ -1003,6 +1010,7 @@ def costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap, dati_nodi, costi
     percorsi_totali = []
     clienti_serviti = 0
 
+    # Inizio del ciclo
     while clienti_serviti < n_clienti and len(percorsi_totali) < veichle_quantity:
         percorso_attuale = [0]
         nodo_corrente = 0
@@ -1014,24 +1022,28 @@ def costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap, dati_nodi, costi
             for i in range(1, n_clienti + 1):
                 if not visitati[i]:
                     tij = costi[nodo_corrente, i]
-                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + tij,
-                                 dati_nodi[i, 4])
+                    arrivo = max(tempo_attuale + dati_nodi[nodo_corrente, 6] + tij, dati_nodi[i, 4])
                     tempo_rientro = arrivo + dati_nodi[i, 6] + costi[i, 0]
 
                     if capacita_residua >= dati_nodi[i, 3] and arrivo <= dati_nodi[i, 5] and tempo_rientro <= dati_nodi[0,5]:
-                        clienti_feasible.append((i, tij, arrivo))
+                        clienti_feasible.append((i, tij, arrivo)) # tupla (indice, costo, istante di arrivo)
 
             if not clienti_feasible:
                 percorso_attuale.append(0)
                 break
-
+            
+            # Calcolo della soglia di accettazione tra le mosse feasible
             dmin = min(c[1] for c in clienti_feasible)
             dmax = max(c[1] for c in clienti_feasible)
             soglia = dmin + alpha * (dmax - dmin)
+            # Selezioni i clienti
             rcl = [c for c in clienti_feasible if c[1] <= soglia]
+            # Scelto random
             scelto = rd.choice(rcl)
+            # Salviamo
             miglior_prossimo, dist_scelta, arrivo_scelto = scelto
 
+            # Inseriamo
             visitati[miglior_prossimo] = True
             clienti_serviti += 1
             capacita_residua -= dati_nodi[miglior_prossimo, 3]
@@ -1054,6 +1066,7 @@ def costruzione_semi_greedy(n_clienti, veichle_quantity, v_cap, dati_nodi, costi
 def crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity, v_cap, data, dist_matrix):
     popolazione = []
 
+    # Primi due individui 
     p_g1, c_g1 = greedy_1(n_clienti, veichle_quantity, v_cap, data, dist_matrix)
     p_g2, c_g2 = greedy_2(n_clienti, veichle_quantity, v_cap, data, dist_matrix)
     popolazione.append((p_g1, c_g1))
@@ -1062,6 +1075,7 @@ def crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity, v_cap, data
     tentativi = 0
     max_tentativi = (pop_size - 2) * 20
 
+    # Restante popolazione generata con approccio semy-greedy
     while len(popolazione) < pop_size and tentativi < max_tentativi:
         tentativi += 1
         alpha = rd.uniform(0.1, 0.5)
@@ -1069,8 +1083,9 @@ def crea_popolazione_iniziale(pop_size, n_clienti, veichle_quantity, v_cap, data
         if risultato is not None:
             popolazione.append(risultato)
 
+    # Completiamo la soluzione se non abbastanza popolata
     while len(popolazione) < pop_size:
-        seme = rd.choice([(p_g1, c_g1), (p_g2, c_g2)])
+        seme = rd.choice([(p_g1, c_g1), (p_g2, c_g2)]) # Scegliamo random una soluzione dei due greedy
         popolazione.append(copy.deepcopy(seme))
 
     return popolazione
@@ -1140,16 +1155,20 @@ def crossover_twopoints(parent1, parent2, v_cap, data, dist_matrix):
 # Mutazione del filgio 
 def mutazione(path, v_cap, data, dist_matrix, prob=0.15):
 
+    # Randomicamente genero la probabilità di essere mutato
     if rd.random() > prob:
         return path
 
+    # Continuo con la mutazione
     figlio = copy.deepcopy(path)
     rotte_attive = [i for i, r in enumerate(figlio) if len(r) > 2]
     if not rotte_attive:
         return figlio
 
+    # Scelta sul tipo di mossa
     tipo = rd.choice(['relocate', 'swap'])
 
+    # Esecuzione della mossa
     if tipo == 'relocate':
         idx_src = rd.choice(rotte_attive)
         rotta_src = figlio[idx_src]
