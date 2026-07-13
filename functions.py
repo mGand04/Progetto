@@ -348,15 +348,8 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
     # Calcolo i vicini dei vari clienti, questo rende l'esecuzione più leggera 
     if vicini is None:
         vicini = calcola_vicini(dist_matrix, k=10)
-<<<<<<< HEAD
-    # Questi mi dicono dove si trova ogni cliente e quanto è carico ogni camion
-    client_to_route = {cliente: r_idx
-                        for r_idx, rotta in enumerate(path)
-                        for cliente in rotta}
-=======
 
     client_to_route = {cliente: r_idx for r_idx, rotta in enumerate(path) for cliente in rotta}
->>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
 
     capacita_rotte = {idx: sum(data[c, 3] for c in rotta if c != 0) for idx, rotta in enumerate(path)}
 
@@ -424,14 +417,8 @@ def neigh_1(path, veichle_capacity, data, dist_matrix, costo_tot, vicini=None):
                         if r1_idx == r2_idx:
                             nuovo_costo_tot = costo_attuale - costi_rotte[r1_idx] + costo_dest
                         else:
-<<<<<<< HEAD
-                            nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx]
-                                                + costo_src + costo_dest)
-                        #Se migliora il costo anche di 0.01 (First Improvement)
-=======
                             nuovo_costo_tot = (costo_attuale - costi_rotte[r1_idx] - costi_rotte[r2_idx] + costo_src + costo_dest)
 
->>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
                         if nuovo_costo_tot < costo_attuale - 0.01:
                             path[r1_idx] = nuova_rotta_src
                             path[r2_idx] = nuova_rotta_dest
@@ -518,17 +505,6 @@ def neigh_3(path, veichle_capacity, data, dist_matrix, costo_tot):
             #Ciclo su tutte le coppie di posizioni interne alla rotta
             for i in range(1, len(rotta_1) - 1):
                 for j in range(i+1, len(rotta_1)-1):
-<<<<<<< HEAD
-                    #Clienti candidati allo scambio
-                    cliente_1 = rotta_1[i]
-                    cliente_2 = rotta_1[j]
-
-                    # Nodi adiacenti a cliente 1
-                    p1, n1 = rotta_1[i-1], rotta_1[i+1]
-                    # Nodi adiacenti a cliente 2
-                    p2, n2 = rotta_1[j-1], rotta_1[j+1]
-=======
->>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
 
                     # Creiamo la rotta potenziale scambiando i nodi
                     nuova_rotta_test = list(rotta_1) # Copia veloce
@@ -683,24 +659,11 @@ def grasp1(path, costo_tot, veichle_capacity, veichle_quantity, dist_matrix, dat
                 for i in range(1, n_clienti + 1):
                     if not visitati[i]:
                         tij = dist_matrix[nodo_corrente, i]
-<<<<<<< HEAD
-                        arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij,
-                                     data[i, 4])
-                        #Verifica che si può rientrare al deposito entro la chiusura globale
-                        tempo_rientro_deposito = arrivo + data[i, 6] + dist_matrix[i, 0]
-
-                        # controllo sul rientro al deposito
-                        #Evito di costruire rotte che si bloccano
-                        if (capacita_residua >= data[i, 3] and
-                                arrivo <= data[i, 5] and
-                                tempo_rientro_deposito <= data[0, 5]):
-=======
                         arrivo = max(tempo_attuale + data[nodo_corrente, 6] + tij, data[i, 4])
                         tempo_rientro_deposito = arrivo + data[i, 6] + dist_matrix[i, 0]
 
                         # controllo sul rientro al deposito
                         if (capacita_residua >= data[i, 3] and arrivo <= data[i, 5] and tempo_rientro_deposito <= data[0, 5]):
->>>>>>> b33176b8174abd38acea7248ddf2817ba93a3cac
                             clienti_feasible.append((i, tij, arrivo))
 
                 if not clienti_feasible:
